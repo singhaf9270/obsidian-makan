@@ -2,6 +2,8 @@
 
 A bilingual Persian/English Obsidian theme with light and dark appearances, six color palettes, and extensive customization through the Style Settings plugin.
 
+به یاد **ماکان نصیری** و **شهدای مدرسهٔ میناب**.
+
 ## Features
 
 - Light and dark mode support
