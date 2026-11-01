@@ -1434,7 +1434,7 @@ input[type="range"] { accent-color: var(--interactive-accent); }
 .markdown-rendered h4, .markdown-rendered h5, .markdown-rendered h6 { letter-spacing: 0; }
 .markdown-rendered a { text-underline-offset: .22em; }
 .markdown-rendered a.internal-link { border-bottom: 1px solid currentColor; }
-.markdown-rendered a.is-unresolved { text-decoration-line: none; border-bottom: 1px dotted currentColor; }
+.markdown-rendered a.is-unresolved { border-bottom: 1px dotted currentColor; }
 .markdown-rendered mark, .cm-s-obsidian span.cm-highlight {
   color: var(--text-highlight-fg);
   background: var(--text-highlight-bg);
