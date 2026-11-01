@@ -1,5 +1,5 @@
 /*
-Makan 1.0.0 — original Obsidian theme
+Makan 1.0.1 — original Obsidian theme
 No external assets, scripts, fonts or network requests.
 Sections: tokens · workspace · editor · markdown · plugins · accessibility.
 */
@@ -1433,8 +1433,8 @@ input[type="range"] { accent-color: var(--interactive-accent); }
 .markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3,
 .markdown-rendered h4, .markdown-rendered h5, .markdown-rendered h6 { letter-spacing: 0; }
 .markdown-rendered a { text-underline-offset: .22em; }
-.markdown-rendered a.internal-link { text-decoration-thickness: 1px; }
-.markdown-rendered a.is-unresolved { text-decoration: underline dotted; }
+.markdown-rendered a.internal-link { border-bottom: 1px solid currentColor; }
+.markdown-rendered a.is-unresolved { text-decoration-line: none; border-bottom: 1px dotted currentColor; }
 .markdown-rendered mark, .cm-s-obsidian span.cm-highlight {
   color: var(--text-highlight-fg);
   background: var(--text-highlight-bg);
@@ -1502,7 +1502,7 @@ input[type="range"] { accent-color: var(--interactive-accent); }
 .markdown-embed-title { font-size: .9em; font-weight: 650; color: var(--text-accent); }
 .markdown-embed-link { color: var(--text-muted); }
 .markdown-rendered .math-block { overflow-x: auto; padding-block: .7em; }
-.math, .MathJax, mjx-container { direction: ltr; unicode-bidi: isolate; }
+.math, .MathJax { direction: ltr; unicode-bidi: isolate; }
 .markdown-rendered .mermaid { overflow-x: auto; background: var(--background-primary-alt); padding: 14px; border-radius: var(--radius-l); }
 .markdown-rendered .mermaid svg { max-width: 100%; height: auto; }
 
@@ -1709,9 +1709,9 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
   body { --background-primary: white; --background-secondary: white; --text-normal: black; --text-muted: #333; --text-faint: #555; }
   .markdown-preview-view { background: white; background-image: none; color: black; }
   .markdown-rendered { --h1-color: black; --h2-color: black; --h3-color: black; --h4-color: black; --h5-color: black; --h6-color: black; --link-color: #174d70; --code-normal: #173b52; --code-background: #f3f3f3; }
-  .markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3 { break-after: avoid; }
-  .markdown-rendered pre, .callout, .markdown-rendered blockquote { box-shadow: none; break-inside: avoid; }
-  .markdown-rendered img { break-inside: avoid; }
+  .markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3 { page-break-after: avoid; }
+  .markdown-rendered pre, .callout, .markdown-rendered blockquote { box-shadow: none; page-break-inside: avoid; }
+  .markdown-rendered img { page-break-inside: avoid; }
   .nv-paper.markdown-preview-view .markdown-preview-sizer { padding: 0; border: 0; box-shadow: none; }
 }
 
