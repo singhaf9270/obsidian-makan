@@ -2,20 +2,20 @@
 cssclasses:
   - nv-rtl
 tags:
-  - nivara
+  - makan
   - آزمایش
 status: پیش‌نویس
 rating: 5
 published: false
 ---
 
-# نیوارا؛ فضایی برای فکر کردن
+# ماکان؛ فضایی برای فکر کردن
 
-این یادداشت برای بررسی تم **Nivara** در حالت روشن و تاریک، ویرایش زنده (*Live Preview*) و حالت مطالعه (*Reading View*) طراحی شده است.
+این یادداشت برای بررسی تم **Makan** در حالت روشن و تاریک، ویرایش زنده (*Live Preview*) و حالت مطالعه (*Reading View*) طراحی شده است.
 
 متن فارسی با نیم‌فاصله و عبارت English text و عدد ۱۴۰۵/۰۸/۰۲.
 
-[پیوند خارجی · Nivara Example](https://example.com) · #یادگیری · #design
+[پیوند خارجی · Makan Example](https://example.com) · #یادگیری · #design
 
 ## عنوان دوم؛ برنامهٔ امروز
 
@@ -52,7 +52,7 @@ published: false
 
 ```javascript
 // A comment with Persian: یادداشت
-const theme = { name: "Nivara", dark: true };
+const theme = { name: "Makan", dark: true };
 
 function greet(name) {
   return `Hello ${name}!`;
@@ -142,4 +142,4 @@ $$
 
 ---
 
-*پایان نمونهٔ نمایشی نیوارا — برای بررسی نتیجه، این یادداشت را در هر دو حالت روشن و تاریک و در Reading View و Live Preview باز کنید.*
+*پایان نمونهٔ نمایشی ماکان — برای بررسی نتیجه، این یادداشت را در هر دو حالت روشن و تاریک و در Reading View و Live Preview باز کنید.*
