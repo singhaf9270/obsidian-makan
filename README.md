@@ -1,4 +1,4 @@
-# Nivara · نیوارا
+# Makan · ماکان
 
 A bilingual Persian/English Obsidian theme with light and dark appearances, six color palettes, and extensive customization through the Style Settings plugin.
 
@@ -16,9 +16,9 @@ A bilingual Persian/English Obsidian theme with light and dark appearances, six 
 
 1. Download `theme.css` and `manifest.json`.
 2. In your vault, open `.obsidian/themes/`.
-3. Create a folder named `Nivara`.
+3. Create a folder named `Makan`.
 4. Place both files inside that folder.
-5. In Obsidian, open **Settings → Appearance → Themes** and select **Nivara**.
+5. In Obsidian, open **Settings → Appearance → Themes** and select **Makan**.
 
 ### Recommended
 
