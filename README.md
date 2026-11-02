@@ -13,6 +13,14 @@ A bilingual Persian/English Obsidian theme with light and dark appearances, six 
 - Integrated colorful folder and subfolder styling
 - Animated completed-task cards and checkbox feedback in both Editing and Reading views, adapting to the active color palette
 
+## What's new in 1.0.4
+
+- Updated completed-task cards in Reading View to match the purple styling and interaction effects of `checkbox.css`.
+- Added matching light and dark appearance styles.
+- Improved hover, entrance, glow, and checkbox feedback animations.
+- Preserved the existing Editing (Live Preview) appearance.
+- Respected reduced-motion accessibility preferences.
+
 ## Installation
 
 ### From this repository
