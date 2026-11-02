@@ -1799,3 +1799,140 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
 .nav-folder .nav-folder .nav-folder:nth-child(11n + 12) {
   --folder-color: rgb(203, 166, 247); /* Purple */
 }
+
+
+/* ============================================================
+   11 · Completed task cards — Editing + Reading views
+   Palette-aware styling shared by Live Preview and Reading view.
+   ============================================================ */
+
+@keyframes makanTaskEnter {
+  from { opacity: 0; transform: translateX(-12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes makanTaskGlow {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--interactive-accent) 38%, transparent); }
+  100% { box-shadow: 0 0 0 10px transparent; }
+}
+
+@keyframes makanCheckBounce {
+  0%, 100% { transform: scale(1); }
+  35% { transform: scale(1.22) rotate(7deg); }
+  70% { transform: scale(.92) rotate(-4deg); }
+}
+
+/* The two selectors below represent the same completed task
+   in Obsidian's editor and rendered Reading view. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"],
+.markdown-rendered li.task-list-item.is-checked {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-block: 5px;
+  padding-block: 5px;
+  border: 1px solid color-mix(in srgb, var(--interactive-accent) 48%, var(--background-modifier-border));
+  border-radius: var(--radius-m, 10px);
+  background: color-mix(in srgb, var(--interactive-accent) 11%, var(--background-primary));
+  color: var(--text-normal);
+  text-decoration: none;
+  transition: background-color 220ms ease, border-color 220ms ease,
+              box-shadow 220ms ease, transform 220ms ease;
+  animation: makanTaskEnter 420ms ease-out both,
+             makanTaskGlow 850ms ease-out 180ms both;
+}
+
+/* Keep Reading view's checkbox and text aligned with the editor. */
+.markdown-rendered li.task-list-item.is-checked {
+  padding-inline: .55em;
+  border-radius: var(--radius-m, 10px);
+}
+
+.markdown-rendered li.task-list-item.is-checked > p {
+  margin-block: .15em;
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"]:hover,
+.markdown-rendered li.task-list-item.is-checked:hover {
+  border-color: var(--interactive-accent);
+  background: color-mix(in srgb, var(--interactive-accent) 17%, var(--background-primary));
+  box-shadow: 0 5px 14px color-mix(in srgb, var(--interactive-accent) 18%, transparent);
+  transform: translateY(-1px);
+}
+
+/* Subtle moving highlight on hover. */
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"]::after,
+.markdown-rendered li.task-list-item.is-checked::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset-block: 0;
+  inset-inline-start: -65%;
+  width: 42%;
+  pointer-events: none;
+  background: linear-gradient(105deg, transparent, color-mix(in srgb, white 30%, transparent), transparent);
+  transform: skewX(-18deg);
+}
+
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"]:hover::after,
+.markdown-rendered li.task-list-item.is-checked:hover::after {
+  animation: makanTaskShine 760ms ease-out;
+}
+
+@keyframes makanTaskShine {
+  to { inset-inline-start: 125%; }
+}
+
+/* Checked checkbox feedback in both views. */
+.markdown-source-view.mod-cm6 input[type="checkbox"],
+.markdown-rendered input.task-list-item-checkbox {
+  transition: transform 220ms ease, box-shadow 220ms ease, background-color 220ms ease;
+}
+
+.markdown-source-view.mod-cm6 input[type="checkbox"]:checked,
+.markdown-rendered input.task-list-item-checkbox:checked {
+  animation: makanCheckBounce 380ms cubic-bezier(.34, 1.56, .64, 1);
+}
+
+.markdown-source-view.mod-cm6 input[type="checkbox"]:hover,
+.markdown-rendered input.task-list-item-checkbox:hover {
+  transform: scale(1.1);
+}
+
+/* Consecutive completed tasks form a visually connected group. */
+.markdown-rendered li.task-list-item.is-checked + li.task-list-item.is-checked {
+  margin-top: -5px;
+  border-top-color: transparent;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.markdown-rendered li.task-list-item.is-checked:has(+ li.task-list-item.is-checked) {
+  border-bottom-color: transparent;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+/* Respect both Makan's own switch and the OS accessibility preference. */
+body.nv-no-motion .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"],
+body.nv-no-motion .markdown-rendered li.task-list-item.is-checked,
+body.nv-no-motion .markdown-source-view.mod-cm6 input[type="checkbox"],
+body.nv-no-motion .markdown-rendered input.task-list-item-checkbox,
+body.nv-no-motion .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"]::after,
+body.nv-no-motion .markdown-rendered li.task-list-item.is-checked::after {
+  animation: none;
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"],
+  .markdown-rendered li.task-list-item.is-checked,
+  .markdown-source-view.mod-cm6 input[type="checkbox"],
+  .markdown-rendered input.task-list-item-checkbox,
+  .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"]::after,
+  .markdown-rendered li.task-list-item.is-checked::after {
+    animation: none;
+    transition: none;
+    transform: none;
+  }
+}
