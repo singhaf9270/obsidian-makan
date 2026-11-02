@@ -11,6 +11,7 @@ A bilingual Persian/English Obsidian theme with light and dark appearances, six 
 - Style Settings controls for appearance, reading width, typography, headings, and workspace details
 - Persian (RTL) and English (LTR) friendly styling
 - Integrated colorful folder and subfolder styling
+- Animated completed-task cards and checkbox feedback in both Editing and Reading views, adapting to the active color palette
 
 ## Installation
 
