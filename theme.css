@@ -1810,6 +1810,10 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
   from { opacity: 0; transform: translateX(-12px); }
   to { opacity: 1; transform: translateX(0); }
 }
+@keyframes makanTaskEnterRTL {
+  from { opacity: 0; transform: translateX(12px); }
+  to { opacity: 1; transform: translateX(0); }
+}
 @keyframes makanTaskGlow {
   0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--interactive-accent) 38%, transparent); }
   100% { box-shadow: 0 0 0 10px transparent; }
@@ -1839,6 +1843,9 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
   animation: makanTaskEnter 420ms ease-out both,
              makanTaskGlow 850ms ease-out 180ms both;
 }
+.markdown-source-view.mod-cm6:dir(rtl) .cm-line.HyperMD-task-line[data-task="x"] {
+  animation-name: makanTaskEnterRTL, makanTaskGlow;
+}
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"]:hover {
   border-color: var(--interactive-accent);
   background: color-mix(in srgb, var(--interactive-accent) 17%, var(--background-primary));
@@ -1864,6 +1871,10 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
    These rules are intentionally scoped to rendered notes only. */
 @keyframes makanReadingTaskSlide {
   0% { opacity: 0; transform: translateX(-28px); }
+  100% { opacity: 1; transform: translateX(0); }
+}
+@keyframes makanReadingTaskSlideRTL {
+  0% { opacity: 0; transform: translateX(28px); }
   100% { opacity: 1; transform: translateX(0); }
 }
 @keyframes makanReadingTaskGlow {
@@ -1911,6 +1922,9 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
   padding: 5px .55em !important;
   animation: makanReadingTaskSlide .55s cubic-bezier(.34, 1.3, .64, 1) backwards,
              makanReadingTaskGlow 1.1s ease-out .35s backwards;
+}
+.markdown-rendered:dir(rtl) li.task-list-item.is-checked {
+  animation-name: makanReadingTaskSlideRTL, makanReadingTaskGlow;
 }
 .markdown-rendered li.task-list-item.is-checked > p {
   margin-block: .15em;
