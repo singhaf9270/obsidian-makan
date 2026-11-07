@@ -1948,19 +1948,6 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
   transition: all .3s cubic-bezier(.34, 1.56, .64, 1) !important;
 }
 
-/* Keep Reading View task checkboxes inside the task row in both RTL and LTR.
-   Use normal inline flow instead of relying on direction-sensitive offsets. */
-.markdown-rendered li.task-list-item > input.task-list-item-checkbox {
-  position: relative;
-  inset: auto;
-  display: inline-block;
-  float: none;
-  flex: 0 0 auto;
-  vertical-align: middle;
-  margin-inline-start: 0;
-  margin-inline-end: .55em;
-  z-index: 2;
-}
 .markdown-rendered input.task-list-item-checkbox:hover {
   border-color: #A855F7 !important;
   background: linear-gradient(145deg, #EDE1FF 0%, #DDD0F0 100%) !important;
