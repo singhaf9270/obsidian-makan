@@ -1,25 +1,24 @@
 # Makan · ماکان
 
-A bilingual Persian/English Obsidian theme with light and dark appearances, six color palettes, and extensive customization through the Style Settings plugin.
+A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorful, and customizable workspace to your vault.
 
-به یاد **ماکان نصیری** و **شهدای مدرسهٔ میناب**.
+**In Memory of the Martyrs of Minab School.**
 
 ## Features
 
 - Light and dark mode support
-- Six palettes: Ocean, Mint, Lavender, Rose, Amber, and Slate
-- Style Settings controls for appearance, reading width, typography, headings, and workspace details
+- Six built-in color palettes: Ocean, Mint, Lavender, Rose, Amber, and Slate
+- Extensive customization through the [Style Settings](https://github.com/mgmeyers/obsidian-style-settings) plugin
+- Custom colors for backgrounds, text, accents, headings, links, tags, code blocks, tables, callouts, and workspace elements
+- Independent typography controls for the editor, interface, and code
+- Customizable reading width, line height, paragraph spacing, and interface density
+- Folder colors that can be enabled or disabled independently
+- Eleven individually configurable folder colors, plus folder text color, opacity, and corner radius
+- Customizable active tab colors and file explorer row height
 - Persian (RTL) and English (LTR) friendly styling
-- Integrated colorful folder and subfolder styling
-- Animated completed-task cards and checkbox feedback in both Editing and Reading views, adapting to the active color palette
-
-## What's new in 1.0.4
-
-- Updated completed-task cards in Reading View to match the purple styling and interaction effects of `checkbox.css`.
-- Added matching light and dark appearance styles.
-- Improved hover, entrance, glow, and checkbox feedback animations.
-- Preserved the existing Editing (Live Preview) appearance.
-- Respected reduced-motion accessibility preferences.
+- Animated completed-task feedback in Editing and Reading views
+- Reduced-motion accessibility support
+- No external assets, scripts, fonts, or network requests
 
 ## Installation
 
@@ -31,14 +30,31 @@ A bilingual Persian/English Obsidian theme with light and dark appearances, six 
 4. Place both files inside that folder.
 5. In Obsidian, open **Settings → Appearance → Themes** and select **Makan**.
 
-### Recommended
+### Recommended: Style Settings
 
-Install the **Style Settings** community plugin to customize the theme's available options.
+Install the **Style Settings** community plugin to access Makan's full customization panel:
+
+1. Open **Settings → Community plugins → Browse**.
+2. Search for **Style Settings** and install it.
+3. Enable the plugin.
+4. Open **Settings → Style Settings → Makan**.
+
+From there, you can customize the theme's colors, typography, headings, tables, callouts, workspace, and folder appearance. Folder colors can be switched off without disabling the rest of the theme.
+
+## Folder customization
+
+Open **Style Settings → Makan → Folder colors** to:
+
+- Turn folder coloring on or off
+- Change each of the eleven folder colors independently
+- Adjust folder color opacity
+- Change folder label color
+- Adjust folder corner radius
 
 ## Updates
 
-Replace the existing `theme.css` and `manifest.json` with the latest versions from this repository.
+Download the latest `theme.css` and `manifest.json` from this repository and replace the existing files in `.obsidian/themes/Makan/`.
 
-## Notes
+## Credits and remembrance
 
-The folder-color rules from `RFbyixx.css` are integrated into the main theme stylesheet; no separate CSS snippet is required.
+Makan is dedicated in memory of **Makan Nasiri** and the **martyrs of Minab School**. Their memory will remain with us.
