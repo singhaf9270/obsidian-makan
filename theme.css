@@ -1025,6 +1025,134 @@ settings:
   max: 56
   step: 1
   format: px
+- id: nv-folder-section
+  title: رنگ‌بندی پوشه‌ها / Folder colors
+  type: heading
+  level: 2
+  collapsed: true
+- id: nv-folder-colors
+  title: فعال‌سازی رنگ‌بندی پوشه‌ها
+  type: class-toggle
+  default: true
+- id: nv-folder-opacity
+  title: شفافیت رنگ پوشه‌ها
+  type: variable-number-slider
+  default: 82
+  min: 10
+  max: 100
+  step: 1
+- id: nv-folder-radius
+  title: گردی گوشه پوشه‌ها
+  type: variable-number-slider
+  default: 10
+  min: 0
+  max: 24
+  step: 1
+  format: px
+- id: nv-folder-text
+  title: رنگ نوشته پوشه‌ها
+  type: variable-themed-color
+  format: hex
+  default-light: '#263449'
+  default-dark: '#182536'
+- id: nv-folder-color-1
+  title: رنگ پوشه ۱
+  type: variable-themed-color
+  format: hex
+  default-light: '#f38ba8'
+  default-dark: '#7d4057'
+- id: nv-folder-color-2
+  title: رنگ پوشه ۲
+  type: variable-themed-color
+  format: hex
+  default-light: '#eba0ac'
+  default-dark: '#804b59'
+- id: nv-folder-color-3
+  title: رنگ پوشه ۳
+  type: variable-themed-color
+  format: hex
+  default-light: '#fab387'
+  default-dark: '#805438'
+- id: nv-folder-color-4
+  title: رنگ پوشه ۴
+  type: variable-themed-color
+  format: hex
+  default-light: '#f9e2af'
+  default-dark: '#78633b'
+- id: nv-folder-color-5
+  title: رنگ پوشه ۵
+  type: variable-themed-color
+  format: hex
+  default-light: '#a6e3a1'
+  default-dark: '#456e50'
+- id: nv-folder-color-6
+  title: رنگ پوشه ۶
+  type: variable-themed-color
+  format: hex
+  default-light: '#94e2d5'
+  default-dark: '#356f69'
+- id: nv-folder-color-7
+  title: رنگ پوشه ۷
+  type: variable-themed-color
+  format: hex
+  default-light: '#89dceb'
+  default-dark: '#356b7c'
+- id: nv-folder-color-8
+  title: رنگ پوشه ۸
+  type: variable-themed-color
+  format: hex
+  default-light: '#74c7ec'
+  default-dark: '#345f80'
+- id: nv-folder-color-9
+  title: رنگ پوشه ۹
+  type: variable-themed-color
+  format: hex
+  default-light: '#87b0f9'
+  default-dark: '#405f94'
+- id: nv-folder-color-10
+  title: رنگ پوشه ۱۰
+  type: variable-themed-color
+  format: hex
+  default-light: '#b4befE'
+  default-dark: '#5c6090'
+- id: nv-folder-color-11
+  title: رنگ پوشه ۱۱
+  type: variable-themed-color
+  format: hex
+  default-light: '#cba6f7'
+  default-dark: '#70528f'
+- id: nv-workspace-polish
+  title: جزئیات بیشتر محیط / Workspace polish
+  type: heading
+  level: 2
+  collapsed: true
+- id: nv-nav-height
+  title: ارتفاع ردیف فایل‌ها و پوشه‌ها
+  type: variable-number-slider
+  default: 32
+  min: 24
+  max: 48
+  step: 1
+  format: px
+- id: nv-tab-active-background
+  title: زمینه تب فعال
+  type: variable-themed-color
+  format: hex
+  default-light: '#ffffff'
+  default-dark: '#192331'
+- id: nv-tab-active-indicator
+  title: رنگ نشانگر تب فعال
+  type: variable-themed-color
+  format: hex
+  default-light: '#186d84'
+  default-dark: '#8dd0e0'
+- id: nv-sidebar-border
+  title: رنگ حاشیه پنل کناری
+  type: variable-themed-color
+  format: hex
+  default-light: '#ccd8e4'
+  default-dark: '#2d3c50'
+
 */
 
 /* 01 · Shared design tokens */
@@ -1715,91 +1843,68 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
   .nv-paper.markdown-preview-view .markdown-preview-sizer { padding: 0; border: 0; box-shadow: none; }
 }
 
-/* ===== Integrated folder and subfolder colors (RFbyixx.css) ===== */
-/* Main Folder and Subfolder Styling */
-.nav-folder-children > .nav-folder,
-.nav-files-container > div > .nav-folder {
-  background-color: var(--folder-color);
-  --nav-item-color: black;
-  --nav-item-color-hover: black;
-  --nav-collapse-icon-color: black;
-  --nav-item-color-active: black;
-  border-radius: 10px;
+/* ===== Makan folder colors — fully configurable in Style Settings ===== */
+body {
+  --nv-folder-radius: 10px;
+  --nv-folder-opacity: 82;
+  --nv-folder-text: #263449;
 }
-
-/* Hover Effect */
-.nav-folder-children > .nav-folder:hover,
-.nav-files-container > div > .nav-folder:hover {
-  filter: brightness(0.9);
+.nv-folder-colors .nav-folder-children > .nav-folder,
+.nv-folder-colors .nav-files-container > div > .nav-folder {
+  background-color: color-mix(in srgb, var(--folder-color) calc(var(--nv-folder-opacity) * 1%), transparent);
+  color: var(--nv-folder-text);
+  --nav-item-color: var(--nv-folder-text);
+  --nav-item-color-hover: var(--nv-folder-text);
+  --nav-collapse-icon-color: var(--nv-folder-text);
+  --nav-item-color-active: var(--nv-folder-text);
+  border-radius: var(--nv-folder-radius);
+  transition: filter 160ms ease, background-color 160ms ease;
 }
-
-/* Color Scheme for Folders and Subfolders */
-.nav-folder:nth-child(11n + 2),
-.nav-folder .nav-folder:nth-child(11n + 2),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 2) {
-  --folder-color: rgb(243, 139, 168); /* Pink */
+.nv-folder-colors .nav-folder-children > .nav-folder:hover,
+.nv-folder-colors .nav-files-container > div > .nav-folder:hover {
+  filter: brightness(.94);
 }
+.nv-folder-colors .nav-folder:nth-child(11n + 2),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 2),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 2) { --folder-color: var(--nv-folder-color-1, #f38ba8); }
+.nv-folder-colors .nav-folder:nth-child(11n + 3),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 3),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 3) { --folder-color: var(--nv-folder-color-2, #eba0ac); }
+.nv-folder-colors .nav-folder:nth-child(11n + 4),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 4),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 4) { --folder-color: var(--nv-folder-color-3, #fab387); }
+.nv-folder-colors .nav-folder:nth-child(11n + 5),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 5),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 5) { --folder-color: var(--nv-folder-color-4, #f9e2af); }
+.nv-folder-colors .nav-folder:nth-child(11n + 6),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 6),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 6) { --folder-color: var(--nv-folder-color-5, #a6e3a1); }
+.nv-folder-colors .nav-folder:nth-child(11n + 7),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 7),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 7) { --folder-color: var(--nv-folder-color-6, #94e2d5); }
+.nv-folder-colors .nav-folder:nth-child(11n + 8),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 8),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 8) { --folder-color: var(--nv-folder-color-7, #89dceb); }
+.nv-folder-colors .nav-folder:nth-child(11n + 9),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 9),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 9) { --folder-color: var(--nv-folder-color-8, #74c7ec); }
+.nv-folder-colors .nav-folder:nth-child(11n + 10),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 10),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 10) { --folder-color: var(--nv-folder-color-9, #87b0f9); }
+.nv-folder-colors .nav-folder:nth-child(11n + 11),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 11),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 11) { --folder-color: var(--nv-folder-color-10, #b4befe); }
+.nv-folder-colors .nav-folder:nth-child(11n + 12),
+.nv-folder-colors .nav-folder .nav-folder:nth-child(11n + 12),
+.nv-folder-colors .nav-folder .nav-folder .nav-folder:nth-child(11n + 12) { --folder-color: var(--nv-folder-color-11, #cba6f7); }
 
-.nav-folder:nth-child(11n + 3),
-.nav-folder .nav-folder:nth-child(11n + 3),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 3) {
-  --folder-color: rgb(235, 160, 172); /* Light Red */
+/* Workspace details controlled by Style Settings. */
+body { --nv-tab-active-background: var(--background-primary); --nv-tab-active-indicator: var(--interactive-accent); --nv-sidebar-border: var(--background-modifier-border); }
+.workspace-tab-header.is-active {
+  background: var(--nv-tab-active-background);
+  box-shadow: inset 0 2px var(--nv-tab-active-indicator);
 }
-
-.nav-folder:nth-child(11n + 4),
-.nav-folder .nav-folder:nth-child(11n + 4),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 4) {
-  --folder-color: rgb(250, 179, 135); /* Peach */
-}
-
-.nav-folder:nth-child(11n + 5),
-.nav-folder .nav-folder:nth-child(11n + 5),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 5) {
-  --folder-color: rgb(249, 226, 175); /* Light Yellow */
-}
-
-.nav-folder:nth-child(11n + 6),
-.nav-folder .nav-folder:nth-child(11n + 6),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 6) {
-  --folder-color: rgb(166, 227, 161); /* Light Green */
-}
-
-.nav-folder:nth-child(11n + 7),
-.nav-folder .nav-folder:nth-child(11n + 7),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 7) {
-  --folder-color: rgb(148, 226, 213); /* Cyan */
-}
-
-.nav-folder:nth-child(11n + 8),
-.nav-folder .nav-folder:nth-child(11n + 8),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 8) {
-  --folder-color: rgb(137, 220, 235); /* Sky Blue */
-}
-
-.nav-folder:nth-child(11n + 9),
-.nav-folder .nav-folder:nth-child(11n + 9),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 9) {
-  --folder-color: rgb(116, 199, 236); /* Light Blue */
-}
-
-.nav-folder:nth-child(11n + 10),
-.nav-folder .nav-folder:nth-child(11n + 10),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 10) {
-  --folder-color: rgb(135, 176, 249); /* Blue */
-}
-
-.nav-folder:nth-child(11n + 11),
-.nav-folder .nav-folder:nth-child(11n + 11),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 11) {
-  --folder-color: rgb(180, 190, 254); /* Lavender */
-}
-
-.nav-folder:nth-child(11n + 12),
-.nav-folder .nav-folder:nth-child(11n + 12),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 12) {
-  --folder-color: rgb(203, 166, 247); /* Purple */
-}
-
+.workspace-ribbon { border-inline-end-color: var(--nv-sidebar-border); }
 
 /* ============================================================
    11 · Completed task cards — Editing + Reading views
