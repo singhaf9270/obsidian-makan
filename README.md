@@ -4,6 +4,15 @@ A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorf
 
 **In Memory of the Martyrs of Minab School.**
 
+## What's new in 1.0.6
+
+- Added independent folder-color enable/disable control.
+- Added eleven individually adjustable folder colors.
+- Added folder label color, opacity, and corner-radius controls.
+- Added active-tab colors and file-explorer row-height customization.
+- Expanded the Style Settings documentation.
+- Updated the dedication to English: **In Memory of the Martyrs of Minab School.**
+
 ## Features
 
 - Light and dark mode support
