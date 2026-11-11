@@ -2,7 +2,9 @@
 
 A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorful, and customizable workspace to your vault.
 
-**In Memory of the Martyrs of Minab School.**
+**In Memory of Martyr Makan Nasiri and the 168 Martyrs of Minab County, Iran.**  
+**به یاد شهید ماکان نصیری و ۱۶۸ شهید شهرستان میناب، ایران**  
+#minab_168
 
 ## What's new in 1.0.6
 
@@ -11,7 +13,7 @@ A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorf
 - Added folder label color, opacity, and corner-radius controls.
 - Added active-tab colors and file-explorer row-height customization.
 - Expanded the Style Settings documentation.
-- Updated the dedication to English: **In Memory of the Martyrs of Minab School.**
+- Updated the dedication to honor Martyr Makan Nasiri and the 168 Martyrs of Minab County, Iran.
 
 ## Features
 
@@ -66,4 +68,6 @@ Download the latest `theme.css` and `manifest.json` from this repository and rep
 
 ## Credits and remembrance
 
-Makan is dedicated in memory of **Makan Nasiri** and the **martyrs of Minab School**. Their memory will remain with us.
+Makan is dedicated in memory of **Martyr Makan Nasiri** and the **168 Martyrs of Minab County, Iran**.
+
+#minab_168
