@@ -6,6 +6,13 @@ A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorf
 **به یاد شهید ماکان نصیری و ۱۶۸ شهید شهرستان میناب، ایران**  
 #minab_168
 
+## What's new in 1.0.7
+
+- Removed unsupported direction pseudo-class usage for better compatibility with older Obsidian/Electron versions.
+- Removed all `!important` declarations and increased selector specificity where needed.
+- Removed relational `:has()` selectors; completed tasks keep individual rounded cards without expensive relational matching.
+- Preserved light/dark styling, RTL handling, and task animations.
+
 ## What's new in 1.0.6
 
 - Added independent folder-color enable/disable control.
