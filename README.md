@@ -6,6 +6,13 @@ A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorf
 **به یاد شهید ماکان نصیری و ۱۶۸ شهید شهرستان میناب، ایران**  
 #minab_168
 
+## What's new in 1.0.8
+
+- Restored the Reading View completed-task and checkbox appearance from 1.0.5.
+- Kept the original light and dark purple styling, hover effects, and checkbox animations.
+- Removed unsupported CSS selectors and all `!important` declarations from the restored task styles.
+- Consecutive completed tasks now keep separate rounded cards to avoid the unsupported `:has()` selector.
+
 ## What's new in 1.0.7
 
 - Removed unsupported direction pseudo-class usage for better compatibility with older Obsidian/Electron versions.
