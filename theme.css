@@ -2021,17 +2021,16 @@ body.nv-folder-colors-off .nav-files-container > div > .nav-folder {
   transition: all .4s cubic-bezier(.34, 1.56, .64, 1) !important;
   margin-top: 5px !important;
   margin-bottom: 5px !important;
-  /* Preserve Obsidian's inline spacing so the checkbox stays in its own gutter. */
+  /* Extend the card into Obsidian's checkbox gutter while keeping the
+     checkbox and task text in their original positions. */
+  margin-inline-start: -1.5em !important;
+  padding-inline-start: 1.5em !important;
   padding-block: 5px !important;
   animation: makanReadingTaskSlide .55s cubic-bezier(.34, 1.3, .64, 1) backwards,
              makanReadingTaskGlow 1.1s ease-out .35s backwards;
 }
 .markdown-rendered li.task-list-item.is-checked > p {
   margin-block: .15em;
-}
-.markdown-rendered li.task-list-item.is-checked > input.task-list-item-checkbox {
-  position: relative;
-  inset-inline-start: 1.35em;
 }
 .markdown-rendered li.task-list-item.is-checked:hover {
   background: linear-gradient(145deg, #EDE1FF 0%, #EDE1FF 100%) !important;
