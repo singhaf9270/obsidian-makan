@@ -65,10 +65,10 @@ From there, you can customize the theme's colors, typography, headings, tables, 
 
 Open **Style Settings → Makan → Folder colors** to:
 
-- Turn folder coloring on or off
-- Change each of the eleven folder colors independently
-- Adjust folder color opacity
-- Change folder label color
+- Turn folder coloring on or off without affecting the rest of the theme
+- Choose a ready-made palette: Pastel, Vibrant, Ocean, Earth, or Monochrome
+- Enable custom colors and change each of the eleven folder colors independently
+- Adjust folder color opacity and folder label color
 - Adjust folder corner radius
 
 ## Updates
