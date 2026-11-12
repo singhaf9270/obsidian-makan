@@ -1008,11 +1008,6 @@ settings:
   max: 32
   step: 1
   format: px
-- id: nv-folder-settings
-  title: رنگ‌بندی پوشه‌ها / Folder colors
-  type: heading
-  level: 2
-  collapsed: true
 - id: nv-folder-colors-off
   title: غیرفعال‌کردن رنگ پوشه‌ها
   type: class-toggle
@@ -1830,80 +1825,6 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
   .markdown-rendered pre, .callout, .markdown-rendered blockquote { box-shadow: none; page-break-inside: avoid; }
   .markdown-rendered img { page-break-inside: avoid; }
   .nv-paper.markdown-preview-view .markdown-preview-sizer { padding: 0; border: 0; box-shadow: none; }
-}
-
-/* ===== Makan folder colors: presets + individual customization ===== */
-body {
-  --nv-folder-label: var(--text-normal);
-}
-body.nv-folder-preset-vibrant {
-  --nv-folder-1: #F38BA8; --nv-folder-2: #F06C75; --nv-folder-3: #FAB387;
-  --nv-folder-4: #F9E2AF; --nv-folder-5: #A6E3A1; --nv-folder-6: #40C9A2;
-  --nv-folder-7: #36C5D8; --nv-folder-8: #4DA3E6; --nv-folder-9: #6488F5;
-  --nv-folder-10: #9B7AE8; --nv-folder-11: #D16AD8;
-}
-body.nv-folder-preset-ocean {
-  --nv-folder-1: #B8E0E8; --nv-folder-2: #8CCEDB; --nv-folder-3: #65BBD0;
-  --nv-folder-4: #4EA8C5; --nv-folder-5: #3E91B5; --nv-folder-6: #78C7B8;
-  --nv-folder-7: #A5D9C7; --nv-folder-8: #B8DCCB; --nv-folder-9: #8DB7D8;
-  --nv-folder-10: #759BCB; --nv-folder-11: #A6B6E8;
-}
-body.nv-folder-preset-earth {
-  --nv-folder-1: #D9A78F; --nv-folder-2: #C98F72; --nv-folder-3: #D9BD8C;
-  --nv-folder-4: #E4D6A7; --nv-folder-5: #A8B58A; --nv-folder-6: #8FAF91;
-  --nv-folder-7: #9DB9A9; --nv-folder-8: #A5B9B8; --nv-folder-9: #A3A9B8;
-  --nv-folder-10: #B5A6B8; --nv-folder-11: #C2A2A2;
-}
-body.nv-folder-preset-mono {
-  --nv-folder-1: #D9DEE7; --nv-folder-2: #C9D1DC; --nv-folder-3: #BAC5D3;
-  --nv-folder-4: #ABB9CA; --nv-folder-5: #9DADBF; --nv-folder-6: #8FA1B5;
-  --nv-folder-7: #8295AA; --nv-folder-8: #75899F; --nv-folder-9: #687D94;
-  --nv-folder-10: #5B7189; --nv-folder-11: #4E657E;
-}
-body.nv-folder-custom-colors {
-  --nv-folder-1: var(--nv-folder-color-1, #F38BA8);
-  --nv-folder-2: var(--nv-folder-color-2, #EBA0AC);
-  --nv-folder-3: var(--nv-folder-color-3, #FAB387);
-  --nv-folder-4: var(--nv-folder-color-4, #F9E2AF);
-  --nv-folder-5: var(--nv-folder-color-5, #A6E3A1);
-  --nv-folder-6: var(--nv-folder-color-6, #94E2D5);
-  --nv-folder-7: var(--nv-folder-color-7, #89DCEB);
-  --nv-folder-8: var(--nv-folder-color-8, #74C7EC);
-  --nv-folder-9: var(--nv-folder-color-9, #89B4FA);
-  --nv-folder-10: var(--nv-folder-color-10, #B4BEFE);
-  --nv-folder-11: var(--nv-folder-color-11, #CBA6F7);
-}
-body.nv-folder-custom-colors {
-  --nv-folder-label: var(--nv-folder-label-color, var(--text-normal));
-}
-.nav-folder-children > .nav-folder,
-.nav-files-container > div > .nav-folder {
-  --folder-color: var(--nv-folder-1, #F38BA8);
-  background-color: color-mix(in srgb, var(--folder-color) var(--nv-folder-opacity, 28%), transparent);
-  color: var(--nv-folder-label);
-  border-radius: var(--nv-folder-radius, 10px);
-  transition: background-color 180ms ease, filter 180ms ease;
-}
-.nav-folder:nth-child(11n + 2) { --folder-color: var(--nv-folder-1, #F38BA8); }
-.nav-folder:nth-child(11n + 3) { --folder-color: var(--nv-folder-2, #EBA0AC); }
-.nav-folder:nth-child(11n + 4) { --folder-color: var(--nv-folder-3, #FAB387); }
-.nav-folder:nth-child(11n + 5) { --folder-color: var(--nv-folder-4, #F9E2AF); }
-.nav-folder:nth-child(11n + 6) { --folder-color: var(--nv-folder-5, #A6E3A1); }
-.nav-folder:nth-child(11n + 7) { --folder-color: var(--nv-folder-6, #94E2D5); }
-.nav-folder:nth-child(11n + 8) { --folder-color: var(--nv-folder-7, #89DCEB); }
-.nav-folder:nth-child(11n + 9) { --folder-color: var(--nv-folder-8, #74C7EC); }
-.nav-folder:nth-child(11n + 10) { --folder-color: var(--nv-folder-9, #89B4FA); }
-.nav-folder:nth-child(11n + 11) { --folder-color: var(--nv-folder-10, #B4BEFE); }
-.nav-folder:nth-child(11n + 12) { --folder-color: var(--nv-folder-11, #CBA6F7); }
-.nav-folder .nav-folder-title,
-.nav-folder .nav-folder-title-content {
-  color: var(--nv-folder-label, var(--text-normal));
-}
-.nav-folder:hover { filter: brightness(.94); }
-body.nv-folder-colors-off .nav-folder,
-body.nv-folder-colors-off .nav-folder-children > .nav-folder,
-body.nv-folder-colors-off .nav-files-container > div > .nav-folder {
-  background-color: transparent !important;
 }
 
 /* ============================================================
