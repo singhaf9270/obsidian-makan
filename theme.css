@@ -1008,6 +1008,123 @@ settings:
   max: 32
   step: 1
   format: px
+- id: nv-folder-settings
+  title: رنگ‌بندی پوشه‌ها / Folder colors
+  type: heading
+  level: 2
+  collapsed: true
+- id: nv-folder-colors-off
+  title: غیرفعال‌کردن رنگ پوشه‌ها
+  type: class-toggle
+  default: false
+- id: nv-folder-preset
+  title: طرح آماده رنگ پوشه‌ها / Folder palette
+  type: class-select
+  allowEmpty: false
+  default: nv-folder-preset-pastel
+  options:
+  - label: پاستلی / Pastel
+    value: nv-folder-preset-pastel
+  - label: پررنگ / Vibrant
+    value: nv-folder-preset-vibrant
+  - label: اقیانوسی / Ocean
+    value: nv-folder-preset-ocean
+  - label: طبیعت / Earth
+    value: nv-folder-preset-earth
+  - label: تک‌رنگ / Monochrome
+    value: nv-folder-preset-mono
+- id: nv-folder-custom-colors
+  title: استفاده از رنگ‌های دلخواه / Custom folder colors
+  type: class-toggle
+  default: false
+- id: nv-folder-color-1
+  title: رنگ ۱ / Folder color 1
+  type: variable-themed-color
+  format: hex
+  default-light: '#F38BA8'
+  default-dark: '#F38BA8'
+- id: nv-folder-color-2
+  title: رنگ ۲ / Folder color 2
+  type: variable-themed-color
+  format: hex
+  default-light: '#EBA0AC'
+  default-dark: '#EBA0AC'
+- id: nv-folder-color-3
+  title: رنگ ۳ / Folder color 3
+  type: variable-themed-color
+  format: hex
+  default-light: '#FAB387'
+  default-dark: '#FAB387'
+- id: nv-folder-color-4
+  title: رنگ ۴ / Folder color 4
+  type: variable-themed-color
+  format: hex
+  default-light: '#F9E2AF'
+  default-dark: '#F9E2AF'
+- id: nv-folder-color-5
+  title: رنگ ۵ / Folder color 5
+  type: variable-themed-color
+  format: hex
+  default-light: '#A6E3A1'
+  default-dark: '#A6E3A1'
+- id: nv-folder-color-6
+  title: رنگ ۶ / Folder color 6
+  type: variable-themed-color
+  format: hex
+  default-light: '#94E2D5'
+  default-dark: '#94E2D5'
+- id: nv-folder-color-7
+  title: رنگ ۷ / Folder color 7
+  type: variable-themed-color
+  format: hex
+  default-light: '#89DCEB'
+  default-dark: '#89DCEB'
+- id: nv-folder-color-8
+  title: رنگ ۸ / Folder color 8
+  type: variable-themed-color
+  format: hex
+  default-light: '#74C7EC'
+  default-dark: '#74C7EC'
+- id: nv-folder-color-9
+  title: رنگ ۹ / Folder color 9
+  type: variable-themed-color
+  format: hex
+  default-light: '#89B4FA'
+  default-dark: '#89B4FA'
+- id: nv-folder-color-10
+  title: رنگ ۱۰ / Folder color 10
+  type: variable-themed-color
+  format: hex
+  default-light: '#B4BEFE'
+  default-dark: '#B4BEFE'
+- id: nv-folder-color-11
+  title: رنگ ۱۱ / Folder color 11
+  type: variable-themed-color
+  format: hex
+  default-light: '#CBA6F7'
+  default-dark: '#CBA6F7'
+- id: nv-folder-label-color
+  title: رنگ نوشته پوشه‌ها / Folder label color
+  type: variable-themed-color
+  format: hex
+  default-light: '#263449'
+  default-dark: '#263449'
+- id: nv-folder-opacity
+  title: شفافیت رنگ پوشه‌ها / Folder color opacity
+  type: variable-number-slider
+  default: 28
+  min: 5
+  max: 85
+  step: 1
+  format: '%'
+- id: nv-folder-radius
+  title: گردی گوشه پوشه‌ها / Folder corner radius
+  type: variable-number-slider
+  default: 10
+  min: 0
+  max: 24
+  step: 1
+  format: px
 - id: nv-extra
   title: تنظیمات تکمیلی / Extra
   type: heading
@@ -1715,91 +1832,81 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
   .nv-paper.markdown-preview-view .markdown-preview-sizer { padding: 0; border: 0; box-shadow: none; }
 }
 
-/* ===== Integrated folder and subfolder colors (RFbyixx.css) ===== */
-/* Main Folder and Subfolder Styling */
+/* ===== Makan folder colors: presets + individual customization ===== */
+body {
+  --nv-folder-opacity: 28%;
+  --nv-folder-radius: 10px;
+  --nv-folder-label: var(--text-normal);
+}
+body.nv-folder-preset-vibrant {
+  --nv-folder-1: #F38BA8; --nv-folder-2: #F06C75; --nv-folder-3: #FAB387;
+  --nv-folder-4: #F9E2AF; --nv-folder-5: #A6E3A1; --nv-folder-6: #40C9A2;
+  --nv-folder-7: #36C5D8; --nv-folder-8: #4DA3E6; --nv-folder-9: #6488F5;
+  --nv-folder-10: #9B7AE8; --nv-folder-11: #D16AD8;
+}
+body.nv-folder-preset-ocean {
+  --nv-folder-1: #B8E0E8; --nv-folder-2: #8CCEDB; --nv-folder-3: #65BBD0;
+  --nv-folder-4: #4EA8C5; --nv-folder-5: #3E91B5; --nv-folder-6: #78C7B8;
+  --nv-folder-7: #A5D9C7; --nv-folder-8: #B8DCCB; --nv-folder-9: #8DB7D8;
+  --nv-folder-10: #759BCB; --nv-folder-11: #A6B6E8;
+}
+body.nv-folder-preset-earth {
+  --nv-folder-1: #D9A78F; --nv-folder-2: #C98F72; --nv-folder-3: #D9BD8C;
+  --nv-folder-4: #E4D6A7; --nv-folder-5: #A8B58A; --nv-folder-6: #8FAF91;
+  --nv-folder-7: #9DB9A9; --nv-folder-8: #A5B9B8; --nv-folder-9: #A3A9B8;
+  --nv-folder-10: #B5A6B8; --nv-folder-11: #C2A2A2;
+}
+body.nv-folder-preset-mono {
+  --nv-folder-1: #D9DEE7; --nv-folder-2: #C9D1DC; --nv-folder-3: #BAC5D3;
+  --nv-folder-4: #ABB9CA; --nv-folder-5: #9DADBF; --nv-folder-6: #8FA1B5;
+  --nv-folder-7: #8295AA; --nv-folder-8: #75899F; --nv-folder-9: #687D94;
+  --nv-folder-10: #5B7189; --nv-folder-11: #4E657E;
+}
+body.nv-folder-custom-colors {
+  --nv-folder-1: var(--nv-folder-color-1, #F38BA8);
+  --nv-folder-2: var(--nv-folder-color-2, #EBA0AC);
+  --nv-folder-3: var(--nv-folder-color-3, #FAB387);
+  --nv-folder-4: var(--nv-folder-color-4, #F9E2AF);
+  --nv-folder-5: var(--nv-folder-color-5, #A6E3A1);
+  --nv-folder-6: var(--nv-folder-color-6, #94E2D5);
+  --nv-folder-7: var(--nv-folder-color-7, #89DCEB);
+  --nv-folder-8: var(--nv-folder-color-8, #74C7EC);
+  --nv-folder-9: var(--nv-folder-color-9, #89B4FA);
+  --nv-folder-10: var(--nv-folder-color-10, #B4BEFE);
+  --nv-folder-11: var(--nv-folder-color-11, #CBA6F7);
+}
+body.nv-folder-custom-colors {
+  --nv-folder-label: var(--nv-folder-label-color, var(--text-normal));
+}
 .nav-folder-children > .nav-folder,
 .nav-files-container > div > .nav-folder {
-  background-color: var(--folder-color);
-  --nav-item-color: black;
-  --nav-item-color-hover: black;
-  --nav-collapse-icon-color: black;
-  --nav-item-color-active: black;
-  border-radius: 10px;
+  --folder-color: var(--nv-folder-1, #F38BA8);
+  background-color: color-mix(in srgb, var(--folder-color) var(--nv-folder-opacity, 28%), transparent);
+  color: var(--nv-folder-label);
+  border-radius: var(--nv-folder-radius, 10px);
+  transition: background-color 180ms ease, filter 180ms ease;
 }
-
-/* Hover Effect */
-.nav-folder-children > .nav-folder:hover,
-.nav-files-container > div > .nav-folder:hover {
-  filter: brightness(0.9);
+.nav-folder:nth-child(11n + 2) { --folder-color: var(--nv-folder-1, #F38BA8); }
+.nav-folder:nth-child(11n + 3) { --folder-color: var(--nv-folder-2, #EBA0AC); }
+.nav-folder:nth-child(11n + 4) { --folder-color: var(--nv-folder-3, #FAB387); }
+.nav-folder:nth-child(11n + 5) { --folder-color: var(--nv-folder-4, #F9E2AF); }
+.nav-folder:nth-child(11n + 6) { --folder-color: var(--nv-folder-5, #A6E3A1); }
+.nav-folder:nth-child(11n + 7) { --folder-color: var(--nv-folder-6, #94E2D5); }
+.nav-folder:nth-child(11n + 8) { --folder-color: var(--nv-folder-7, #89DCEB); }
+.nav-folder:nth-child(11n + 9) { --folder-color: var(--nv-folder-8, #74C7EC); }
+.nav-folder:nth-child(11n + 10) { --folder-color: var(--nv-folder-9, #89B4FA); }
+.nav-folder:nth-child(11n + 11) { --folder-color: var(--nv-folder-10, #B4BEFE); }
+.nav-folder:nth-child(11n + 12) { --folder-color: var(--nv-folder-11, #CBA6F7); }
+.nav-folder .nav-folder-title,
+.nav-folder .nav-folder-title-content {
+  color: var(--nv-folder-label, var(--text-normal));
 }
-
-/* Color Scheme for Folders and Subfolders */
-.nav-folder:nth-child(11n + 2),
-.nav-folder .nav-folder:nth-child(11n + 2),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 2) {
-  --folder-color: rgb(243, 139, 168); /* Pink */
+.nav-folder:hover { filter: brightness(.94); }
+body.nv-folder-colors-off .nav-folder,
+body.nv-folder-colors-off .nav-folder-children > .nav-folder,
+body.nv-folder-colors-off .nav-files-container > div > .nav-folder {
+  background-color: transparent !important;
 }
-
-.nav-folder:nth-child(11n + 3),
-.nav-folder .nav-folder:nth-child(11n + 3),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 3) {
-  --folder-color: rgb(235, 160, 172); /* Light Red */
-}
-
-.nav-folder:nth-child(11n + 4),
-.nav-folder .nav-folder:nth-child(11n + 4),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 4) {
-  --folder-color: rgb(250, 179, 135); /* Peach */
-}
-
-.nav-folder:nth-child(11n + 5),
-.nav-folder .nav-folder:nth-child(11n + 5),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 5) {
-  --folder-color: rgb(249, 226, 175); /* Light Yellow */
-}
-
-.nav-folder:nth-child(11n + 6),
-.nav-folder .nav-folder:nth-child(11n + 6),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 6) {
-  --folder-color: rgb(166, 227, 161); /* Light Green */
-}
-
-.nav-folder:nth-child(11n + 7),
-.nav-folder .nav-folder:nth-child(11n + 7),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 7) {
-  --folder-color: rgb(148, 226, 213); /* Cyan */
-}
-
-.nav-folder:nth-child(11n + 8),
-.nav-folder .nav-folder:nth-child(11n + 8),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 8) {
-  --folder-color: rgb(137, 220, 235); /* Sky Blue */
-}
-
-.nav-folder:nth-child(11n + 9),
-.nav-folder .nav-folder:nth-child(11n + 9),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 9) {
-  --folder-color: rgb(116, 199, 236); /* Light Blue */
-}
-
-.nav-folder:nth-child(11n + 10),
-.nav-folder .nav-folder:nth-child(11n + 10),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 10) {
-  --folder-color: rgb(135, 176, 249); /* Blue */
-}
-
-.nav-folder:nth-child(11n + 11),
-.nav-folder .nav-folder:nth-child(11n + 11),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 11) {
-  --folder-color: rgb(180, 190, 254); /* Lavender */
-}
-
-.nav-folder:nth-child(11n + 12),
-.nav-folder .nav-folder:nth-child(11n + 12),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 12) {
-  --folder-color: rgb(203, 166, 247); /* Purple */
-}
-
 
 /* ============================================================
    11 · Completed task cards — Editing + Reading views
@@ -1923,6 +2030,10 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
 }
 .markdown-rendered li.task-list-item.is-checked > p {
   margin-block: .15em;
+}
+.markdown-rendered li.task-list-item.is-checked > input.task-list-item-checkbox {
+  position: relative;
+  inset-inline-start: 1.35em;
 }
 .markdown-rendered li.task-list-item.is-checked:hover {
   background: linear-gradient(145deg, #EDE1FF 0%, #EDE1FF 100%) !important;
