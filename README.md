@@ -8,10 +8,9 @@ A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorf
 
 ## What's new in 1.0.8
 
-- Restored the Reading View completed-task and checkbox appearance from 1.0.5.
-- Kept the original light and dark purple styling, hover effects, and checkbox animations.
-- Removed unsupported CSS selectors and all `!important` declarations from the restored task styles.
-- Consecutive completed tasks now keep separate rounded cards to avoid the unsupported `:has()` selector.
+- Restored the original `theme.css` from version 1.0.5 without modifying its CSS rules.
+- Brought back the exact Reading View completed-task cards, checkbox styling, hover effects, and animations from 1.0.5.
+- Original CSS selectors and declarations were intentionally preserved for visual compatibility.
 
 ## What's new in 1.0.7
 
