@@ -6,6 +6,12 @@ A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorf
 **به یاد شهید ماکان نصیری و ۱۶۸ شهید شهرستان میناب، ایران**  
 #minab_168
 
+## What's new in 1.1.1
+
+- Restored the original folder color palette and nested-folder styling from version 1.0.9.
+- Removed the experimental folder palette controls to preserve the theme's original appearance.
+- Widened the completed-task highlight in Reading View without moving the checkbox from its original position.
+
 ## What's new in 1.1.0
 
 - Fixed the completed-task card in Reading View so its checkbox sits inside the purple card without shifting the task text.
