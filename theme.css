@@ -1834,8 +1834,6 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
 
 /* ===== Makan folder colors: presets + individual customization ===== */
 body {
-  --nv-folder-opacity: 28%;
-  --nv-folder-radius: 10px;
   --nv-folder-label: var(--text-normal);
 }
 body.nv-folder-preset-vibrant {
