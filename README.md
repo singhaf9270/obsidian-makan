@@ -6,12 +6,13 @@ A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorf
 **به یاد شهید ماکان نصیری و ۱۶۸ شهید شهرستان میناب، ایران**  
 #minab_168
 
-## What's new in 1.0.7
+## What's new in 1.1.0
 
-- Removed unsupported direction pseudo-class usage for better compatibility with older Obsidian/Electron versions.
-- Removed all `!important` declarations and increased selector specificity where needed.
-- Removed relational `:has()` selectors; completed tasks keep individual rounded cards without expensive relational matching.
-- Preserved light/dark styling, RTL handling, and task animations.
+- Fixed the completed-task card in Reading View so its checkbox sits inside the purple card without shifting the task text.
+- Added five ready-made folder color palettes: Pastel, Vibrant, Ocean, Earth, and Monochrome.
+- Added a switch to disable folder colors independently of the rest of the theme.
+- Added eleven individually adjustable folder colors, plus controls for folder label color, color opacity, and corner radius.
+- Expanded Style Settings with a dedicated Folder colors section.
 
 ## What's new in 1.0.6
 
@@ -30,8 +31,9 @@ A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorf
 - Custom colors for backgrounds, text, accents, headings, links, tags, code blocks, tables, callouts, and workspace elements
 - Independent typography controls for the editor, interface, and code
 - Customizable reading width, line height, paragraph spacing, and interface density
-- Folder colors that can be enabled or disabled independently
-- Eleven individually configurable folder colors, plus folder text color, opacity, and corner radius
+- Folder colors with five built-in palettes (Pastel, Vibrant, Ocean, Earth, Monochrome)
+- An independent folder-color on/off switch and eleven individually configurable colors
+- Custom folder label color, color opacity, and corner radius
 - Customizable active tab colors and file explorer row height
 - Persian (RTL) and English (LTR) friendly styling
 - Animated completed-task feedback in Editing and Reading views
