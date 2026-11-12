@@ -6,12 +6,6 @@ A bilingual Persian/English theme for Obsidian, designed to bring a calm, colorf
 **به یاد شهید ماکان نصیری و ۱۶۸ شهید شهرستان میناب، ایران**  
 #minab_168
 
-## What's new in 1.0.8
-
-- Restored the original `theme.css` from version 1.0.5 without modifying its CSS rules.
-- Brought back the exact Reading View completed-task cards, checkbox styling, hover effects, and animations from 1.0.5.
-- Original CSS selectors and declarations were intentionally preserved for visual compatibility.
-
 ## What's new in 1.0.7
 
 - Removed unsupported direction pseudo-class usage for better compatibility with older Obsidian/Electron versions.
