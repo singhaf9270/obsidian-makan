@@ -2077,11 +2077,9 @@ body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked 
   /* Draw the card edge inside the existing box: no border or text reflow. */
   border: 0 !important;
   font-weight: inherit !important;
+  border-radius: var(--nv-task-card-radius, 15px) !important;
   box-shadow: inset 0 0 0 1px var(--nv-task-card-border, #C084FC),
               0 4px 6px -1px rgba(0, 0, 0, .05),
-              0 2px 4px -1px rgba(0, 0, 0, .03);
-  border-radius: var(--nv-task-card-radius, 15px) !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .05),
               0 2px 4px -1px rgba(0, 0, 0, .03);
   transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease, transform .3s ease !important;
   /* No checked-only margins or padding: text stays at its original coordinates. */
@@ -2091,10 +2089,9 @@ body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked 
 }
 body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked:hover {
   background: color-mix(in srgb, var(--nv-task-card-bg, #EDE1FF) 92%, #A855F7) !important;
-  border-color: #A855F7 !important;
-  box-shadow: 0 8px 16px -4px rgba(168, 85, 247, .35),
+  box-shadow: inset 0 0 0 1px #A855F7,
+              0 8px 16px -4px rgba(168, 85, 247, .35),
               0 4px 6px -2px rgba(0, 0, 0, .05);
-  transform: translateY(-2px);
 }
 body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked::after {
   content: "";
@@ -2140,16 +2137,14 @@ body.theme-dark:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.
   box-shadow: inset 0 0 0 1px var(--nv-task-card-border, #737994),
               0 4px 6px -1px rgba(0, 0, 0, .5),
               0 2px 4px -1px rgba(0, 0, 0, .3) !important;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .5),
-              0 2px 4px -1px rgba(0, 0, 0, .3);
   animation: makanReadingTaskSlide .55s cubic-bezier(.34, 1.3, .64, 1) backwards,
              makanReadingTaskGlowDark 1.1s ease-out .35s backwards;
 }
 body.theme-dark:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked:hover {
   background: color-mix(in srgb, var(--nv-task-card-bg, #51576D) 88%, #CAA9EE) !important;
   color: #E5E9F0 !important;
-  border-color: #CAA9EE !important;
-  box-shadow: 0 8px 16px -4px rgba(202, 169, 238, .28),
+  box-shadow: inset 0 0 0 1px #CAA9EE,
+              0 8px 16px -4px rgba(202, 169, 238, .28),
               0 4px 6px -2px rgba(0, 0, 0, .4);
 }
 body.theme-dark:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked::after {
