@@ -2062,7 +2062,7 @@ body:not(.nv-disable-task-card) .markdown-source-view.mod-cm6 .cm-line.HyperMD-t
   100% { box-shadow: 0 0 0 12px rgba(202, 169, 238, 0); }
 }
 
-/* Base style for ALL reading task items to prevent vertical/horizontal jump on check */
+/* Keep Reading View task geometry identical before and after checking. */
 .markdown-rendered li.task-list-item {
   box-sizing: border-box;
 }
@@ -2074,26 +2074,20 @@ body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked 
   text-decoration: none !important;
   background: var(--nv-task-card-bg, #F3E8FF) !important;
   color: var(--nv-task-card-fg, #5B21B6) !important;
-  border: 1px solid var(--nv-task-card-border, #C084FC) !important;
-  font-weight: 500 !important;
+  /* Draw the card edge inside the existing box: no border or text reflow. */
+  border: 0 !important;
+  font-weight: inherit !important;
+  box-shadow: inset 0 0 0 1px var(--nv-task-card-border, #C084FC),
+              0 4px 6px -1px rgba(0, 0, 0, .05),
+              0 2px 4px -1px rgba(0, 0, 0, .03);
   border-radius: var(--nv-task-card-radius, 15px) !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .05),
               0 2px 4px -1px rgba(0, 0, 0, .03);
   transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease, transform .3s ease !important;
-  margin-top: 5px !important;
-  margin-bottom: 5px !important;
-  
-  /* جبران دقیق 1 پیکسل ضخامت border و پوشش کامل چک‌باکس در فارسی و انگلیسی بدون جابه‌جایی */
-  margin-inline-start: calc(-1 * var(--nv-task-card-offset, 2.25em)) !important;
-  padding-inline-start: calc(var(--nv-task-card-offset, 2.25em) - 1px) !important;
-  padding-inline-end: var(--nv-task-card-pad-end, 0.85em) !important;
-  padding-block: 4px !important;
+  /* No checked-only margins or padding: text stays at its original coordinates. */
   
   animation: makanReadingTaskSlide .55s cubic-bezier(.34, 1.3, .64, 1) backwards,
              makanReadingTaskGlow 1.1s ease-out .35s backwards;
-}
-body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked > p {
-  margin-block: .15em;
 }
 body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked:hover {
   background: color-mix(in srgb, var(--nv-task-card-bg, #EDE1FF) 92%, #A855F7) !important;
@@ -2143,7 +2137,9 @@ body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked:
 body.theme-dark:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked {
   background: var(--nv-task-card-bg, #414559) !important;
   color: var(--nv-task-card-fg, #C6D0F5) !important;
-  border-color: var(--nv-task-card-border, #737994) !important;
+  box-shadow: inset 0 0 0 1px var(--nv-task-card-border, #737994),
+              0 4px 6px -1px rgba(0, 0, 0, .5),
+              0 2px 4px -1px rgba(0, 0, 0, .3) !important;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .5),
               0 2px 4px -1px rgba(0, 0, 0, .3);
   animation: makanReadingTaskSlide .55s cubic-bezier(.34, 1.3, .64, 1) backwards,
@@ -2179,16 +2175,4 @@ body.theme-dark:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.
 }
 
 /* Connected edges for consecutive completed tasks in Reading View */
-body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked + li.task-list-item.is-checked {
-  margin-top: -5px !important;
-  border-top: none !important;
-  border-top-left-radius: 0 !important;
-  border-top-right-radius: 0 !important;
-  padding-top: 5px !important;
-}
-body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked:has(+ li.task-list-item.is-checked) {
-  border-bottom: none !important;
-  border-bottom-left-radius: 0 !important;
-  border-bottom-right-radius: 0 !important;
-  padding-bottom: 5px !important;
-}
+/* Consecutive completed tasks keep independent, layout-neutral cards. */
