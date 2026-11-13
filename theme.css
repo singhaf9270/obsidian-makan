@@ -1,7 +1,7 @@
 /*
-Makan — original Obsidian theme
+Makan — original Obsidian theme (Fixed & Enhanced Edition)
 No external assets, scripts, fonts or network requests.
-Sections: tokens · workspace · editor · markdown · plugins · accessibility.
+Sections: tokens · workspace · editor · markdown · plugins · accessibility · presets.
 */
 /* @settings
 name: Makan · ماکان
@@ -12,6 +12,32 @@ settings:
   type: heading
   level: 2
   collapsed: true
+- id: nv-theme-preset
+  title: پیش‌فرض کلی ظاهر / Overall Theme Preset
+  type: class-select
+  allowEmpty: false
+  default: nv-preset-default
+  options:
+  - label: پیش‌فرض ماکان (متعادل و مدرن)
+    value: nv-preset-default
+  - label: مینیمال و تخت
+    value: nv-preset-minimal
+  - label: مطالعه گرم و نرم
+    value: nv-preset-cozy
+  - label: رسمی و تیز
+    value: nv-preset-sharp
+  - label: شیشه‌ای و لطیف
+    value: nv-preset-glass
+  - label: کلاسیک و کتابی
+    value: nv-preset-classic
+  - label: مدرن و هندسی
+    value: nv-preset-geometric
+  - label: نرم و آرام
+    value: nv-preset-soft
+  - label: پرکنتراست و برجسته
+    value: nv-preset-bold
+  - label: فشرده و کاربردی
+    value: nv-preset-compact
 - id: nv-palette
   title: پالت رنگ / Palette
   type: class-select
@@ -30,12 +56,24 @@ settings:
     value: nv-amber
   - label: سنگی / Slate
     value: nv-slate
+  - label: زمرد / Emerald
+    value: nv-emerald
+  - label: یاقوت / Ruby
+    value: nv-ruby
+  - label: لاجورد / Azure
+    value: nv-azure
+  - label: گرافیت / Graphite
+    value: nv-graphite
 - id: nv-native-accent
   title: رنگ تأکیدی تنظیمات خود ابسیدین / Native accent
   type: class-toggle
   default: false
 - id: nv-flat
   title: حذف گرادیان‌های تزئینی / Flat surfaces
+  type: class-toggle
+  default: false
+- id: nv-no-shadows
+  title: حذف سایه‌ها / No shadows
   type: class-toggle
   default: false
 - id: nv-high-contrast
@@ -50,13 +88,40 @@ settings:
   max: 24
   step: 1
   format: px
+
 - id: nv-reading
-  title: مطالعه / Reading
+  title: مطالعه و ویرایشگر / Reading & Editor
   type: heading
   level: 2
   collapsed: true
+- id: nv-reading-preset
+  title: پیش‌فرض چیدمان متن / Reading Layout Preset
+  type: class-select
+  allowEmpty: false
+  default: nv-read-preset-custom
+  options:
+  - label: سفارشی (اسلایدرهای زیر)
+    value: nv-read-preset-custom
+  - label: استاندارد متعادل
+    value: nv-read-preset-standard
+  - label: عریض و دلباز
+    value: nv-read-preset-wide
+  - label: فشرده و سریع
+    value: nv-read-preset-compact
+  - label: کتابی کلاسیک
+    value: nv-read-preset-book
+  - label: مطالعه آرام
+    value: nv-read-preset-calm
+  - label: مقاله و پژوهش
+    value: nv-read-preset-research
+  - label: یادداشت روزانه
+    value: nv-read-preset-journal
+  - label: خواندن طولانی
+    value: nv-read-preset-longform
+  - label: نمایشگر کوچک
+    value: nv-read-preset-mobile
 - id: nv-line-width
-  title: عرض متن / Reading width
+  title: عرض متن / Line width
   type: variable-number-slider
   default: 760
   min: 500
@@ -90,10 +155,57 @@ settings:
   title: جدول‌ها به عرض پنل / Wide tables
   type: class-toggle
   default: false
-- id: nv-square-tasks
-  title: چک‌باکس چهارگوش / Square checkboxes
+- id: nv-heading-letter-spacing
+  title: فاصله حروف تیترها / Heading letter spacing
+  type: variable-number-slider
+  default: 0
+  min: -0.05
+  max: 0.1
+  step: 0.005
+  format: em
+- id: nv-heading-text-transform
+  title: تبدیل حروف تیترها / Heading text transform
+  type: class-select
+  allowEmpty: false
+  default: nv-headings-normal
+  options:
+  - label: عادی (پیش‌فرض)
+    value: nv-headings-normal
+  - label: همه بزرگ (UPPERCASE)
+    value: nv-headings-upper
+  - label: همه کوچک (lowercase)
+    value: nv-headings-lower
+  - label: حرف اول بزرگ (Capitalize)
+    value: nv-headings-cap
+- id: nv-justify-text
+  title: تراز دوطرفه متن (مطالعه و ویرایش) / Justify text
   type: class-toggle
   default: false
+- id: nv-hyphens
+  title: شکستن کلمات در انتهای خط / Hyphenation
+  type: class-toggle
+  default: false
+- id: nv-text-rendering
+  title: کیفیت رندر متن / Text rendering
+  type: class-select
+  allowEmpty: false
+  default: nv-render-legibility
+  options:
+  - label: بهینه برای خوانایی (پیش‌فرض)
+    value: nv-render-legibility
+  - label: سرعت رندر
+    value: nv-render-speed
+  - label: خودکار
+    value: nv-render-auto
+- id: nv-paragraph-indent
+  title: تورفتگی خط اول پاراگراف / Paragraph indent
+  type: variable-number-slider
+  default: 0
+  min: 0
+  max: 3
+  step: 0.1
+  format: em
+
 - id: nv-workspace
   title: محیط کار / Workspace
   type: heading
@@ -107,7 +219,7 @@ settings:
   options:
   - label: فشرده / Compact
     value: nv-compact
-  - label: متعادل / Comfortable
+  - label: متعادل / Comfortable (پیش‌فرض)
     value: nv-comfortable
   - label: باز / Spacious
     value: nv-spacious
@@ -116,122 +228,195 @@ settings:
   type: class-toggle
   default: false
 - id: nv-no-motion
-  title: کاهش حرکت / Reduce motion
+  title: کاهش حرکت و انیمیشن / Reduce motion
   type: class-toggle
   default: false
+- id: nv-hide-status
+  title: مخفی کردن نوار وضعیت پایین / Hide status bar
+  type: class-toggle
+  default: false
+- id: nv-hide-ribbon
+  title: مخفی کردن نوار ابزار کناری / Hide left ribbon
+  type: class-toggle
+  default: false
+- id: nv-tab-active-indicator
+  title: محل نشانگر تب فعال / Active tab indicator
+  type: class-select
+  allowEmpty: false
+  default: nv-tab-indicator-top
+  options:
+  - label: بالا (پیش‌فرض)
+    value: nv-tab-indicator-top
+  - label: پایین
+    value: nv-tab-indicator-bottom
+  - label: کناره
+    value: nv-tab-indicator-side
+- id: nv-sidebar-transparency
+  title: شفافیت نوار کناری / Sidebar opacity
+  type: variable-number-slider
+  default: 100
+  min: 50
+  max: 100
+  step: 5
+- id: nv-header-shadow
+  title: سایه زیر نوار عنوان / Header shadow
+  type: class-toggle
+  default: false
+- id: nv-scrollbar-width
+  title: عرض اسکرول‌بار / Scrollbar width
+  type: variable-number-slider
+  default: 8
+  min: 4
+  max: 20
+  step: 1
+  format: px
+- id: nv-scrollbar-thumb
+  title: رنگ دسته اسکرول‌بار / Scrollbar thumb
+  type: variable-color
+  format: hex
+  default-light: '#afc0d1'
+  default-dark: '#435771'
+
 - id: nv-surfaces
   title: رنگ سطح‌ها و متن / Surfaces & text
   type: heading
   level: 2
   collapsed: true
+- id: nv-surface-preset
+  title: پیش‌فرض رنگ پس‌زمینه / Surface Color Preset
+  type: class-select
+  allowEmpty: false
+  default: nv-surface-custom
+  options:
+  - label: سفارشی / پیش‌فرض ماکان
+    value: nv-surface-custom
+  - label: کاغذ گرم / Sepia
+    value: nv-surface-sepia
+  - label: مشکی OLED
+    value: nv-surface-oled
+  - label: نورد سرد / Nord
+    value: nv-surface-nord
+  - label: برف روشن / Snow
+    value: nv-surface-snow
+  - label: شن و ماسه / Sand
+    value: nv-surface-sand
+  - label: جنگل / Forest
+    value: nv-surface-forest
+  - label: دریایی / Marine
+    value: nv-surface-marine
+  - label: ذغالی / Charcoal
+    value: nv-surface-charcoal
+  - label: یاسی / Lilac
+    value: nv-surface-lilac
 - id: nv-custom-background-primary
   title: زمینهٔ اصلی
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#fbfcfe'
   default-dark: '#151d29'
 - id: nv-custom-background-primary-alt
   title: زمینهٔ جایگزین
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#f2f6fa'
-  default-dark: '#192331'
+  default-dark: '#1b2635'
 - id: nv-custom-background-secondary
   title: زمینهٔ پنل‌ها
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#edf2f7'
   default-dark: '#101722'
 - id: nv-custom-background-secondary-alt
   title: زمینهٔ ثانویه پنل
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#e5ecf3'
   default-dark: '#0c121c'
 - id: nv-custom-background-modifier-hover
   title: زمینهٔ Hover
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#dae4ee'
-  default-dark: '#243246'
+  default-dark: '#26364a'
 - id: nv-custom-background-modifier-active-hover
   title: زمینهٔ تعامل فعال
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#cfdeeb'
-  default-dark: '#2c4054'
+  default-dark: '#30445b'
 - id: nv-custom-background-modifier-border
   title: خطوط و حاشیه‌ها
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#ccd8e4'
-  default-dark: '#2d3c50'
+  default-dark: '#34465b'
 - id: nv-custom-background-modifier-border-hover
   title: حاشیهٔ Hover
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#afc0d1'
-  default-dark: '#435771'
+  default-dark: '#506781'
 - id: nv-custom-background-modifier-form-field
   title: زمینهٔ ورودی‌ها
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#ffffff'
-  default-dark: '#101924'
+  default-dark: '#111b28'
 - id: nv-custom-text-normal
   title: متن اصلی
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#223347'
-  default-dark: '#dce6f2'
+  default-dark: '#e4ebf5'
 - id: nv-custom-text-muted
   title: متن فرعی
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#506479'
-  default-dark: '#a7bad0'
+  default-dark: '#adbed2'
 - id: nv-custom-text-faint
   title: متن کم‌رنگ
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#5f7286'
-  default-dark: '#879db6'
+  default-dark: '#8fa4bd'
 - id: nv-custom-text-on-accent
   title: متن روی دکمهٔ تأکیدی
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#ffffff'
   default-dark: '#101722'
 - id: nv-custom-text-error
   title: متن خطا
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#bd2947'
-  default-dark: '#ff9bab'
+  default-dark: '#ff9eaa'
 - id: nv-custom-text-success
   title: متن موفقیت
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#18704c'
-  default-dark: '#9cdbb7'
+  default-dark: '#9de0bd'
 - id: nv-custom-text-warning
   title: متن هشدار
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#895d00'
-  default-dark: '#ebcb7a'
+  default-dark: '#f2d18a'
 - id: nv-custom-text-highlight-bg
   title: زمینهٔ هایلایت
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#f5dd84'
   default-dark: '#655426'
 - id: nv-custom-text-highlight-fg
   title: متن هایلایت
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#433600'
   default-dark: '#fff1b6'
+
 - id: nv-custom-accent-section
   title: رنگ تأکیدی دلخواه / Custom accent
   type: heading
@@ -240,45 +425,45 @@ settings:
 - id: nv-accent-help
   title: اولویت رنگ‌ها
   type: info-text
-  description: برای استفاده از رنگ دلخواه، کلید زیر را روشن کنید. این حالت بر پالت‌ها
-    و Native accent اولویت دارد؛ خاموش‌کردن آن رنگ‌های پالت را برمی‌گرداند.
+  description: برای استفاده از رنگ دلخواه، کلید زیر را روشن کنید. این حالت بر پالت‌ها و Native accent اولویت دارد؛ خاموش‌کردن آن رنگ‌های پالت را برمی‌گرداند.
 - id: nv-custom-accent-enabled
   title: فعال‌سازی رنگ تأکیدی دلخواه
   type: class-toggle
   default: false
 - id: nv-custom-accent
   title: رنگ تأکیدی؛ جدا برای روز و شب
-  type: variable-themed-color
+  type: variable-color
   format: hsl-split
   default-light: '#186d84'
   default-dark: '#8dd0e0'
+
 - id: nv-fonts
   title: فونت و متن / Fonts & text
   type: heading
   level: 2
   collapsed: true
 - id: nv-custom-fonts
-  title: استفاده از فونت‌های دلخواه بالا
+  title: فعال‌سازی فونت‌های سفارشی زیر
   type: class-toggle
-  default: false
+  default: true
 - id: nv-custom-text-size
-  title: استفاده از اندازه متن دلخواه بالا
+  title: فعال‌سازی اندازه متن سفارشی زیر
   type: class-toggle
   default: false
 - id: nv-font-text
-  title: فونت متن
+  title: فونت متن یادداشت
   type: variable-text
   default: Vazirmatn, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
 - id: nv-font-ui
-  title: فونت محیط
+  title: فونت محیط برنامه
   type: variable-text
   default: Vazirmatn, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif
 - id: nv-font-code
-  title: فونت کد
+  title: فونت کد (Monospace)
   type: variable-text
   default: '"SFMono-Regular", Consolas, "Liberation Mono", monospace'
 - id: nv-text-size
-  title: اندازهٔ متن
+  title: اندازهٔ متن یادداشت
   type: variable-number-slider
   default: 16
   min: 12
@@ -286,7 +471,7 @@ settings:
   step: 1
   format: px
 - id: nv-ui-size
-  title: اندازهٔ متن کوچک محیط
+  title: اندازهٔ متن محیط کاربری
   type: variable-number-slider
   default: 13
   min: 11
@@ -294,7 +479,7 @@ settings:
   step: 1
   format: px
 - id: nv-bold-weight
-  title: ضخامت Bold
+  title: ضخامت متن Bold
   type: variable-number-slider
   default: 700
   min: 400
@@ -302,34 +487,61 @@ settings:
   step: 50
 - id: nv-bold-color
   title: رنگ متن Bold
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#223347'
-  default-dark: '#dce6f2'
+  default-dark: '#edf3fb'
 - id: nv-italic-color
   title: رنگ متن Italic
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#7551b5'
-  default-dark: '#c2aaf0'
+  default-dark: '#cbb5f4'
+
 - id: nv-headings
   title: تیترهای ۱ تا ۶ / Headings
   type: heading
   level: 2
   collapsed: true
+- id: nv-headings-preset
+  title: پیش‌فرض استایل تیترها / Headings Preset
+  type: class-select
+  allowEmpty: false
+  default: nv-h-preset-custom
+  options:
+  - label: سفارشی / رنگارنگ ماکان
+    value: nv-h-preset-custom
+  - label: تک‌رنگ رسمی
+    value: nv-h-preset-mono
+  - label: رنگ تأکیدی
+    value: nv-h-preset-accent
+  - label: فشرده و ظریف
+    value: nv-h-preset-compact
+  - label: طیف رنگی
+    value: nv-h-preset-spectrum
+  - label: کلاسیک و کتابی
+    value: nv-h-preset-classic
+  - label: مینیمال
+    value: nv-h-preset-minimal
+  - label: پررنگ و برجسته
+    value: nv-h-preset-bold
+  - label: خط‌دار
+    value: nv-h-preset-underline
+  - label: شماره‌گذاری بصری
+    value: nv-h-preset-numbered
 - id: nv-h1
   title: عنوان 1 / H1
   type: heading
   level: 3
   collapsed: true
 - id: nv-h1-color
-  title: رنگ تیتر
-  type: variable-themed-color
+  title: رنگ تیتر 1
+  type: variable-color
   format: hex
-  default-light: '#223347'
-  default-dark: '#dce6f2'
+  default-light: '#e91e63'
+  default-dark: '#ff80ab'
 - id: nv-h1-size
-  title: اندازه
+  title: اندازه تیتر 1
   type: variable-number-slider
   default: 2
   min: 0.7
@@ -337,14 +549,14 @@ settings:
   step: 0.05
   format: em
 - id: nv-h1-weight
-  title: ضخامت
+  title: ضخامت تیتر 1
   type: variable-number-slider
   default: 750
   min: 300
   max: 900
   step: 50
 - id: nv-h1-line-height
-  title: فاصله خطوط
+  title: فاصله خطوط تیتر 1
   type: variable-number-slider
   default: 1.5
   min: 1.1
@@ -356,13 +568,13 @@ settings:
   level: 3
   collapsed: true
 - id: nv-h2-color
-  title: رنگ تیتر
-  type: variable-themed-color
+  title: رنگ تیتر 2
+  type: variable-color
   format: hex
-  default-light: '#08778b'
-  default-dark: '#94d4df'
+  default-light: '#9c27b0'
+  default-dark: '#ce93d8'
 - id: nv-h2-size
-  title: اندازه
+  title: اندازه تیتر 2
   type: variable-number-slider
   default: 1.6
   min: 0.7
@@ -370,14 +582,14 @@ settings:
   step: 0.05
   format: em
 - id: nv-h2-weight
-  title: ضخامت
+  title: ضخامت تیتر 2
   type: variable-number-slider
   default: 700
   min: 300
   max: 900
   step: 50
 - id: nv-h2-line-height
-  title: فاصله خطوط
+  title: فاصله خطوط تیتر 2
   type: variable-number-slider
   default: 1.5
   min: 1.1
@@ -389,13 +601,13 @@ settings:
   level: 3
   collapsed: true
 - id: nv-h3-color
-  title: رنگ تیتر
-  type: variable-themed-color
+  title: رنگ تیتر 3
+  type: variable-color
   format: hex
-  default-light: '#3069b4'
-  default-dark: '#9ebff0'
+  default-light: '#03a9f4'
+  default-dark: '#4fc3f7'
 - id: nv-h3-size
-  title: اندازه
+  title: اندازه تیتر 3
   type: variable-number-slider
   default: 1.3
   min: 0.7
@@ -403,14 +615,14 @@ settings:
   step: 0.05
   format: em
 - id: nv-h3-weight
-  title: ضخامت
+  title: ضخامت تیتر 3
   type: variable-number-slider
   default: 650
   min: 300
   max: 900
   step: 50
 - id: nv-h3-line-height
-  title: فاصله خطوط
+  title: فاصله خطوط تیتر 3
   type: variable-number-slider
   default: 1.6
   min: 1.1
@@ -422,13 +634,13 @@ settings:
   level: 3
   collapsed: true
 - id: nv-h4-color
-  title: رنگ تیتر
-  type: variable-themed-color
+  title: رنگ تیتر 4
+  type: variable-color
   format: hex
-  default-light: '#7551b5'
-  default-dark: '#c2aaf0'
+  default-light: '#4caf50'
+  default-dark: '#81c784'
 - id: nv-h4-size
-  title: اندازه
+  title: اندازه تیتر 4
   type: variable-number-slider
   default: 1.14
   min: 0.7
@@ -436,14 +648,14 @@ settings:
   step: 0.05
   format: em
 - id: nv-h4-weight
-  title: ضخامت
+  title: ضخامت تیتر 4
   type: variable-number-slider
   default: 650
   min: 300
   max: 900
   step: 50
 - id: nv-h4-line-height
-  title: فاصله خطوط
+  title: فاصله خطوط تیتر 4
   type: variable-number-slider
   default: 1.6
   min: 1.1
@@ -455,13 +667,13 @@ settings:
   level: 3
   collapsed: true
 - id: nv-h5-color
-  title: رنگ تیتر
-  type: variable-themed-color
+  title: رنگ تیتر 5
+  type: variable-color
   format: hex
-  default-light: '#b5387b'
-  default-dark: '#e9a2cf'
+  default-light: '#ff9800'
+  default-dark: '#ffb74d'
 - id: nv-h5-size
-  title: اندازه
+  title: اندازه تیتر 5
   type: variable-number-slider
   default: 1.04
   min: 0.7
@@ -469,14 +681,14 @@ settings:
   step: 0.05
   format: em
 - id: nv-h5-weight
-  title: ضخامت
+  title: ضخامت تیتر 5
   type: variable-number-slider
   default: 650
   min: 300
   max: 900
   step: 50
 - id: nv-h5-line-height
-  title: فاصله خطوط
+  title: فاصله خطوط تیتر 5
   type: variable-number-slider
   default: 1.6
   min: 1.1
@@ -488,13 +700,13 @@ settings:
   level: 3
   collapsed: true
 - id: nv-h6-color
-  title: رنگ تیتر
-  type: variable-themed-color
+  title: رنگ تیتر 6
+  type: variable-color
   format: hex
-  default-light: '#506479'
-  default-dark: '#a7bad0'
+  default-light: '#795548'
+  default-dark: '#bcaaa4'
 - id: nv-h6-size
-  title: اندازه
+  title: اندازه تیتر 6
   type: variable-number-slider
   default: 0.97
   min: 0.7
@@ -502,19 +714,20 @@ settings:
   step: 0.05
   format: em
 - id: nv-h6-weight
-  title: ضخامت
+  title: ضخامت تیتر 6
   type: variable-number-slider
   default: 600
   min: 300
   max: 900
   step: 50
 - id: nv-h6-line-height
-  title: فاصله خطوط
+  title: فاصله خطوط تیتر 6
   type: variable-number-slider
   default: 1.6
   min: 1.1
   max: 2.4
   step: 0.05
+
 - id: nv-links-tags
   title: پیوندها و تگ‌ها / Links & tags
   type: heading
@@ -522,40 +735,98 @@ settings:
   collapsed: true
 - id: nv-link-color
   title: پیوند داخلی
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#186d84'
   default-dark: '#8dd0e0'
 - id: nv-link-color-hover
   title: پیوند داخلی در Hover
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#12566a'
-  default-dark: '#afe1ec'
+  default-dark: '#b5e9f2'
 - id: nv-link-external-color
   title: پیوند خارجی
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#3069b4'
-  default-dark: '#9ebff0'
+  default-dark: '#a9c9ff'
+- id: nv-link-decoration-style
+  title: استایل خط زیر پیوند
+  type: class-select
+  allowEmpty: false
+  default: nv-link-underline
+  options:
+  - label: بدون خط
+    value: nv-link-none
+  - label: خط پیوسته (پیش‌فرض)
+    value: nv-link-underline
+  - label: خط‌چین (Dashed)
+    value: nv-link-dashed
+  - label: نقطه‌چین (Dotted)
+    value: nv-link-dotted
+  - label: خط موجی (Wavy)
+    value: nv-link-wavy
+- id: nv-link-decoration-thickness
+  title: ضخامت خط پیوند
+  type: variable-number-slider
+  default: 1
+  min: 0
+  max: 4
+  step: 1
+  format: px
+- id: nv-link-decoration-offset
+  title: فاصله خط از متن پیوند
+  type: variable-number-slider
+  default: 0.22
+  min: 0
+  max: 0.6
+  step: 0.02
+  format: em
+- id: nv-tag-preset
+  title: شکل پیش‌فرض تگ‌ها / Tag Shape Preset
+  type: class-select
+  allowEmpty: false
+  default: nv-tag-preset-custom
+  options:
+  - label: سفارشی
+    value: nv-tag-preset-custom
+  - label: کپسولی گرد
+    value: nv-tag-preset-pill
+  - label: مستطیل تیز
+    value: nv-tag-preset-sharp
+  - label: نرم و کوچک
+    value: nv-tag-preset-soft
+  - label: خط دور
+    value: nv-tag-preset-outline
+  - label: رنگی
+    value: nv-tag-preset-color
+  - label: مینیمال
+    value: nv-tag-preset-minimal
+  - label: کنتراست بالا
+    value: nv-tag-preset-contrast
+  - label: فشرده
+    value: nv-tag-preset-compact
+  - label: برجسته
+    value: nv-tag-preset-raised
 - id: nv-tag-color
   title: متن تگ
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#186d84'
-  default-dark: '#8dd0e0'
+  default-dark: '#a9deea'
 - id: nv-tag-background
   title: زمینه تگ
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#dfedf2'
-  default-dark: '#213746'
+  default-dark: '#233747'
 - id: nv-tag-border-color
   title: حاشیه تگ
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#ccd8e4'
-  default-dark: '#435771'
+  default-dark: '#466176'
 - id: nv-tag-radius
   title: گردی تگ
   type: variable-number-slider
@@ -572,6 +843,7 @@ settings:
   max: 1.2
   step: 0.01
   format: em
+
 - id: nv-code
   title: کد و رنگ‌بندی / Code & syntax
   type: heading
@@ -579,64 +851,64 @@ settings:
   collapsed: true
 - id: nv-code-background
   title: زمینهٔ کد
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#f2f6fa'
-  default-dark: '#192331'
+  default-dark: '#1b2635'
 - id: nv-code-normal
   title: متن کد
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#08778b'
-  default-dark: '#94d4df'
+  default-dark: '#9adbe5'
 - id: nv-code-comment
   title: توضیح کد
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#5f7286'
-  default-dark: '#879db6'
+  default-dark: '#91a6bf'
 - id: nv-code-function
   title: تابع
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#3069b4'
-  default-dark: '#9ebff0'
+  default-dark: '#a9c9ff'
 - id: nv-code-keyword
   title: کلمهٔ کلیدی
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#7551b5'
-  default-dark: '#c2aaf0'
+  default-dark: '#cbb5f4'
 - id: nv-code-string
   title: رشته
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#24764c'
-  default-dark: '#9cd6b3'
+  default-dark: '#a5dfb7'
 - id: nv-code-operator
   title: عملگر
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#b5387b'
-  default-dark: '#e9a2cf'
+  default-dark: '#f0a9d2'
 - id: nv-code-property
   title: ویژگی
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#08778b'
-  default-dark: '#94d4df'
+  default-dark: '#9adbe5'
 - id: nv-code-punctuation
   title: نشانه‌گذاری
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#506479'
-  default-dark: '#a7bad0'
+  default-dark: '#adbed2'
 - id: nv-code-value
   title: مقدار
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#a55517'
-  default-dark: '#e9b083'
+  default-dark: '#f2bd8d'
 - id: nv-code-size
   title: اندازه کد
   type: variable-number-slider
@@ -653,41 +925,97 @@ settings:
   max: 36
   step: 1
   format: px
+- id: nv-code-radius
+  title: گردی بلوک کد
+  type: variable-number-slider
+  default: 8
+  min: 0
+  max: 24
+  step: 1
+  format: px
+- id: nv-code-border
+  title: ضخامت حاشیه کد
+  type: variable-number-slider
+  default: 1
+  min: 0
+  max: 3
+  step: 1
+  format: px
+- id: nv-code-line-height
+  title: فاصله خطوط کد
+  type: variable-number-slider
+  default: 1.5
+  min: 1
+  max: 2.2
+  step: 0.05
+- id: nv-inline-code-bg
+  title: زمینه کد درون‌خطی
+  type: variable-color
+  format: hex
+  default-light: '#eef3f8'
+  default-dark: '#202d3d'
+
 - id: nv-tables
   title: جدول‌ها / Tables
   type: heading
   level: 2
   collapsed: true
+- id: nv-table-preset
+  title: پیش‌فرض ظاهر جدول / Table Style Preset
+  type: class-select
+  allowEmpty: false
+  default: nv-table-preset-default
+  options:
+  - label: استاندارد ماکان
+    value: nv-table-preset-default
+  - label: مینیمال
+    value: nv-table-preset-minimal
+  - label: فشرده و اداری
+    value: nv-table-preset-compact
+  - label: راهبری رنگی
+    value: nv-table-preset-striped
+  - label: خطوط ظریف
+    value: nv-table-preset-lines
+  - label: بدون حاشیه
+    value: nv-table-preset-borderless
+  - label: کارت‌مانند
+    value: nv-table-preset-cards
+  - label: خوانایی بالا
+    value: nv-table-preset-readable
+  - label: تراکم کم
+    value: nv-table-preset-spacious
+  - label: تراکم زیاد
+    value: nv-table-preset-dense
 - id: nv-table-header-background
   title: زمینه سرستون
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#edf2f7'
-  default-dark: '#101722'
+  default-dark: '#202c3b'
 - id: nv-table-header-color
   title: متن سرستون
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#223347'
-  default-dark: '#dce6f2'
+  default-dark: '#edf3fb'
 - id: nv-table-row-even-background
   title: ردیف زوج
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#f2f6fa'
-  default-dark: '#192331'
+  default-dark: '#1b2635'
 - id: nv-table-row-odd-background
   title: ردیف فرد
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#fbfcfe'
   default-dark: '#151d29'
 - id: nv-table-border-color
   title: حاشیه جدول
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#ccd8e4'
-  default-dark: '#2d3c50'
+  default-dark: '#3a4d63'
 - id: nv-table-border-width
   title: ضخامت خطوط
   type: variable-number-slider
@@ -719,11 +1047,53 @@ settings:
   max: 24
   step: 1
   format: px
+- id: nv-table-zebra-stripes
+  title: راه‌راه کردن جدول
+  type: class-toggle
+  default: true
+- id: nv-table-header-bold
+  title: ضخامت متن سرستون
+  type: variable-number-slider
+  default: 650
+  min: 400
+  max: 900
+  step: 50
+- id: nv-table-hover-highlight
+  title: هایلایت ردیف در Hover
+  type: class-toggle
+  default: true
+
 - id: nv-callouts
   title: Callout و نقل‌قول / Callouts & quotes
   type: heading
   level: 2
   collapsed: true
+- id: nv-callout-preset
+  title: پیش‌فرض ظاهر Callout / Callout Preset
+  type: class-select
+  allowEmpty: false
+  default: nv-callout-preset-default
+  options:
+  - label: کارت مدرن ماکان
+    value: nv-callout-preset-default
+  - label: نوار کناری کلاسیک
+    value: nv-callout-preset-border
+  - label: مینیمال و تخت
+    value: nv-callout-preset-flat
+  - label: رنگی و ملایم
+    value: nv-callout-preset-tinted
+  - label: خط دور کامل
+    value: nv-callout-preset-outline
+  - label: کارت برجسته
+    value: nv-callout-preset-raised
+  - label: گوشه‌های گرد
+    value: nv-callout-preset-rounded
+  - label: فشرده
+    value: nv-callout-preset-compact
+  - label: بدون پس‌زمینه
+    value: nv-callout-preset-ghost
+  - label: کلاسیک رسمی
+    value: nv-callout-preset-classic
 - id: nv-callout-radius
   title: گردی Callout
   type: variable-number-slider
@@ -773,65 +1143,102 @@ settings:
   format: px
 - id: nv-quote-bg
   title: زمینه نقل‌قول
-  type: variable-themed-color
+  type: variable-color
   format: hex
   default-light: '#f2f6fa'
-  default-dark: '#192331'
+  default-dark: '#202c3b'
+- id: nv-quote-font-style
+  title: سبک متن نقل‌قول
+  type: class-select
+  allowEmpty: false
+  default: nv-quote-normal
+  options:
+  - label: عادی (پیش‌فرض)
+    value: nv-quote-normal
+  - label: ایتالیک
+    value: nv-quote-italic
+- id: nv-quote-bg-enabled
+  title: زمینه رنگی برای نقل‌قول
+  type: class-toggle
+  default: true
 - id: nv-callout-note
   title: یادداشت و اطلاعات
-  type: variable-themed-color
+  type: variable-color
   format: rgb-values
-  default-light: '#3069b4'
-  default-dark: '#9ebff0'
+  default-light: '48, 105, 180'
+  default-dark: '158, 191, 240'
 - id: nv-callout-tip
   title: نکته و خلاصه
-  type: variable-themed-color
+  type: variable-color
   format: rgb-values
-  default-light: '#08778b'
-  default-dark: '#94d4df'
+  default-light: '8, 119, 139'
+  default-dark: '148, 212, 223'
 - id: nv-callout-success
   title: موفقیت
-  type: variable-themed-color
+  type: variable-color
   format: rgb-values
-  default-light: '#24764c'
-  default-dark: '#9cd6b3'
+  default-light: '36, 118, 76'
+  default-dark: '156, 214, 179'
 - id: nv-callout-warning
   title: هشدار
-  type: variable-themed-color
+  type: variable-color
   format: rgb-values
-  default-light: '#a55517'
-  default-dark: '#e9b083'
+  default-light: '165, 85, 23'
+  default-dark: '233, 176, 131'
 - id: nv-callout-danger
   title: خطا و خطر
-  type: variable-themed-color
+  type: variable-color
   format: rgb-values
-  default-light: '#c23853'
-  default-dark: '#f39ba9'
+  default-light: '194, 56, 83'
+  default-dark: '243, 155, 169'
 - id: nv-callout-question
   title: پرسش
-  type: variable-themed-color
+  type: variable-color
   format: rgb-values
-  default-light: '#8e6a09'
-  default-dark: '#e8ce8c'
+  default-light: '142, 106, 9'
+  default-dark: '232, 206, 140'
 - id: nv-callout-example
   title: مثال
-  type: variable-themed-color
+  type: variable-color
   format: rgb-values
-  default-light: '#7551b5'
-  default-dark: '#c2aaf0'
+  default-light: '117, 81, 181'
+  default-dark: '194, 170, 240'
+
 - id: nv-tasks-lists
   title: تسک‌ها و فهرست‌ها / Tasks & lists
   type: heading
   level: 2
   collapsed: true
-- id: nv-task-size
-  title: اندازه چک‌باکس
-  type: variable-number-slider
-  default: 17
-  min: 12
-  max: 26
-  step: 1
-  format: px
+- id: nv-task-preset
+  title: پیش‌فرض استایل تسک‌ها / Task Style Preset
+  type: class-select
+  allowEmpty: false
+  default: nv-task-preset-synced
+  options:
+  - label: هماهنگ با رنگ چک‌باکس (خودکار)
+    value: nv-task-preset-synced
+  - label: کارت رنگی ماکان
+    value: nv-task-preset-card
+  - label: کارت سبز زمردی
+    value: nv-task-preset-emerald
+  - label: ساده و مینیمال
+    value: nv-task-preset-minimal
+  - label: آبی آرام
+    value: nv-task-preset-blue
+  - label: بنفش
+    value: nv-task-preset-violet
+  - label: کهربایی
+    value: nv-task-preset-amber
+  - label: صورتی
+    value: nv-task-preset-rose
+  - label: خط دور
+    value: nv-task-preset-outline
+  - label: فشرده
+    value: nv-task-preset-compact
+  - label: بدون کارت
+    value: nv-task-preset-plain
+  - label: سفارشی (رنگ کارت دستی)
+    value: nv-task-preset-custom
 - id: nv-list-indent
   title: تورفتگی فهرست
   type: variable-number-slider
@@ -849,11 +1256,11 @@ settings:
   step: 0.05
   format: em
 - id: nv-task-done-color
-  title: متن تسک انجام‌شده
-  type: variable-themed-color
+  title: متن تسک انجام‌شده (در حالت بدون کادر)
+  type: variable-color
   format: hex
   default-light: '#506479'
-  default-dark: '#a7bad0'
+  default-dark: '#aab9ca'
 - id: nv-strike-done
   title: خط‌خوردگی تسک انجام‌شده
   type: class-toggle
@@ -863,7 +1270,7 @@ settings:
   type: class-toggle
   default: false
 - id: nv-task-card-offset
-  title: امتداد هایلایت پشت چک‌باکس (حالت مطالعه) / Highlight start offset
+  title: امتداد هایلایت پشت چک‌باکس / Highlight start offset
   type: variable-number-slider
   default: 2.25
   min: 1.4
@@ -879,7 +1286,7 @@ settings:
   step: 0.05
   format: em
 - id: nv-task-card-radius
-  title: گردی کادر تسک در حالت مطالعه / Reading task card radius
+  title: گردی کادر تسک / Task card radius
   type: variable-number-slider
   default: 15
   min: 0
@@ -887,285 +1294,279 @@ settings:
   step: 1
   format: px
 - id: nv-task-card-bg
-  title: زمینه کادر تسک انجام‌شده (مطالعه)
-  type: variable-themed-color
+  title: زمینه کادر تسک انجام‌شده
+  type: variable-color
   format: hex
   default-light: '#F3E8FF'
-  default-dark: '#414559'
+  default-dark: '#202b3a'
 - id: nv-task-card-fg
-  title: رنگ متن کادر تسک انجام‌شده (مطالعه)
-  type: variable-themed-color
+  title: رنگ متن کادر تسک انجام‌شده
+  type: variable-color
   format: hex
   default-light: '#5B21B6'
-  default-dark: '#C6D0F5'
+  default-dark: '#e4ebf5'
 - id: nv-task-card-border
-  title: حاشیه کادر تسک انجام‌شده (مطالعه)
-  type: variable-themed-color
+  title: حاشیه کادر تسک انجام‌شده
+  type: variable-color
   format: hex
   default-light: '#C084FC'
-  default-dark: '#737994'
-- id: nv-workspace-details
-  title: جزئیات محیط / Workspace details
-  type: heading
-  level: 2
-  collapsed: true
-- id: nv-tab-size
-  title: اندازه متن تب
-  type: variable-number-slider
-  default: 12
-  min: 10
-  max: 18
-  step: 1
-  format: px
-- id: nv-nav-size
-  title: اندازه متن فایل‌ها
-  type: variable-number-slider
-  default: 13
-  min: 11
-  max: 20
-  step: 1
-  format: px
-- id: nv-input-height
-  title: ارتفاع ورودی‌ها
-  type: variable-number-slider
-  default: 32
-  min: 28
-  max: 48
-  step: 1
-  format: px
-- id: nv-modal-radius
-  title: گردی پنجره‌ها
-  type: variable-number-slider
-  default: 18
-  min: 0
-  max: 30
-  step: 1
-  format: px
-- id: nv-input-radius
-  title: گردی ورودی‌ها
-  type: variable-number-slider
-  default: 8
-  min: 0
-  max: 24
-  step: 1
-  format: px
-- id: nv-button-radius
-  title: گردی دکمه‌ها
-  type: variable-number-slider
-  default: 8
-  min: 0
-  max: 24
-  step: 1
-  format: px
-- id: nv-metadata-padding
-  title: فاصله داخلی Properties
-  type: variable-number-slider
-  default: 14
-  min: 4
-  max: 28
-  step: 1
-  format: px
-- id: nv-metadata-radius
-  title: گردی Properties
-  type: variable-number-slider
-  default: 12
-  min: 0
-  max: 28
-  step: 1
-  format: px
-- id: nv-embed-padding
-  title: فاصله داخلی Embed
-  type: variable-number-slider
-  default: 16
-  min: 4
-  max: 32
-  step: 1
-  format: px
-- id: nv-nav-item-background-active
-  title: زمینه فایل فعال
-  type: variable-themed-color
+  default-dark: '#50647b'
+- id: nv-task-card-hover-bg
+  title: زمینه کادر تسک هنگام بردن نشانگر (Hover)
+  type: variable-color
   format: hex
-  default-light: '#dfedf2'
-  default-dark: '#213746'
-- id: nv-tab-background-active
-  title: زمینه تب فعال
-  type: variable-themed-color
-  format: hex
-  default-light: '#fbfcfe'
-  default-dark: '#151d29'
-- id: nv-status-bar-background
-  title: زمینه نوار وضعیت
-  type: variable-themed-color
-  format: hex
-  default-light: '#edf2f7'
-  default-dark: '#101722'
-- id: nv-hide-status
-  title: پنهان‌کردن نوار وضعیت
-  type: class-toggle
-  default: false
-- id: nv-hide-ribbon
-  title: پنهان‌کردن Ribbon دسکتاپ
-  type: class-toggle
-  default: false
-- id: nv-no-shadows
-  title: حذف سایه‌ها
-  type: class-toggle
-  default: false
-- id: nv-media
-  title: رسانه و نمودار / Media & diagrams
-  type: heading
-  level: 2
-  collapsed: true
-- id: nv-graph-node
-  title: گره Graph
-  type: variable-themed-color
-  format: hex
-  default-light: '#506479'
-  default-dark: '#a7bad0'
-- id: nv-graph-line
-  title: خط Graph
-  type: variable-themed-color
-  format: hex
-  default-light: '#afc0d1'
-  default-dark: '#435771'
-- id: nv-graph-text
-  title: متن Graph
-  type: variable-themed-color
-  format: hex
-  default-light: '#223347'
-  default-dark: '#dce6f2'
-- id: nv-canvas-background
-  title: زمینه Canvas
-  type: variable-themed-color
-  format: hex
-  default-light: '#edf2f7'
-  default-dark: '#101722'
-- id: nv-canvas-dot-pattern
-  title: نقطه‌های Canvas
-  type: variable-themed-color
-  format: hex
-  default-light: '#afc0d1'
-  default-dark: '#435771'
-- id: nv-media-radius
-  title: گردی تصویر و ویدئو
-  type: variable-number-slider
-  default: 8
-  min: 0
-  max: 32
-  step: 1
-  format: px
-- id: nv-folder-colors-off
-  title: غیرفعال‌کردن رنگ پوشه‌ها
-  type: class-toggle
-  default: false
-- id: nv-folder-preset
-  title: طرح آماده رنگ پوشه‌ها / Folder palette
+  default-light: '#E8F5E9'
+  default-dark: '#263A32'
+- id: nv-checkbox-shape
+  title: شکل چک‌باکس / Checkbox shape
   type: class-select
   allowEmpty: false
-  default: nv-folder-preset-pastel
+  default: nv-cb-shape-rounded
   options:
-  - label: پاستلی / Pastel
-    value: nv-folder-preset-pastel
-  - label: پررنگ / Vibrant
-    value: nv-folder-preset-vibrant
-  - label: اقیانوسی / Ocean
-    value: nv-folder-preset-ocean
-  - label: طبیعت / Earth
-    value: nv-folder-preset-earth
-  - label: تک‌رنگ / Monochrome
-    value: nv-folder-preset-mono
-- id: nv-folder-custom-colors
-  title: استفاده از رنگ‌های دلخواه / Custom folder colors
+  - label: گرد ملایم (پیش‌فرض)
+    value: nv-cb-shape-rounded
+  - label: مربع
+    value: nv-cb-shape-square
+  - label: دایره کامل
+    value: nv-cb-shape-circle
+  - label: لوزی
+    value: nv-cb-shape-diamond
+  - label: ستاره
+    value: nv-cb-shape-star
+- id: nv-checkbox-radius
+  title: گردی گوشه چک‌باکس
+  type: variable-number-slider
+  default: 6
+  min: 0
+  max: 12
+  step: 1
+  format: px
+- id: nv-checkbox-bg-unchecked
+  title: زمینه چک‌باکس تیک‌نخورده
+  type: variable-color
+  format: hex
+  default-light: '#F5F3FF'
+  default-dark: '#242e3d'
+- id: nv-checkbox-border-unchecked
+  title: حاشیه چک‌باکس تیک‌نخورده
+  type: variable-color
+  format: hex
+  default-light: '#A78BFA'
+  default-dark: '#879bb3'
+- id: nv-checkbox-bg-checked
+  title: زمینه چک‌باکس تیک‌خورده (پایه گرادیان)
+  type: variable-color
+  format: hex
+  default-light: '#7C3AED'
+  default-dark: '#8b5cf6'
+- id: nv-checkbox-bg-checked-2
+  title: زمینه چک‌باکس تیک‌خورده (رنگ دوم گرادیان)
+  type: variable-color
+  format: hex
+  default-light: '#A78BFA'
+  default-dark: '#c4b5fd'
+- id: nv-checkbox-border-checked
+  title: حاشیه چک‌باکس تیک‌خورده
+  type: variable-color
+  format: hex
+  default-light: '#7C3AED'
+  default-dark: '#a78bfa'
+- id: nv-checkbox-mark-color
+  title: رنگ تیک داخل چک‌باکس
+  type: variable-color
+  format: hex
+  default-light: '#FFFFFF'
+  default-dark: '#111827'
+- id: nv-checkbox-hover-bg
+  title: زمینه چک‌باکس در Hover
+  type: variable-color
+  format: hex
+  default-light: '#EDE9FE'
+  default-dark: '#302a45'
+- id: nv-checkbox-hover-border
+  title: حاشیه چک‌باکس در Hover
+  type: variable-color
+  format: hex
+  default-light: '#8B5CF6'
+  default-dark: '#c4b5fd'
+- id: nv-checkbox-focus-ring
+  title: رنگ حلقه فوکوس چک‌باکس
+  type: variable-color
+  format: hex
+  default-light: '#8B5CF6'
+  default-dark: '#c4b5fd'
+- id: nv-cb-offset-top
+  title: تنظیم تراز عمودی چک‌باکس / Checkbox vertical alignment
+  type: variable-number-slider
+  default: 0
+  min: -0.5
+  max: 0.5
+  step: 0.05
+  format: em
+- id: nv-cb-offset-inline
+  title: فاصله چک‌باکس از کنار کادر (افقی)
+  type: variable-number-slider
+  default: 0.65
+  min: 0
+  max: 2
+  step: 0.05
+  format: em
+- id: nv-cb-size
+  title: اندازه دقیق چک‌باکس
+  type: variable-number-slider
+  default: 17
+  min: 12
+  max: 26
+  step: 1
+  format: px
+- id: nv-cb-glow
+  title: افکت درخشش هنگام تیک‌خوردن
   type: class-toggle
-  default: false
-- id: nv-folder-color-1
-  title: رنگ ۱ / Folder color 1
-  type: variable-themed-color
+  default: true
+- id: nv-list-bullet-color
+  title: رنگ نشانگر فهرست (Bullet)
+  type: variable-color
   format: hex
-  default-light: '#F38BA8'
-  default-dark: '#F38BA8'
-- id: nv-folder-color-2
-  title: رنگ ۲ / Folder color 2
-  type: variable-themed-color
-  format: hex
-  default-light: '#EBA0AC'
-  default-dark: '#EBA0AC'
-- id: nv-folder-color-3
-  title: رنگ ۳ / Folder color 3
-  type: variable-themed-color
-  format: hex
-  default-light: '#FAB387'
-  default-dark: '#FAB387'
-- id: nv-folder-color-4
-  title: رنگ ۴ / Folder color 4
-  type: variable-themed-color
-  format: hex
-  default-light: '#F9E2AF'
-  default-dark: '#F9E2AF'
-- id: nv-folder-color-5
-  title: رنگ ۵ / Folder color 5
-  type: variable-themed-color
-  format: hex
-  default-light: '#A6E3A1'
-  default-dark: '#A6E3A1'
-- id: nv-folder-color-6
-  title: رنگ ۶ / Folder color 6
-  type: variable-themed-color
-  format: hex
-  default-light: '#94E2D5'
-  default-dark: '#94E2D5'
-- id: nv-folder-color-7
-  title: رنگ ۷ / Folder color 7
-  type: variable-themed-color
-  format: hex
-  default-light: '#89DCEB'
-  default-dark: '#89DCEB'
-- id: nv-folder-color-8
-  title: رنگ ۸ / Folder color 8
-  type: variable-themed-color
-  format: hex
-  default-light: '#74C7EC'
-  default-dark: '#74C7EC'
-- id: nv-folder-color-9
-  title: رنگ ۹ / Folder color 9
-  type: variable-themed-color
+  default-light: '#186d84'
+  default-dark: '#9adbe5'
+- id: nv-list-bullet-shape
+  title: شکل نشانگر فهرست
+  type: class-select
+  allowEmpty: false
+  default: nv-bullet-circle
+  options:
+  - label: دایره (پیش‌فرض)
+    value: nv-bullet-circle
+  - label: مربع
+    value: nv-bullet-square
+  - label: لوزی
+    value: nv-bullet-diamond
+- id: nv-list-bullet-size
+  title: اندازه نشانگر فهرست
+  type: variable-number-slider
+  default: 0.34
+  min: 0.2
+  max: 0.6
+  step: 0.02
+  format: em
+
+- id: nv-folders
+  title: رنگ پوشه‌ها / Folder colors
+  type: heading
+  level: 2
+  collapsed: true
+- id: nv-folder-colors-enabled
+  title: فعال‌سازی رنگ پوشه‌ها
+  type: class-toggle
+  default: true
+- id: nv-folder-color-mode
+  title: حالت رنگ‌آمیزی پوشه‌ها
+  type: class-select
+  allowEmpty: false
+  default: nv-folder-mode-cycle
+  options:
+  - label: چرخش خودکار رنگین‌کمانی (پیش‌فرض)
+    value: nv-folder-mode-cycle
+  - label: تک‌رنگ (همه یک رنگ)
+    value: nv-folder-mode-solid
+  - label: پاستلی ملایم (Soft Pastel)
+    value: nv-folder-mode-pastel
+  - label: بر اساس عمق (زیرپوشه‌ها روشن‌تر)
+    value: nv-folder-mode-depth
+- id: nv-folder-solid-color
+  title: رنگ یکدست پوشه‌ها (حالت تک‌رنگ)
+  type: variable-color
   format: hex
   default-light: '#89B4FA'
-  default-dark: '#89B4FA'
-- id: nv-folder-color-10
-  title: رنگ ۱۰ / Folder color 10
-  type: variable-themed-color
+  default-dark: '#a5c8ff'
+- id: nv-folder-label-color-2
+  title: رنگ متن پوشه
+  type: variable-color
   format: hex
-  default-light: '#B4BEFE'
-  default-dark: '#B4BEFE'
-- id: nv-folder-color-11
-  title: رنگ ۱۱ / Folder color 11
-  type: variable-themed-color
-  format: hex
-  default-light: '#CBA6F7'
-  default-dark: '#CBA6F7'
-- id: nv-folder-label-color
-  title: رنگ نوشته پوشه‌ها / Folder label color
-  type: variable-themed-color
-  format: hex
-  default-light: '#263449'
-  default-dark: '#263449'
-- id: nv-folder-opacity
-  title: شفافیت رنگ پوشه‌ها / Folder color opacity
+  default-light: '#1a1a2e'
+  default-dark: '#1a1a2e'
+- id: nv-folder-hover-brightness
+  title: شدت تغییر روشنایی هنگام Hover
   type: variable-number-slider
-  default: 28
-  min: 5
-  max: 85
+  default: 92
+  min: 70
+  max: 115
   step: 1
-  format: '%'
 - id: nv-folder-radius
-  title: گردی گوشه پوشه‌ها / Folder corner radius
+  title: گردی گوشه پوشه‌ها
   type: variable-number-slider
   default: 10
   min: 0
   max: 24
   step: 1
   format: px
+- id: nv-folder-color-1
+  title: رنگ ۱
+  type: variable-color
+  format: hex
+  default-light: '#F38BA8'
+  default-dark: '#ff9fba'
+- id: nv-folder-color-2
+  title: رنگ ۲
+  type: variable-color
+  format: hex
+  default-light: '#EBA0AC'
+  default-dark: '#f5b1bd'
+- id: nv-folder-color-3
+  title: رنگ ۳
+  type: variable-color
+  format: hex
+  default-light: '#FAB387'
+  default-dark: '#ffc29c'
+- id: nv-folder-color-4
+  title: رنگ ۴
+  type: variable-color
+  format: hex
+  default-light: '#F9E2AF'
+  default-dark: '#ffe3a6'
+- id: nv-folder-color-5
+  title: رنگ ۵
+  type: variable-color
+  format: hex
+  default-light: '#A6E3A1'
+  default-dark: '#b7efad'
+- id: nv-folder-color-6
+  title: رنگ ۶
+  type: variable-color
+  format: hex
+  default-light: '#94E2D5'
+  default-dark: '#a8eee1'
+- id: nv-folder-color-7
+  title: رنگ ۷
+  type: variable-color
+  format: hex
+  default-light: '#89DCEB'
+  default-dark: '#a2e8f3'
+- id: nv-folder-color-8
+  title: رنگ ۸
+  type: variable-color
+  format: hex
+  default-light: '#74C7EC'
+  default-dark: '#91d9f7'
+- id: nv-folder-color-9
+  title: رنگ ۹
+  type: variable-color
+  format: hex
+  default-light: '#89B4FA'
+  default-dark: '#a5c8ff'
+- id: nv-folder-color-10
+  title: رنگ ۱۰
+  type: variable-color
+  format: hex
+  default-light: '#B4BEFE'
+  default-dark: '#c7ceff'
+- id: nv-folder-color-11
+  title: رنگ ۱۱
+  type: variable-color
+  format: hex
+  default-light: '#CBA6F7'
+  default-dark: '#d9b8ff'
+
 - id: nv-extra
   title: تنظیمات تکمیلی / Extra
   type: heading
@@ -1175,6 +1576,18 @@ settings:
   title: راست‌به‌چپ کردن محتوای همه یادداشت‌ها
   type: class-toggle
   default: false
+- id: nv-image-shadow
+  title: سایه زیر تصاویر یادداشت‌ها
+  type: class-toggle
+  default: false
+- id: nv-image-max-height
+  title: حداکثر ارتفاع تصاویر
+  type: variable-number-slider
+  default: 600
+  min: 200
+  max: 1200
+  step: 50
+  format: px
 - id: nv-mobile-input-height
   title: ارتفاع ورودی در موبایل
   type: variable-number-slider
@@ -1185,8 +1598,12 @@ settings:
   format: px
 */
 
-/* 01 · Shared design tokens */
-body {
+/* ============================================================
+   01 · Root defaults (Allows instant Style Settings live-reload!)
+    Placing default values on :root ensures that Style Settings
+   variables injected onto `body` are NEVER overridden by the theme.
+   ============================================================ */
+:root {
   --nv-radius: 12px;
   --nv-line-width: 760px;
   --nv-line-height: 1.85;
@@ -1195,42 +1612,58 @@ body {
   --nv-s: 72%;
   --nv-nav-height: 32px;
   --nv-panel-gap: 8px;
-  --radius-s: calc(var(--nv-radius) * .45);
-  --radius-m: calc(var(--nv-radius) * .7);
-  --radius-l: var(--nv-radius);
-  --radius-xl: calc(var(--nv-radius) * 1.5);
-  --input-radius: var(--radius-m);
-  --button-radius: var(--radius-m);
+  --nv-sidebar-transparency: 100;
+  --nv-task-card-offset: 2.25em;
+  --nv-task-card-pad-end: 0.85em;
+  --nv-task-card-radius: 15px;
+  --nv-folder-hover-brightness: 92;
+  --nv-folder-radius: 10px;
+  --nv-cb-size: 17px;
+  --nv-checkbox-radius: 6px;
+  --nv-cb-offset-top: 0em;
+  --nv-cb-offset-inline: 0.65em;
+}
+
+body {
+  --radius-s: calc(var(--nv-radius, 12px) * .45);
+  --radius-m: calc(var(--nv-radius, 12px) * .7);
+  --radius-l: var(--nv-radius, 12px);
+  --radius-xl: calc(var(--nv-radius, 12px) * 1.5);
+  --input-radius: var(--nv-input-radius, var(--radius-m));
+  --button-radius: var(--nv-button-radius, var(--radius-m));
   --tab-radius: var(--radius-m);
   --tab-radius-active: var(--radius-m);
-  --modal-radius: var(--radius-xl);
+  --modal-radius: var(--nv-modal-radius, var(--radius-xl));
   --menu-radius: var(--radius-l);
   --popover-radius: var(--radius-l);
-  --checkbox-radius: 6px;
-  --checkbox-size: 17px;
-  --file-line-width: var(--nv-line-width);
-  --line-height-normal: var(--nv-line-height);
+  --checkbox-radius: var(--nv-checkbox-radius, 6px);
+  --checkbox-size: var(--nv-cb-size, 17px);
+  --file-line-width: var(--nv-line-width, 760px);
+  --line-height-normal: var(--nv-line-height, 1.85);
   --line-height-tight: 1.5;
-  --p-spacing: var(--nv-paragraph-space);
+  --p-spacing: var(--nv-paragraph-space, 1rem);
   --heading-spacing: 1.7em;
-  --h1-size: 2em;
-  --h2-size: 1.6em;
-  --h3-size: 1.3em;
-  --h4-size: 1.14em;
-  --h5-size: 1.04em;
-  --h6-size: .97em;
-  --h1-weight: 750;
-  --h2-weight: 700;
-  --h3-weight: 650;
-  --h4-weight: 650;
-  --h5-weight: 650;
-  --h6-weight: 600;
-  --h1-line-height: 1.5;
-  --h2-line-height: 1.5;
-  --h3-line-height: 1.6;
-  --h4-line-height: 1.6;
-  --h5-line-height: 1.6;
-  --h6-line-height: 1.6;
+
+  --font-ui-small: var(--nv-ui-size, 13px);
+  --bold-weight: var(--nv-bold-weight, 700);
+  --h1-size: var(--nv-h1-size, 2em);
+  --h1-weight: var(--nv-h1-weight, 750);
+  --h1-line-height: var(--nv-h1-line-height, 1.5);
+  --h2-size: var(--nv-h2-size, 1.6em);
+  --h2-weight: var(--nv-h2-weight, 700);
+  --h2-line-height: var(--nv-h2-line-height, 1.5);
+  --h3-size: var(--nv-h3-size, 1.3em);
+  --h3-weight: var(--nv-h3-weight, 650);
+  --h3-line-height: var(--nv-h3-line-height, 1.6);
+  --h4-size: var(--nv-h4-size, 1.14em);
+  --h4-weight: var(--nv-h4-weight, 650);
+  --h4-line-height: var(--nv-h4-line-height, 1.6);
+  --h5-size: var(--nv-h5-size, 1.04em);
+  --h5-weight: var(--nv-h5-weight, 650);
+  --h5-line-height: var(--nv-h5-line-height, 1.6);
+  --h6-size: var(--nv-h6-size, 0.97em);
+  --h6-weight: var(--nv-h6-weight, 600);
+  --h6-line-height: var(--nv-h6-line-height, 1.6);
   --h1-variant: normal;
   --h2-variant: normal;
   --h3-variant: normal;
@@ -1239,56 +1672,66 @@ body {
   --h6-variant: normal;
   --h5-style: normal;
   --h6-style: normal;
-  --bold-weight: 700;
+
   --link-decoration: none;
   --link-decoration-hover: underline;
   --link-external-decoration: underline;
   --link-external-filter: none;
   --link-unresolved-opacity: .8;
   --link-unresolved-decoration-style: dotted;
-  --tag-radius: 6px;
+
+  --tag-radius: var(--nv-tag-radius, 6px);
   --tag-padding-x: .5em;
   --tag-padding-y: .12em;
-  --tag-size: .82em;
+  --tag-size: var(--nv-tag-size, 0.82em);
   --tag-border-width: 1px;
-  --code-size: .87em;
-  --code-radius: var(--radius-m);
+
+  --code-size: var(--nv-code-size, 0.87em);
+  --code-radius: var(--nv-code-radius, var(--radius-m));
   --code-white-space: pre;
-  --blockquote-border-thickness: 3px;
+
+  --blockquote-border-thickness: var(--nv-quote-border, 3px);
   --blockquote-border-color: var(--interactive-accent);
   --blockquote-font-style: normal;
-  --callout-radius: var(--radius-l);
-  --callout-border-width: 1px;
-  --callout-border-opacity: .22;
-  --callout-padding: 14px 18px;
+
+  --callout-radius: var(--nv-callout-radius, var(--radius-l));
+  --callout-border-width: var(--nv-callout-border, 1px);
+  --callout-border-opacity: var(--nv-callout-opacity, 0.22);
+  --callout-padding: var(--nv-callout-pad-y, 14px) var(--nv-callout-pad-x, 18px);
   --callout-title-padding: 0;
   --callout-content-padding: 6px 0 0;
-  --table-border-width: 1px;
+
+  --table-border-width: var(--nv-table-border-width, 1px);
   --table-cell-vertical-alignment: top;
-  --table-header-weight: 650;
+  --table-header-weight: var(--nv-table-header-bold, 650);
   --table-header-size: var(--font-text-size);
   --table-white-space: normal;
-  --table-line-height: 1.65;
+  --table-line-height: var(--nv-table-line-height, 1.65);
   --table-column-min-width: 100px;
-  --table-row-last-border-width: 1px;
-  --table-column-last-border-width: 1px;
+  --table-row-last-border-width: var(--nv-table-border-width, 1px);
+  --table-column-last-border-width: var(--nv-table-border-width, 1px);
   --table-selection-border-width: 2px;
-  --list-indent: 1.8em;
-  --list-spacing: .25em;
-  --list-marker-color: var(--text-accent);
-  --list-marker-color-collapsed: var(--text-accent);
+
+  --list-indent: var(--nv-list-indent, 1.8em);
+  --list-spacing: var(--nv-list-gap, 0.25em);
+  --list-marker-color: var(--nv-list-bullet-color, var(--text-accent));
+  --list-marker-color-collapsed: var(--nv-list-bullet-color, var(--text-accent));
   --list-bullet-radius: 50%;
-  --list-bullet-size: .34em;
+  --list-bullet-size: var(--nv-list-bullet-size, 0.34em);
   --indentation-guide-width: 1px;
-  --nav-item-size: 13px;
+
+  --nav-item-size: var(--nv-nav-size, 13px);
   --nav-item-padding: 5px 10px;
   --nav-item-radius: var(--radius-m);
   --nav-indentation-guide-width: 1px;
   --nav-collapse-icon-color: var(--text-faint);
-  --tab-font-size: 12px;
+
+  --tab-font-size: var(--nv-tab-size, 12px);
   --tab-font-weight: 550;
   --tab-text-color-active: var(--text-normal);
   --tab-text-color-focused-active: var(--text-normal);
+  --input-height: var(--nv-input-height, 32px);
+
   --titlebar-background: var(--background-secondary);
   --titlebar-background-focused: var(--background-secondary);
   --workspace-background-translucent: var(--background-secondary);
@@ -1305,11 +1748,11 @@ body {
   --scrollbar-thumb-bg: var(--background-modifier-border-hover);
   --scrollbar-bg: transparent;
   --embed-border-start: 2px solid var(--interactive-accent);
-  --embed-padding: 12px 18px;
+  --embed-padding: var(--nv-embed-padding, 12px 18px);
   --embed-background: var(--background-secondary);
   --metadata-border-width: 1px;
-  --metadata-border-radius: var(--radius-l);
-  --metadata-padding: 14px;
+  --metadata-border-radius: var(--nv-metadata-radius, var(--radius-l));
+  --metadata-padding: var(--nv-metadata-padding, 14px);
   --metadata-gap: 6px;
   --metadata-property-radius: var(--radius-s);
   --metadata-label-text-color: var(--text-muted);
@@ -1328,16 +1771,35 @@ body {
   --canvas-dot-pattern: var(--nv-canvas-dot-pattern, var(--background-modifier-border-hover));
   --pdf-background: var(--background-secondary);
   --pdf-page-background: white;
-}
-body.nv-mint { --nv-h: 157; --nv-s: 55%; }
-body.nv-lavender { --nv-h: 262; --nv-s: 58%; }
-body.nv-rose { --nv-h: 338; --nv-s: 65%; }
-body.nv-amber { --nv-h: 34; --nv-s: 86%; }
-body.nv-slate { --nv-h: 215; --nv-s: 26%; }
-body.nv-compact { --nv-nav-height: 27px; --nav-item-padding: 3px 8px; --nv-panel-gap: 5px; }
-body.nv-spacious { --nv-nav-height: 38px; --nav-item-padding: 8px 12px; --nv-panel-gap: 12px; }
 
-/* 02 · Day and night: distinct surface + foreground pairs */
+}
+body, .theme-light, .theme-dark {
+  /* Checkbox dynamic variables */
+  --nv-cb-bg-unchecked: var(--nv-checkbox-bg-unchecked, var(--background-modifier-form-field));
+  --nv-cb-border-unchecked: var(--nv-checkbox-border-unchecked, var(--text-faint));
+  --nv-cb-bg-checked: var(--nv-checkbox-bg-checked, #7C3AED);
+  --nv-cb-bg-checked-2: var(--nv-checkbox-bg-checked-2, #A78BFA);
+  --nv-cb-border-checked: var(--nv-checkbox-border-checked, var(--nv-cb-bg-checked));
+  --nv-cb-mark: var(--nv-checkbox-mark-color, var(--text-on-accent));
+  --nv-cb-hover-bg: var(--nv-checkbox-hover-bg, var(--background-modifier-hover));
+  --nv-cb-hover-border: var(--nv-checkbox-hover-border, var(--nv-cb-bg-checked));
+  --nv-cb-focus-ring: var(--nv-checkbox-focus-ring, var(--nv-cb-bg-checked));
+}
+
+body.nv-ocean    { --nv-h: 190; --nv-s: 72%; }
+body.nv-mint     { --nv-h: 157; --nv-s: 55%; }
+body.nv-lavender { --nv-h: 262; --nv-s: 58%; }
+body.nv-rose     { --nv-h: 338; --nv-s: 65%; }
+body.nv-amber    { --nv-h: 34;  --nv-s: 86%; }
+body.nv-slate    { --nv-h: 215; --nv-s: 26%; }
+
+body.nv-compact     { --nv-nav-height: 27px; --nav-item-padding: 3px 8px; --nv-panel-gap: 5px; }
+body.nv-comfortable { --nv-nav-height: 32px; --nav-item-padding: 5px 10px; --nv-panel-gap: 8px; }
+body.nv-spacious    { --nv-nav-height: 38px; --nav-item-padding: 8px 12px; --nv-panel-gap: 12px; }
+
+/* ============================================================
+   02 · Day and night: distinct surface + foreground pairs
+   ============================================================ */
 .theme-light {
   color-scheme: light;
   --nv-accent-l: 33%;
@@ -1382,6 +1844,7 @@ body.nv-spacious { --nv-nav-height: 38px; --nav-item-padding: 8px 12px; --nv-pan
   --text-highlight-fg: var(--nv-custom-text-highlight-fg, #433600);
   --nv-glow: hsla(var(--nv-h), 55%, 70%, .13);
 }
+
 .theme-dark {
   color-scheme: dark;
   --nv-accent-l: 74%;
@@ -1426,11 +1889,18 @@ body.nv-spacious { --nv-nav-height: 38px; --nav-item-padding: 8px 12px; --nv-pan
   --text-highlight-fg: var(--nv-custom-text-highlight-fg, #fff1b6);
   --nv-glow: hsla(var(--nv-h), 60%, 60%, .055);
 }
+
 body:not(.nv-native-accent) {
   --accent-h: var(--nv-h);
   --accent-s: var(--nv-s);
   --accent-l: var(--nv-accent-l);
 }
+body.nv-custom-accent-enabled {
+  --accent-h: var(--nv-custom-accent-h, 190);
+  --accent-s: var(--nv-custom-accent-s, 72%);
+  --accent-l: var(--nv-custom-accent-l, var(--nv-accent-l));
+}
+
 body {
   --text-accent: var(--color-accent);
   --text-accent-hover: var(--color-accent-1);
@@ -1474,11 +1944,11 @@ body {
   --code-string: var(--nv-code-string, var(--color-green));
   --code-tag: var(--color-red);
   --code-value: var(--nv-code-value, var(--color-orange));
-  --checkbox-color: var(--interactive-accent);
-  --checkbox-color-hover: var(--interactive-accent-hover);
-  --checkbox-border-color: var(--text-faint);
-  --checkbox-border-color-hover: var(--interactive-accent);
-  --checkbox-marker-color: var(--text-on-accent);
+  --checkbox-color: var(--nv-cb-bg-checked, var(--interactive-accent));
+  --checkbox-color-hover: var(--nv-cb-hover-border, var(--interactive-accent-hover));
+  --checkbox-border-color: var(--nv-cb-border-unchecked, var(--text-faint));
+  --checkbox-border-color-hover: var(--nv-cb-hover-border, var(--interactive-accent));
+  --checkbox-marker-color: var(--nv-cb-mark, var(--text-on-accent));
   --checklist-done-decoration: none;
   --checklist-done-color: var(--nv-task-done-color, var(--text-muted));
   --table-background: var(--background-primary);
@@ -1504,7 +1974,579 @@ body {
   --search-result-background: var(--background-primary);
 }
 
-/* 03 · Workbench: preserve native layout, drag regions and hit targets */
+/* ============================================================
+   03 · Presets Implementation (Appearance, Reading, Surfaces, etc.)
+   ============================================================ */
+
+/* Overall Theme Presets */
+body.nv-preset-minimal {
+  --nv-shadow: none !important;
+  --nv-glow: transparent !important;
+  --radius-s: 4px;
+  --radius-m: 6px;
+  --radius-l: 8px;
+  --radius-xl: 10px;
+}
+body.nv-preset-minimal .markdown-source-view.mod-cm6,
+body.nv-preset-minimal .markdown-preview-view { background-image: none !important; }
+body.nv-preset-minimal .callout { box-shadow: none !important; }
+
+body.nv-preset-cozy {
+  --radius-s: 8px;
+  --radius-m: 12px;
+  --radius-l: 18px;
+  --radius-xl: 24px;
+  --nv-panel-gap: 10px;
+}
+body.nv-preset-sharp {
+  --radius-s: 0px;
+  --radius-m: 2px;
+  --radius-l: 3px;
+  --radius-xl: 4px;
+  --checkbox-radius: 2px;
+  --tag-radius: 3px;
+}
+
+/* Reading & Editor Layout Presets */
+body.nv-read-preset-standard {
+  --file-line-width: 760px;
+  --line-height-normal: 1.85;
+  --p-spacing: 1rem;
+}
+body.nv-read-preset-wide {
+  --file-line-width: 960px;
+  --line-height-normal: 2;
+  --p-spacing: 1.25rem;
+}
+body.nv-read-preset-compact {
+  --file-line-width: 680px;
+  --line-height-normal: 1.6;
+  --p-spacing: 0.75rem;
+}
+body.nv-read-preset-book {
+  --file-line-width: 720px;
+  --line-height-normal: 1.9;
+  --nv-paragraph-indent: 1.5em;
+}
+body.nv-read-preset-book .markdown-rendered p,
+body.nv-read-preset-book .markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-header):not(.HyperMD-codeblock):not(.HyperMD-list-line) {
+  text-align: justify;
+}
+
+/* Surface Color Presets */
+.theme-light.nv-surface-sepia {
+  --background-primary: #fbf7f0;
+  --background-primary-alt: #f3ece1;
+  --background-secondary: #efe6d8;
+  --background-secondary-alt: #e6dac8;
+  --background-modifier-hover: #e2d5c1;
+  --background-modifier-border: #d8c8b0;
+  --text-normal: #3b2f2f;
+  --text-muted: #6e5a4f;
+}
+.theme-dark.nv-surface-sepia {
+  --background-primary: #1f1b18;
+  --background-primary-alt: #27221e;
+  --background-secondary: #181512;
+  --background-secondary-alt: #12100e;
+  --background-modifier-hover: #332c27;
+  --background-modifier-border: #3d352e;
+  --text-normal: #e8dccb;
+  --text-muted: #b5a492;
+}
+.theme-dark.nv-surface-oled {
+  --background-primary: #000000;
+  --background-primary-alt: #0a0d12;
+  --background-secondary: #05070a;
+  --background-secondary-alt: #000000;
+  --background-modifier-border: #1e2631;
+  --text-normal: #edf2f7;
+}
+.theme-light.nv-surface-nord {
+  --background-primary: #eceff4;
+  --background-primary-alt: #e5e9f0;
+  --background-secondary: #d8dee9;
+  --text-normal: #2e3440;
+  --text-muted: #4c566a;
+}
+.theme-dark.nv-surface-nord {
+  --background-primary: #2e3440;
+  --background-primary-alt: #3b4252;
+  --background-secondary: #242933;
+  --background-modifier-border: #434c5e;
+  --text-normal: #eceff4;
+  --text-muted: #d8dee9;
+}
+
+/* Headings Presets */
+body.nv-plain-headings,
+body.nv-h-preset-mono {
+  --h1-color: var(--text-normal);
+  --h2-color: var(--text-normal);
+  --h3-color: var(--text-normal);
+  --h4-color: var(--text-normal);
+  --h5-color: var(--text-normal);
+  --h6-color: var(--text-muted);
+}
+body.nv-h-preset-accent {
+  --h1-color: var(--text-accent);
+  --h2-color: var(--text-accent);
+  --h3-color: color-mix(in srgb, var(--text-accent) 85%, var(--text-normal));
+  --h4-color: color-mix(in srgb, var(--text-accent) 70%, var(--text-normal));
+  --h5-color: var(--text-normal);
+  --h6-color: var(--text-muted);
+}
+body.nv-h-preset-compact {
+  --h1-size: 1.65em;
+  --h2-size: 1.4em;
+  --h3-size: 1.2em;
+  --h4-size: 1.08em;
+  --h5-size: 1em;
+  --h6-size: 0.92em;
+}
+
+/* Tag Shape Presets */
+body.nv-tag-preset-pill  { --tag-radius: 999px; --tag-padding-x: 0.75em; }
+body.nv-tag-preset-sharp { --tag-radius: 3px; }
+
+/* Table Presets */
+body.nv-table-preset-minimal {
+  --table-row-even-background: transparent;
+  --table-row-odd-background: transparent;
+}
+body.nv-table-preset-minimal :is(.markdown-rendered, .markdown-source-view.mod-cm6) :is(td, th) {
+  border-left: none !important;
+  border-right: none !important;
+}
+body.nv-table-preset-compact {
+  --nv-table-padding-x: 8px;
+  --nv-table-padding-y: 5px;
+  --table-line-height: 1.4;
+}
+
+/* Callout Presets */
+body.nv-callout-preset-border .callout {
+  border-width: 0;
+  border-inline-start-width: 4px;
+  border-radius: 4px var(--callout-radius) var(--callout-radius) 4px;
+  box-shadow: none;
+}
+body.nv-callout-preset-flat .callout {
+  box-shadow: none;
+  border-width: 1px;
+}
+
+/* Task Presets */
+body.nv-task-preset-minimal {
+  --checklist-done-decoration: line-through;
+}
+
+/* ============================================================
+   03B · Expanded presets (10 choices per major style section)
+   Variables are set on body so Reading View and Editing View inherit them.
+   ============================================================ */
+
+/* Expanded accent palettes */
+body.nv-emerald  { --nv-h: 151; --nv-s: 62%; }
+body.nv-ruby     { --nv-h: 350; --nv-s: 68%; }
+body.nv-azure    { --nv-h: 210; --nv-s: 78%; }
+body.nv-graphite { --nv-h: 220; --nv-s: 12%; }
+
+/* Expanded overall appearance presets */
+body.nv-preset-glass {
+  --nv-shadow: 0 8px 28px rgba(30, 50, 75, .10);
+  --nv-panel-gap: 9px;
+  --radius-s: 7px; --radius-m: 12px; --radius-l: 18px; --radius-xl: 22px;
+}
+body.nv-preset-classic {
+  --nv-shadow: 0 2px 8px rgba(40, 35, 25, .08);
+  --radius-s: 2px; --radius-m: 4px; --radius-l: 6px; --radius-xl: 8px;
+}
+body.nv-preset-geometric {
+  --nv-shadow: 0 3px 12px rgba(25, 45, 70, .12);
+  --radius-s: 3px; --radius-m: 6px; --radius-l: 9px; --radius-xl: 12px;
+}
+body.nv-preset-soft {
+  --nv-shadow: 0 5px 18px rgba(70, 80, 95, .08);
+  --radius-s: 10px; --radius-m: 15px; --radius-l: 21px; --radius-xl: 28px;
+}
+body.nv-preset-bold {
+  --nv-shadow: 0 4px 16px rgba(15, 25, 40, .20);
+  --radius-s: 2px; --radius-m: 5px; --radius-l: 8px; --radius-xl: 10px;
+  --nv-panel-gap: 6px;
+}
+body.nv-preset-compact {
+  --nv-shadow: 0 1px 4px rgba(20, 35, 50, .08);
+  --radius-s: 3px; --radius-m: 5px; --radius-l: 7px; --radius-xl: 9px;
+  --nv-panel-gap: 4px;
+}
+
+/* Expanded reading layouts: shared body variables are consumed by preview and CM6 */
+body.nv-read-preset-calm {
+  --file-line-width: 740px; --line-height-normal: 1.95; --p-spacing: 1.15rem;
+}
+body.nv-read-preset-research {
+  --file-line-width: 820px; --line-height-normal: 1.75; --p-spacing: .95rem;
+}
+body.nv-read-preset-journal {
+  --file-line-width: 700px; --line-height-normal: 2.05; --p-spacing: 1.35rem;
+}
+body.nv-read-preset-longform {
+  --file-line-width: 780px; --line-height-normal: 2.1; --p-spacing: 1.4rem;
+}
+body.nv-read-preset-mobile {
+  --file-line-width: 620px; --line-height-normal: 1.7; --p-spacing: .85rem;
+}
+/* Explicit per-view values: Obsidian may define layout variables on the view itself. */
+body.nv-read-preset-standard :is(.markdown-preview-view,.markdown-source-view.mod-cm6) {
+  --file-line-width:760px; --line-height-normal:1.85; --p-spacing:1rem;
+}
+body.nv-read-preset-wide :is(.markdown-preview-view,.markdown-source-view.mod-cm6) {
+  --file-line-width:960px; --line-height-normal:2; --p-spacing:1.25rem;
+}
+body.nv-read-preset-compact :is(.markdown-preview-view,.markdown-source-view.mod-cm6) {
+  --file-line-width:680px; --line-height-normal:1.6; --p-spacing:.75rem;
+}
+body.nv-read-preset-book :is(.markdown-preview-view,.markdown-source-view.mod-cm6) {
+  --file-line-width:720px; --line-height-normal:1.9; --p-spacing:1rem;
+}
+body.nv-read-preset-calm :is(.markdown-preview-view,.markdown-source-view.mod-cm6) {
+  --file-line-width:740px; --line-height-normal:1.95; --p-spacing:1.15rem;
+}
+body.nv-read-preset-research :is(.markdown-preview-view,.markdown-source-view.mod-cm6) {
+  --file-line-width:820px; --line-height-normal:1.75; --p-spacing:.95rem;
+}
+body.nv-read-preset-journal :is(.markdown-preview-view,.markdown-source-view.mod-cm6) {
+  --file-line-width:700px; --line-height-normal:2.05; --p-spacing:1.35rem;
+}
+body.nv-read-preset-longform :is(.markdown-preview-view,.markdown-source-view.mod-cm6) {
+  --file-line-width:780px; --line-height-normal:2.1; --p-spacing:1.4rem;
+}
+body.nv-read-preset-mobile :is(.markdown-preview-view,.markdown-source-view.mod-cm6) {
+  --file-line-width:620px; --line-height-normal:1.7; --p-spacing:.85rem;
+}
+
+/* Explicitly synchronize text rhythm in both editor and rendered notes */
+body:is(.nv-read-preset-calm,.nv-read-preset-research,.nv-read-preset-journal,.nv-read-preset-longform,.nv-read-preset-mobile)
+:is(.markdown-preview-view,.markdown-source-view.mod-cm6) {
+  --line-height-normal: inherit;
+  --p-spacing: inherit;
+}
+
+/* Expanded surface palettes, with paired light/dark values */
+.theme-light.nv-surface-snow {
+  --background-primary:#ffffff; --background-primary-alt:#f7f9fc; --background-secondary:#eef2f7;
+  --background-secondary-alt:#e6ecf3; --background-modifier-hover:#e5edf6; --background-modifier-border:#d6e0eb;
+  --text-normal:#243449; --text-muted:#60738a;
+}
+.theme-dark.nv-surface-snow {
+  --background-primary:#202a36; --background-primary-alt:#263342; --background-secondary:#19232e;
+  --background-secondary-alt:#151e28; --background-modifier-hover:#344456; --background-modifier-border:#405166;
+  --text-normal:#edf3fa; --text-muted:#b4c2d2;
+}
+.theme-light.nv-surface-sand {
+  --background-primary:#faf6ed; --background-primary-alt:#f3ecdf; --background-secondary:#eee5d5;
+  --background-secondary-alt:#e7dcc9; --background-modifier-hover:#e9ddc9; --background-modifier-border:#d8c9b2;
+  --text-normal:#40372b; --text-muted:#756653;
+}
+.theme-dark.nv-surface-sand {
+  --background-primary:#28231c; --background-primary-alt:#30291f; --background-secondary:#211c16;
+  --background-secondary-alt:#19150f; --background-modifier-hover:#3c3327; --background-modifier-border:#514433;
+  --text-normal:#f0e5d2; --text-muted:#c2b297;
+}
+.theme-light.nv-surface-forest {
+  --background-primary:#f2f7f1; --background-primary-alt:#e8f0e6; --background-secondary:#dfeade;
+  --background-secondary-alt:#d4e3d2; --background-modifier-hover:#d7e7d4; --background-modifier-border:#bfd3bd;
+  --text-normal:#263b2b; --text-muted:#58715e;
+}
+.theme-dark.nv-surface-forest {
+  --background-primary:#17251d; --background-primary-alt:#1d3024; --background-secondary:#111d16;
+  --background-secondary-alt:#0d1711; --background-modifier-hover:#2a4031; --background-modifier-border:#385342;
+  --text-normal:#e0f0e3; --text-muted:#a9c4ad;
+}
+.theme-light.nv-surface-marine {
+  --background-primary:#eff7fa; --background-primary-alt:#e4f0f5; --background-secondary:#d8e9f0;
+  --background-secondary-alt:#cde2eb; --background-modifier-hover:#d2e8f1; --background-modifier-border:#b8d2df;
+  --text-normal:#203b4b; --text-muted:#527184;
+}
+.theme-dark.nv-surface-marine {
+  --background-primary:#142632; --background-primary-alt:#1a303e; --background-secondary:#0f202a;
+  --background-secondary-alt:#0b1922; --background-modifier-hover:#284555; --background-modifier-border:#36596a;
+  --text-normal:#e0f2fa; --text-muted:#a7c6d5;
+}
+.theme-light.nv-surface-charcoal {
+  --background-primary:#e9edf1; --background-primary-alt:#e0e5ea; --background-secondary:#d4dbe2;
+  --background-secondary-alt:#cbd3dc; --background-modifier-hover:#d5dee7; --background-modifier-border:#b9c4d0;
+  --text-normal:#202a35; --text-muted:#526171;
+}
+.theme-dark.nv-surface-charcoal {
+  --background-primary:#171a1f; --background-primary-alt:#1e232a; --background-secondary:#11151a;
+  --background-secondary-alt:#0c1015; --background-modifier-hover:#2b323c; --background-modifier-border:#3a4552;
+  --text-normal:#e8edf3; --text-muted:#b0bac6;
+}
+.theme-light.nv-surface-lilac {
+  --background-primary:#f8f5fc; --background-primary-alt:#f0eafa; --background-secondary:#e9e1f5;
+  --background-secondary-alt:#dfd5ef; --background-modifier-hover:#e8ddf5; --background-modifier-border:#d1c3e4;
+  --text-normal:#352b48; --text-muted:#6b5b83;
+}
+.theme-dark.nv-surface-lilac {
+  --background-primary:#241d30; --background-primary-alt:#2d243b; --background-secondary:#1c1726;
+  --background-secondary-alt:#17121f; --background-modifier-hover:#3b3050; --background-modifier-border:#514267;
+  --text-normal:#eee6fa; --text-muted:#c2b2dc;
+}
+
+/* Expanded heading styles. Shared selectors target rendered Markdown and CM6 editor. */
+body.nv-h-preset-spectrum {
+  --h1-color:#d65a4a; --h2-color:#c17a2d; --h3-color:#9b8a2e;
+  --h4-color:#39866c; --h5-color:#3979a8; --h6-color:#8066aa;
+}
+body.nv-h-preset-classic {
+  --h1-color:var(--text-normal); --h2-color:var(--text-normal); --h3-color:var(--text-normal);
+  --h4-color:var(--text-muted); --h5-color:var(--text-muted); --h6-color:var(--text-faint);
+  --h1-weight:800; --h2-weight:750;
+}
+body.nv-h-preset-minimal {
+  --h1-color:var(--text-normal); --h2-color:var(--text-normal); --h3-color:var(--text-normal);
+  --h4-color:var(--text-normal); --h5-color:var(--text-muted); --h6-color:var(--text-muted);
+  --h1-weight:650; --h2-weight:650; --h3-weight:600;
+}
+body.nv-h-preset-bold {
+  --h1-weight:900; --h2-weight:850; --h3-weight:800; --h4-weight:750;
+  --h1-color:var(--text-accent); --h2-color:var(--text-accent);
+}
+body.nv-h-preset-underline :is(.markdown-rendered,.markdown-source-view.mod-cm6) :is(h1,h2,h3,h4,h5,h6,.HyperMD-header) {
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb,var(--text-accent) 45%,transparent);
+  text-underline-offset: .22em;
+  text-decoration-thickness: 1px;
+}
+body.nv-h-preset-numbered :is(.markdown-rendered,.markdown-source-view.mod-cm6) :is(h1,h2,h3,h4,h5,h6,.HyperMD-header) {
+  border-inline-start: 3px solid var(--text-accent);
+  padding-inline-start: .55em;
+}
+
+/* Expanded tag styles */
+body.nv-tag-preset-soft { --tag-radius: 8px; --tag-padding-x: .55em; }
+body.nv-tag-preset-outline :is(.tag,.cm-hashtag) { background:transparent; border:1px solid var(--tag-color); }
+body.nv-tag-preset-color :is(.tag,.cm-hashtag) { background:color-mix(in srgb,var(--tag-color) 14%,var(--background-secondary)); }
+body.nv-tag-preset-minimal { --tag-radius: 2px; --tag-padding-x: .35em; }
+body.nv-tag-preset-contrast :is(.tag,.cm-hashtag) { color:var(--text-on-accent); background:var(--interactive-accent); }
+body.nv-tag-preset-compact { --tag-radius: 4px; --tag-padding-x: .4em; }
+body.nv-tag-preset-raised :is(.tag,.cm-hashtag) { box-shadow:0 2px 5px rgba(0,0,0,.14); }
+
+/* Expanded table styles apply to preview tables and CM6 table editor */
+body.nv-table-preset-striped :is(.markdown-rendered,.markdown-source-view.mod-cm6) tr:nth-child(even) {
+  background:var(--background-secondary);
+}
+body.nv-table-preset-lines :is(.markdown-rendered,.markdown-source-view.mod-cm6) :is(td,th) {
+  border-inline:0; border-top:0; border-radius:0;
+}
+body.nv-table-preset-borderless :is(.markdown-rendered,.markdown-source-view.mod-cm6) :is(table,td,th) {
+  border:0 !important;
+}
+body.nv-table-preset-cards :is(.markdown-rendered,.markdown-source-view.mod-cm6) table {
+  border-collapse:separate; border-spacing:0 5px;
+}
+body.nv-table-preset-cards :is(.markdown-rendered,.markdown-source-view.mod-cm6) td {
+  background:var(--background-secondary);
+}
+body.nv-table-preset-readable { --table-line-height:1.8; --nv-table-padding-x:14px; --nv-table-padding-y:11px; }
+body.nv-table-preset-spacious { --nv-table-padding-x:18px; --nv-table-padding-y:13px; --table-line-height:1.8; }
+body.nv-table-preset-dense { --nv-table-padding-x:5px; --nv-table-padding-y:3px; --table-line-height:1.25; }
+
+/* Expanded callout styles */
+body.nv-callout-preset-tinted .callout { background:color-mix(in srgb,rgb(var(--callout-color)) 10%,var(--background-primary)); }
+body.nv-callout-preset-outline .callout { background:transparent; border:1px solid var(--callout-color); box-shadow:none; }
+body.nv-callout-preset-raised .callout { box-shadow:0 6px 18px rgba(0,0,0,.12); }
+body.nv-callout-preset-rounded .callout { border-radius:18px; }
+body.nv-callout-preset-compact .callout { padding:8px 12px; margin-block:8px; }
+body.nv-callout-preset-ghost .callout { background:transparent; border-color:transparent; box-shadow:none; }
+body.nv-callout-preset-classic .callout { border-radius:2px; box-shadow:none; border:1px solid var(--background-modifier-border); }
+/* ============================================================
+   03C · Modern & Luxury Task Presets + Dynamic Checkbox Sync
+   ============================================================ */
+
+body, .theme-light, .theme-dark {
+  --nv-cb-bg-unchecked: var(--nv-checkbox-bg-unchecked, var(--preset-cb-bg-unchecked, var(--background-modifier-form-field)));
+  --nv-cb-border-unchecked: var(--nv-checkbox-border-unchecked, var(--preset-cb-border-unchecked, var(--text-faint)));
+  --nv-cb-bg-checked: var(--nv-checkbox-bg-checked, var(--preset-cb-checked, #6366F1));
+  --nv-cb-bg-checked-2: var(--nv-checkbox-bg-checked-2, var(--preset-cb-checked-2, color-mix(in oklab, var(--nv-cb-bg-checked) 65%, #ffffff)));
+  --nv-cb-border-checked: var(--nv-checkbox-border-checked, var(--preset-cb-border-checked, var(--nv-cb-bg-checked)));
+  --nv-cb-mark: var(--nv-checkbox-mark-color, #ffffff);
+  --nv-cb-hover-bg: var(--nv-checkbox-hover-bg, color-mix(in srgb, var(--nv-cb-bg-checked) 14%, transparent));
+  --nv-cb-hover-border: var(--nv-checkbox-hover-border, var(--nv-cb-bg-checked));
+  --nv-cb-focus-ring: var(--nv-checkbox-focus-ring, var(--nv-cb-bg-checked));
+}
+
+/* 1. هماهنگ با رنگ چک‌باکس (با ترکیب رنگ Oklab برای جلوگیری از کدر شدن رنگ انتخابی شما) */
+body.nv-task-preset-synced.theme-light {
+  --nv-task-card-bg: linear-gradient(135deg, color-mix(in oklab, var(--nv-cb-bg-checked) 14%, #ffffff) 0%, color-mix(in oklab, var(--nv-cb-bg-checked-2) 8%, #ffffff) 100%);
+  --nv-task-card-fg: color-mix(in oklab, var(--nv-cb-bg-checked) 72%, #0f172a);
+  --nv-task-card-border: color-mix(in oklab, var(--nv-cb-bg-checked) 32%, transparent);
+}
+body.nv-task-preset-synced.theme-dark {
+  --nv-task-card-bg: linear-gradient(135deg, color-mix(in srgb, var(--nv-cb-bg-checked) 22%, transparent) 0%, color-mix(in srgb, var(--nv-cb-bg-checked) 9%, transparent) 100%);
+  --nv-task-card-fg: color-mix(in oklab, var(--nv-cb-bg-checked) 32%, #ffffff);
+  --nv-task-card-border: color-mix(in srgb, var(--nv-cb-bg-checked) 45%, transparent);
+}
+
+/* 2. کارت رنگی ماکان (Electric Cyan & Indigo — گرادیان مدرن فیروزه‌ای-نیلی) */
+body.nv-task-preset-card.theme-light {
+  --preset-cb-checked: #0284C7; --preset-cb-checked-2: #38BDF8; --preset-cb-border-checked: #0369A1;
+  --preset-cb-border-unchecked: #7DD3FC; --preset-cb-bg-unchecked: #F0F9FF;
+  --nv-task-card-bg: linear-gradient(135deg, rgba(14, 165, 233, 0.13) 0%, rgba(99, 102, 241, 0.06) 100%);
+  --nv-task-card-fg: #0369A1;
+  --nv-task-card-border: rgba(14, 165, 233, 0.32);
+}
+body.nv-task-preset-card.theme-dark {
+  --preset-cb-checked: #0EA5E9; --preset-cb-checked-2: #67E8F9; --preset-cb-border-checked: #38BDF8;
+  --preset-cb-border-unchecked: #1E3A5F; --preset-cb-bg-unchecked: rgba(14, 165, 233, 0.08);
+  --nv-task-card-bg: linear-gradient(135deg, rgba(14, 165, 233, 0.20) 0%, rgba(56, 189, 248, 0.06) 100%);
+  --nv-task-card-fg: #E0F2FE;
+  --nv-task-card-border: rgba(56, 189, 248, 0.38);
+}
+
+/* 3. کارت سبز زمردی (Mint & Neon Jade — سبز نعنایی زنده و شاداب) */
+body.nv-task-preset-emerald.theme-light {
+  --preset-cb-checked: #059669; --preset-cb-checked-2: #34D399; --preset-cb-border-checked: #047857;
+  --preset-cb-border-unchecked: #6EE7B7; --preset-cb-bg-unchecked: #ECFDF5;
+  --nv-task-card-bg: linear-gradient(135deg, rgba(16, 185, 129, 0.14) 0%, rgba(20, 184, 166, 0.05) 100%);
+  --nv-task-card-fg: #065F46;
+  --nv-task-card-border: rgba(16, 185, 129, 0.32);
+}
+body.nv-task-preset-emerald.theme-dark {
+  --preset-cb-checked: #10B981; --preset-cb-checked-2: #6EE7B7; --preset-cb-border-checked: #34D399;
+  --preset-cb-border-unchecked: #134E4A; --preset-cb-bg-unchecked: rgba(16, 185, 129, 0.08);
+  --nv-task-card-bg: linear-gradient(135deg, rgba(16, 185, 129, 0.20) 0%, rgba(45, 212, 191, 0.06) 100%);
+  --nv-task-card-fg: #D1FAE5;
+  --nv-task-card-border: rgba(52, 211, 153, 0.38);
+}
+
+/* 4. آبی آرام (Cobalt & Sky — آبی استودیویی شیک به سبک Linear) */
+body.nv-task-preset-blue.theme-light {
+  --preset-cb-checked: #4F46E5; --preset-cb-checked-2: #60A5FA; --preset-cb-border-checked: #4338CA;
+  --preset-cb-border-unchecked: #93C5FD; --preset-cb-bg-unchecked: #EEF2FF;
+  --nv-task-card-bg: linear-gradient(135deg, rgba(79, 70, 229, 0.12) 0%, rgba(59, 130, 246, 0.05) 100%);
+  --nv-task-card-fg: #3730A3;
+  --nv-task-card-border: rgba(99, 102, 241, 0.30);
+}
+body.nv-task-preset-blue.theme-dark {
+  --preset-cb-checked: #6366F1; --preset-cb-checked-2: #93C5FD; --preset-cb-border-checked: #818CF8;
+  --preset-cb-border-unchecked: #312E81; --preset-cb-bg-unchecked: rgba(99, 102, 241, 0.08);
+  --nv-task-card-bg: linear-gradient(135deg, rgba(99, 102, 241, 0.22) 0%, rgba(59, 130, 246, 0.07) 100%);
+  --nv-task-card-fg: #E0E7FF;
+  --nv-task-card-border: rgba(129, 140, 248, 0.40);
+}
+
+/* 5. بنفش (Cosmic Amethyst — گرادیان بنفش و یاسی لوکس) */
+body.nv-task-preset-violet.theme-light {
+  --preset-cb-checked: #7C3AED; --preset-cb-checked-2: #E879F9; --preset-cb-border-checked: #6D28D9;
+  --preset-cb-border-unchecked: #D8B4FE; --preset-cb-bg-unchecked: #FAF5FF;
+  --nv-task-card-bg: linear-gradient(135deg, rgba(139, 92, 246, 0.13) 0%, rgba(217, 70, 239, 0.05) 100%);
+  --nv-task-card-fg: #5B21B6;
+  --nv-task-card-border: rgba(168, 85, 247, 0.32);
+}
+body.nv-task-preset-violet.theme-dark {
+  --preset-cb-checked: #9333EA; --preset-cb-checked-2: #F0ABFC; --preset-cb-border-checked: #C084FC;
+  --preset-cb-border-unchecked: #4C1D95; --preset-cb-bg-unchecked: rgba(168, 85, 247, 0.08);
+  --nv-task-card-bg: linear-gradient(135deg, rgba(168, 85, 247, 0.22) 0%, rgba(232, 121, 249, 0.06) 100%);
+  --nv-task-card-fg: #F3E8FF;
+  --nv-task-card-border: rgba(192, 132, 252, 0.40);
+}
+
+/* 6. کهربایی (Sunset Gold & Peach — طلایی و هلویی گرم و دلنشین) */
+body.nv-task-preset-amber.theme-light {
+  --preset-cb-checked: #EA580C; --preset-cb-checked-2: #FBBF24; --preset-cb-border-checked: #D97706;
+  --preset-cb-border-unchecked: #FDBA74; --preset-cb-bg-unchecked: #FFF7ED;
+  --nv-task-card-bg: linear-gradient(135deg, rgba(245, 158, 11, 0.15) 0%, rgba(249, 115, 22, 0.05) 100%);
+  --nv-task-card-fg: #9A3412;
+  --nv-task-card-border: rgba(245, 158, 11, 0.36);
+}
+body.nv-task-preset-amber.theme-dark {
+  --preset-cb-checked: #F59E0B; --preset-cb-checked-2: #FDE047; --preset-cb-border-checked: #FBBF24;
+  --preset-cb-border-unchecked: #78350F; --preset-cb-bg-unchecked: rgba(245, 158, 11, 0.08);
+  --nv-task-card-bg: linear-gradient(135deg, rgba(245, 158, 11, 0.20) 0%, rgba(251, 146, 60, 0.06) 100%);
+  --nv-task-card-fg: #FEF3C7;
+  --nv-task-card-border: rgba(251, 191, 36, 0.38);
+}
+
+/* 7. صورتی (Sakura & Coral — صورتی مرجانی لطیف و مدرن) */
+body.nv-task-preset-rose.theme-light {
+  --preset-cb-checked: #E11D48; --preset-cb-checked-2: #FB7185; --preset-cb-border-checked: #BE123C;
+  --preset-cb-border-unchecked: #FDA4AF; --preset-cb-bg-unchecked: #FFF1F2;
+  --nv-task-card-bg: linear-gradient(135deg, rgba(244, 63, 94, 0.13) 0%, rgba(251, 113, 133, 0.05) 100%);
+  --nv-task-card-fg: #9F1239;
+  --nv-task-card-border: rgba(244, 63, 94, 0.32);
+}
+body.nv-task-preset-rose.theme-dark {
+  --preset-cb-checked: #F43F5E; --preset-cb-checked-2: #FDA4AF; --preset-cb-border-checked: #FB7185;
+  --preset-cb-border-unchecked: #881337; --preset-cb-bg-unchecked: rgba(244, 63, 94, 0.08);
+  --nv-task-card-bg: linear-gradient(135deg, rgba(244, 63, 94, 0.22) 0%, rgba(251, 113, 133, 0.06) 100%);
+  --nv-task-card-fg: #FFE4E6;
+  --nv-task-card-border: rgba(251, 113, 133, 0.40);
+}
+
+/* 8. خط دور (Neon Glass Outline — شیشه‌ای با حاشیه درخشان) */
+body.nv-task-preset-outline {
+  --nv-task-card-bg: linear-gradient(135deg, color-mix(in srgb, var(--nv-cb-bg-checked) 6%, transparent) 0%, transparent 100%);
+  --nv-task-card-fg: var(--nv-cb-bg-checked);
+  --nv-task-card-border: color-mix(in srgb, var(--nv-cb-bg-checked) 65%, transparent);
+}
+body.theme-dark.nv-task-preset-outline {
+  --nv-task-card-fg: color-mix(in oklab, var(--nv-cb-bg-checked) 35%, #ffffff);
+}
+
+/* 9. فشرده (Compact Glass) */
+body.nv-task-preset-compact.theme-light {
+  --nv-cb-size: 15px;
+  --nv-task-card-bg: linear-gradient(135deg, color-mix(in oklab, var(--nv-cb-bg-checked) 12%, #ffffff) 0%, color-mix(in oklab, var(--nv-cb-bg-checked-2) 6%, #ffffff) 100%);
+  --nv-task-card-fg: color-mix(in oklab, var(--nv-cb-bg-checked) 75%, #0f172a);
+  --nv-task-card-border: color-mix(in oklab, var(--nv-cb-bg-checked) 30%, transparent);
+}
+body.nv-task-preset-compact.theme-dark {
+  --nv-cb-size: 15px;
+  --nv-task-card-bg: linear-gradient(135deg, color-mix(in srgb, var(--nv-cb-bg-checked) 20%, transparent) 0%, color-mix(in srgb, var(--nv-cb-bg-checked) 7%, transparent) 100%);
+  --nv-task-card-fg: color-mix(in oklab, var(--nv-cb-bg-checked) 32%, #ffffff);
+  --nv-task-card-border: color-mix(in srgb, var(--nv-cb-bg-checked) 42%, transparent);
+}
+
+/* 10. بدون کارت (Plain) */
+body.nv-task-preset-plain {
+  --nv-task-card-bg: transparent;
+  --nv-task-card-fg: var(--nv-task-done-color, var(--text-muted));
+  --nv-task-card-border: transparent;
+}
+/* ============================================================
+   03C · Task color synchronization
+   Keep completed-task cards, borders and hover states in the same
+   color family as the currently selected checkbox color. The rule
+   applies to both Reading View and CM6 Live Preview / Editing View.
+   Choose “Custom (manual card colors)” to use the three manual card-color controls.
+   ============================================================ */
+body:is(.nv-task-preset-card, .nv-task-preset-emerald, .nv-task-preset-blue,
+        .nv-task-preset-violet, .nv-task-preset-amber, .nv-task-preset-rose,
+        .nv-task-preset-compact, .nv-task-preset-synced) {
+  --nv-task-card-bg: color-mix(in srgb, var(--nv-cb-bg-checked) 11%, var(--background-primary));
+  --nv-task-card-fg: var(--text-normal);
+  --nv-task-card-border: color-mix(in srgb, var(--nv-cb-bg-checked) 42%, var(--background-modifier-border));
+}
+body.theme-dark:is(.nv-task-preset-card, .nv-task-preset-emerald, .nv-task-preset-blue,
+                   .nv-task-preset-violet, .nv-task-preset-amber, .nv-task-preset-rose,
+                   .nv-task-preset-compact, .nv-task-preset-synced) {
+  --nv-task-card-bg: color-mix(in srgb, var(--nv-cb-bg-checked) 20%, var(--background-primary));
+  --nv-task-card-fg: var(--text-normal);
+  --nv-task-card-border: color-mix(in srgb, var(--nv-cb-bg-checked) 48%, var(--background-modifier-border));
+}
+body.nv-task-preset-synced {
+  --nv-task-card-bg: color-mix(in srgb, var(--nv-cb-bg-checked) 11%, var(--background-primary));
+}
+body.theme-dark.nv-task-preset-synced {
+  --nv-task-card-bg: color-mix(in srgb, var(--nv-cb-bg-checked) 20%, var(--background-primary));
+}
+
+/* ============================================================
+   04 · Workbench: preserve native layout, drag regions & targets
+   ============================================================ */
 .workspace { background: var(--background-secondary); }
 .workspace-split.mod-root > .workspace-leaf-resize-handle { background: transparent; }
 .workspace-split.mod-root .workspace-tabs .workspace-leaf {
@@ -1517,8 +2559,13 @@ body:not(.is-mobile) .workspace-split.mod-root .workspace-tabs .workspace-tab-co
   overflow: hidden;
 }
 .workspace-tab-header.is-active { box-shadow: inset 0 2px var(--interactive-accent); }
+body.nv-tab-indicator-top    .workspace-tab-header.is-active { box-shadow: inset 0 2px var(--interactive-accent); }
+body.nv-tab-indicator-bottom .workspace-tab-header.is-active { box-shadow: inset 0 -2px var(--interactive-accent); }
+body.nv-tab-indicator-side   .workspace-tab-header.is-active { box-shadow: inset 2px 0 var(--interactive-accent); }
+
 .workspace-tab-header-inner-title { letter-spacing: .01em; }
 .view-header { border-bottom: 1px solid var(--background-modifier-border); }
+body.nv-header-shadow .view-header { box-shadow: 0 2px 8px var(--background-modifier-box-shadow); }
 .view-header-title { font-weight: 650; }
 .view-header-breadcrumb { color: var(--text-muted); }
 .workspace-ribbon { border-inline-end: 1px solid var(--background-modifier-border); }
@@ -1540,7 +2587,28 @@ body[dir="rtl"] .nav-file-title.is-active { box-shadow: inset -2px 0 var(--inter
 .status-bar { color: var(--text-muted); font-size: 11px; }
 .status-bar-item { padding-inline: 8px; }
 
-/* 04 · Forms, dialogs and command palette */
+/* Sidebar opacity & Focus mode */
+.workspace-split.mod-left-split,
+.workspace-split.mod-right-split {
+  opacity: calc(var(--nv-sidebar-transparency, 100) / 100);
+  transition: opacity 150ms ease;
+}
+body.nv-focus .workspace-split.mod-left-split,
+body.nv-focus .workspace-split.mod-right-split {
+  opacity: calc(min(var(--nv-sidebar-transparency, 65), 65) / 100);
+}
+body.nv-focus .workspace-split.mod-left-split:is(:hover, :focus-within),
+body.nv-focus .workspace-split.mod-right-split:is(:hover, :focus-within) {
+  opacity: 1;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: var(--nv-scrollbar-width, 8px); height: var(--nv-scrollbar-width, 8px); }
+::-webkit-scrollbar-thumb { background: var(--nv-scrollbar-thumb, var(--scrollbar-thumb-bg)); border-radius: 999px; }
+
+/* ============================================================
+   05 · Forms, dialogs and command palette
+   ============================================================ */
 button, input, textarea, select, .dropdown { font-family: inherit; }
 button:not(.clickable-icon) { font-weight: 550; }
 button.mod-cta { color: var(--text-on-accent); }
@@ -1576,56 +2644,182 @@ input[type="range"] { accent-color: var(--interactive-accent); }
 .tooltip { line-height: 1.6; border-radius: var(--radius-m); }
 .notice { border: 1px solid var(--background-modifier-border); border-radius: var(--radius-l); }
 
-/* 05 · Editor and reading view */
+/* ============================================================
+   06 · Editor (Live Preview / Source) AND Reading View Parity
+   All settings apply seamlessly to BOTH Reading & Editing modes!
+   ============================================================ */
 .markdown-source-view.mod-cm6, .markdown-preview-view {
   background-image: radial-gradient(ellipse at 90% 0%, var(--nv-glow), transparent 55%);
 }
 .markdown-source-view.mod-cm6 .cm-scroller { font-kerning: normal; }
-.markdown-rendered { overflow-wrap: break-word; }
+.markdown-rendered,
+.markdown-source-view.mod-cm6 .cm-scroller {
+  overflow-wrap: break-word;
+}
+
+/* Text rendering in both modes */
+body.nv-render-legibility :is(.markdown-rendered, .markdown-source-view.mod-cm6) { text-rendering: optimizeLegibility; }
+body.nv-render-speed      :is(.markdown-rendered, .markdown-source-view.mod-cm6) { text-rendering: optimizeSpeed; }
+body.nv-render-auto       :is(.markdown-rendered, .markdown-source-view.mod-cm6) { text-rendering: auto; }
+
+/* Paragraph indent in both modes */
+.markdown-rendered p,
+.markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-header):not(.HyperMD-codeblock):not(.HyperMD-list-line):not(.HyperMD-quote) {
+  text-indent: var(--nv-paragraph-indent, 0);
+}
+
+/* Makan heading palette: same H1-H6 colors in Reading View and Editing View.
+   Values are driven by Style Settings variables so custom colors remain live. */
+.markdown-rendered h1,
+.markdown-source-view.mod-cm6 .cm-header-1,
+.markdown-source-view.mod-cm6 .HyperMD-header-1 { color: var(--nv-h1-color, #e91e63); }
+
+.markdown-rendered h2,
+.markdown-source-view.mod-cm6 .cm-header-2,
+.markdown-source-view.mod-cm6 .HyperMD-header-2 { color: var(--nv-h2-color, #9c27b0); }
+
+.markdown-rendered h3,
+.markdown-source-view.mod-cm6 .cm-header-3,
+.markdown-source-view.mod-cm6 .HyperMD-header-3 { color: var(--nv-h3-color, #03a9f4); }
+
+.markdown-rendered h4,
+.markdown-source-view.mod-cm6 .cm-header-4,
+.markdown-source-view.mod-cm6 .HyperMD-header-4 { color: var(--nv-h4-color, #4caf50); }
+
+.markdown-rendered h5,
+.markdown-source-view.mod-cm6 .cm-header-5,
+.markdown-source-view.mod-cm6 .HyperMD-header-5 { color: var(--nv-h5-color, #ff9800); }
+
+.markdown-rendered h6,
+.markdown-source-view.mod-cm6 .cm-header-6,
+.markdown-source-view.mod-cm6 .HyperMD-header-6 { color: var(--nv-h6-color, #795548); }
+
+/* Headings in both Reading and Editing modes */
 .inline-title { font-weight: 750; line-height: 1.5; margin-bottom: 1.1em; }
 .markdown-rendered h1,
 .markdown-source-view.mod-cm6 .HyperMD-header-1 {
   padding-block-end: .35em;
   border-bottom: 1px solid var(--background-modifier-border);
 }
-.markdown-rendered h1, .markdown-rendered h2, .markdown-rendered h3,
-.markdown-rendered h4, .markdown-rendered h5, .markdown-rendered h6 { letter-spacing: 0; }
-.markdown-rendered a { text-underline-offset: .22em; }
-.markdown-rendered a.internal-link { border-bottom: 1px solid currentColor; }
-.markdown-rendered a.is-unresolved { border-bottom: 1px dotted currentColor; }
+body.nv-no-heading-line .markdown-rendered h1,
+body.nv-no-heading-line .markdown-source-view.mod-cm6 .HyperMD-header-1 {
+  border-bottom: 0;
+}
+.markdown-rendered :is(h1,h2,h3,h4,h5,h6),
+.markdown-source-view.mod-cm6 :is(.HyperMD-header, .cm-header) {
+  letter-spacing: var(--nv-heading-letter-spacing, 0);
+}
+body.nv-headings-upper :is(.markdown-rendered :is(h1,h2,h3,h4,h5,h6), .markdown-source-view.mod-cm6 .HyperMD-header) { text-transform: uppercase; }
+body.nv-headings-lower :is(.markdown-rendered :is(h1,h2,h3,h4,h5,h6), .markdown-source-view.mod-cm6 .HyperMD-header) { text-transform: lowercase; }
+body.nv-headings-cap   :is(.markdown-rendered :is(h1,h2,h3,h4,h5,h6), .markdown-source-view.mod-cm6 .HyperMD-header) { text-transform: capitalize; }
+
+/* Justify & Hyphens in both modes */
+body.nv-justify-text .markdown-rendered p,
+body.nv-justify-text .markdown-rendered li,
+body.nv-justify-text .markdown-source-view.mod-cm6 .cm-line:not(.HyperMD-header):not(.HyperMD-codeblock) {
+  text-align: justify;
+}
+body.nv-hyphens .markdown-rendered p,
+body.nv-hyphens .markdown-source-view.mod-cm6 .cm-line {
+  hyphens: auto;
+}
+
+/* Links in both Reading and Editing modes */
+:is(.markdown-rendered a, .markdown-source-view.mod-cm6 .cm-hmd-internal-link, .markdown-source-view.mod-cm6 .cm-link, .markdown-source-view.mod-cm6 .cm-url) {
+  text-decoration-thickness: var(--nv-link-decoration-thickness, 1px) !important;
+  text-underline-offset: var(--nv-link-decoration-offset, 0.22em) !important;
+}
+body.nv-link-none :is(.markdown-rendered a, .markdown-source-view.mod-cm6 .cm-hmd-internal-link, .markdown-source-view.mod-cm6 .cm-link) {
+  text-decoration-line: none !important;
+  border-bottom: none !important;
+}
+body.nv-link-underline :is(.markdown-rendered a, .markdown-source-view.mod-cm6 .cm-hmd-internal-link, .markdown-source-view.mod-cm6 .cm-link) {
+  text-decoration-line: underline !important;
+  text-decoration-style: solid !important;
+  border-bottom: none !important;
+}
+body.nv-link-dashed :is(.markdown-rendered a, .markdown-source-view.mod-cm6 .cm-hmd-internal-link, .markdown-source-view.mod-cm6 .cm-link) {
+  text-decoration-line: underline !important;
+  text-decoration-style: dashed !important;
+  border-bottom: none !important;
+}
+body.nv-link-dotted :is(.markdown-rendered a, .markdown-source-view.mod-cm6 .cm-hmd-internal-link, .markdown-source-view.mod-cm6 .cm-link) {
+  text-decoration-line: underline !important;
+  text-decoration-style: dotted !important;
+  border-bottom: none !important;
+}
+body.nv-link-wavy :is(.markdown-rendered a, .markdown-source-view.mod-cm6 .cm-hmd-internal-link, .markdown-source-view.mod-cm6 .cm-link) {
+  text-decoration-line: underline !important;
+  text-decoration-style: wavy !important;
+  border-bottom: none !important;
+}
+
+/* Highlights */
 .markdown-rendered mark, .cm-s-obsidian span.cm-highlight {
   color: var(--text-highlight-fg);
   background: var(--text-highlight-bg);
   border-radius: 3px;
   padding-inline: .12em;
 }
-.markdown-rendered blockquote {
-  background: var(--background-primary-alt);
+
+/* Blockquotes in both Reading and Editing modes */
+.markdown-rendered blockquote,
+.markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote {
+  background: var(--nv-quote-bg, var(--background-primary-alt));
   border-radius: var(--radius-m);
-  padding-block: .7em;
+  padding-block: .4em;
   padding-inline: 1.2em;
+}
+.markdown-rendered blockquote {
+  padding-block: .7em;
   margin-inline: 0;
+}
+body:not(.nv-quote-bg-enabled) .markdown-rendered blockquote,
+body:not(.nv-quote-bg-enabled) .markdown-source-view.mod-cm6.is-live-preview .HyperMD-quote {
+  background: transparent;
+}
+body.nv-quote-italic .markdown-rendered blockquote,
+body.nv-quote-italic .markdown-source-view.mod-cm6 .HyperMD-quote {
+  font-style: italic;
+}
+body.nv-quote-normal .markdown-rendered blockquote,
+body.nv-quote-normal .markdown-source-view.mod-cm6 .HyperMD-quote {
+  font-style: normal;
 }
 .markdown-rendered blockquote > :first-child { margin-top: 0; }
 .markdown-rendered blockquote > :last-child { margin-bottom: 0; }
 .markdown-rendered hr { margin-block: 2em; }
-.markdown-rendered :not(pre) > code { padding: .15em .4em; border: 1px solid var(--background-modifier-border); }
+
+/* Code blocks & Inline code in both modes */
+.markdown-rendered :not(pre) > code,
+.markdown-source-view.mod-cm6 .cm-inline-code {
+  padding: .15em .4em;
+  border: 1px solid var(--background-modifier-border);
+  background: var(--nv-inline-code-bg, var(--code-background));
+  border-radius: 4px;
+}
 .markdown-rendered pre {
   border: 1px solid var(--background-modifier-border);
-  border-radius: var(--radius-l);
-  padding: 18px 20px;
+  border-width: var(--nv-code-border, 1px);
+  border-radius: var(--nv-code-radius, 8px);
+  padding: var(--nv-code-padding, 18px);
   direction: ltr;
   text-align: left;
+  line-height: var(--nv-code-line-height, 1.5);
 }
 .markdown-rendered pre code, .markdown-rendered :not(pre) > code { direction: ltr; unicode-bidi: isolate; }
-.markdown-source-view.mod-cm6 .HyperMD-codeblock { direction: ltr; text-align: left; }
+.markdown-source-view.mod-cm6 .HyperMD-codeblock {
+  direction: ltr;
+  text-align: left;
+  line-height: var(--nv-code-line-height, 1.5);
+}
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-begin {
-  border-radius: var(--radius-m) var(--radius-m) 0 0;
-  border-top: 1px solid var(--background-modifier-border);
+  border-radius: var(--nv-code-radius, 8px) var(--nv-code-radius, 8px) 0 0;
+  border-top: var(--nv-code-border, 1px) solid var(--background-modifier-border);
 }
 .markdown-source-view.mod-cm6 .cm-line.HyperMD-codeblock-end {
-  border-radius: 0 0 var(--radius-m) var(--radius-m);
-  border-bottom: 1px solid var(--background-modifier-border);
+  border-radius: 0 0 var(--nv-code-radius, 8px) var(--nv-code-radius, 8px);
+  border-bottom: var(--nv-code-border, 1px) solid var(--background-modifier-border);
 }
 .markdown-rendered button.copy-code-button { color: var(--text-muted); background: var(--background-secondary); }
 .markdown-rendered kbd {
@@ -1636,24 +2830,58 @@ input[type="range"] { accent-color: var(--interactive-accent); }
   padding: .12em .4em;
   color: var(--text-normal);
 }
-.markdown-rendered table { border-collapse: collapse; font-variant-numeric: tabular-nums; }
-.markdown-rendered th, .markdown-rendered td { padding: 10px 14px; }
-.markdown-rendered th { border-bottom: 2px solid var(--interactive-accent); }
+
+/* Tables in both Reading and Live Preview modes */
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) table {
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) :is(th, td),
+.markdown-rendered .dataview.table-view-table > tbody > tr > td {
+  padding: var(--nv-table-padding-y, 10px) var(--nv-table-padding-x, 14px);
+}
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) th {
+  border-bottom: 2px solid var(--interactive-accent);
+  font-weight: var(--nv-table-header-bold, 650);
+}
+body:not(.nv-table-zebra-stripes) :is(.markdown-rendered, .markdown-source-view.mod-cm6) tbody tr:nth-child(even) {
+  background: transparent;
+}
+body.nv-table-hover-highlight :is(.markdown-rendered, .markdown-source-view.mod-cm6) tbody tr:hover {
+  background: var(--background-modifier-hover);
+}
 .markdown-rendered td > :first-child { margin-top: 0; }
 .markdown-rendered td > :last-child { margin-bottom: 0; }
 .markdown-rendered .table-wrapper { overflow-x: auto; }
-.markdown-rendered input.task-list-item-checkbox { vertical-align: middle; }
-.markdown-rendered .task-list-item.is-checked { text-decoration: none; }
-.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"] { text-decoration: none; }
-.markdown-rendered li::marker { color: var(--list-marker-color); }
+
+/* Lists & Bullets in both Reading and Editing modes */
+.markdown-rendered li::marker { color: var(--nv-list-bullet-color, var(--list-marker-color)); }
+body.nv-bullet-circle  .markdown-rendered ul > li::marker { content: "•  "; }
+body.nv-bullet-square  .markdown-rendered ul > li::marker { content: "■  "; }
+body.nv-bullet-diamond .markdown-rendered ul > li::marker { content: "◆  "; }
+
+body.nv-bullet-square .markdown-source-view.mod-cm6 .list-bullet::after {
+  border-radius: 1px !important;
+}
+body.nv-bullet-diamond .markdown-source-view.mod-cm6 .list-bullet::after {
+  border-radius: 1px !important;
+  transform: rotate(45deg);
+}
+
+/* Footnotes, definitions, media & embeds */
 .markdown-rendered .footnotes { font-size: .9em; color: var(--text-muted); border-top: 1px solid var(--hr-color); }
 .markdown-rendered sup, .markdown-rendered sub { line-height: 0; }
 .markdown-rendered dl { border-inline-start: 2px solid var(--background-modifier-border); padding-inline-start: 1em; }
 .markdown-rendered dt { font-weight: 700; color: var(--text-accent); }
 .markdown-rendered dd { margin-inline-start: 1.3em; }
-.markdown-rendered img, .markdown-rendered video {
-  border-radius: var(--radius-m);
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) :is(img, video) {
+  border-radius: var(--nv-media-radius, var(--radius-m));
   max-width: 100%;
+  max-height: var(--nv-image-max-height, 600px);
+  object-fit: contain;
+}
+body.nv-image-shadow :is(.markdown-rendered, .markdown-source-view.mod-cm6) img {
+  box-shadow: var(--nv-shadow);
 }
 .markdown-rendered audio { width: 100%; margin-block: .75em; }
 .markdown-embed { border-radius: var(--radius-m); }
@@ -1664,21 +2892,22 @@ input[type="range"] { accent-color: var(--interactive-accent); }
 .markdown-rendered .mermaid { overflow-x: auto; background: var(--background-primary-alt); padding: 14px; border-radius: var(--radius-l); }
 .markdown-rendered .mermaid svg { max-width: 100%; height: auto; }
 
-/* 06 · Native semantic callouts, properties and canvas */
+/* ============================================================
+   07 · Native semantic callouts, properties and canvas
+   ============================================================ */
 .callout { box-shadow: 0 2px 8px var(--background-modifier-box-shadow); }
 .callout-title { gap: 10px; font-weight: 700; align-items: baseline; }
 .callout-icon { align-self: center; }
 .callout-content > :first-child { margin-top: .35em; }
 .callout-content > :last-child { margin-bottom: 0; }
 .callout .callout { margin-block: 12px; box-shadow: none; }
-.callout[data-callout="note"], .callout[data-callout="info"] { --callout-color: var(--color-blue-rgb); }
-.callout[data-callout="tip"], .callout[data-callout="hint"], .callout[data-callout="important"] { --callout-color: var(--color-cyan-rgb); }
-.callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"] { --callout-color: var(--color-green-rgb); }
-.callout[data-callout="warning"], .callout[data-callout="caution"], .callout[data-callout="attention"] { --callout-color: var(--color-orange-rgb); }
-.callout[data-callout="danger"], .callout[data-callout="error"], .callout[data-callout="failure"], .callout[data-callout="fail"], .callout[data-callout="missing"], .callout[data-callout="bug"] { --callout-color: var(--color-red-rgb); }
-.callout[data-callout="question"], .callout[data-callout="help"], .callout[data-callout="faq"] { --callout-color: var(--color-yellow-rgb); }
-.callout[data-callout="example"] { --callout-color: var(--color-purple-rgb); }
-.callout[data-callout="abstract"], .callout[data-callout="summary"], .callout[data-callout="tldr"] { --callout-color: var(--color-cyan-rgb); }
+.callout[data-callout="note"], .callout[data-callout="info"] { --callout-color: var(--nv-callout-note, var(--color-blue-rgb)); }
+.callout[data-callout="tip"], .callout[data-callout="hint"], .callout[data-callout="important"], .callout[data-callout="abstract"], .callout[data-callout="summary"], .callout[data-callout="tldr"] { --callout-color: var(--nv-callout-tip, var(--color-cyan-rgb)); }
+.callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"] { --callout-color: var(--nv-callout-success, var(--color-green-rgb)); }
+.callout[data-callout="warning"], .callout[data-callout="caution"], .callout[data-callout="attention"] { --callout-color: var(--nv-callout-warning, var(--color-orange-rgb)); }
+.callout[data-callout="danger"], .callout[data-callout="error"], .callout[data-callout="failure"], .callout[data-callout="fail"], .callout[data-callout="missing"], .callout[data-callout="bug"] { --callout-color: var(--nv-callout-danger, var(--color-red-rgb)); }
+.callout[data-callout="question"], .callout[data-callout="help"], .callout[data-callout="faq"] { --callout-color: var(--nv-callout-question, var(--color-yellow-rgb)); }
+.callout[data-callout="example"] { --callout-color: var(--nv-callout-example, var(--color-purple-rgb)); }
 .metadata-container { background: var(--background-primary-alt); margin-block: 0 24px; }
 .metadata-properties-heading { font-weight: 650; }
 .metadata-property-icon { color: var(--text-faint); }
@@ -1690,24 +2919,31 @@ input[type="range"] { accent-color: var(--interactive-accent); }
 .pdf-toolbar { background: var(--background-secondary); border-bottom: 1px solid var(--background-modifier-border); }
 .pdf-container { background: var(--pdf-background); }
 
-/* 07 · Conservative integrations; no universal selectors on plugin content */
+/* ============================================================
+   08 · Conservative plugin integrations & Opt-in classes
+   ============================================================ */
 .markdown-rendered .dataview.table-view-table { width: 100%; }
 .markdown-rendered .dataview.table-view-table > thead > tr > th { border-bottom: 2px solid var(--interactive-accent); }
-.markdown-rendered .dataview .table-view-table > tbody > tr > td { padding: 10px 14px; }
 .kanban-plugin__lane { background: var(--background-secondary); border: 1px solid var(--background-modifier-border); border-radius: var(--radius-l); }
 .kanban-plugin__item { background: var(--background-primary); border-radius: var(--radius-m); border: 1px solid var(--background-modifier-border); }
-.tasks-list-text { line-height: var(--nv-line-height); }
+.tasks-list-text { line-height: var(--line-height-normal); }
 .tasks-backlink { font-size: .85em; color: var(--text-muted); }
 .workspace-leaf-content[data-type="bases"] { --table-header-background: var(--background-secondary); }
 
-/* 08 · Opt-in per-note classes: cssclasses: [nv-rtl, nv-paper] */
-.nv-rtl.markdown-preview-view, .nv-rtl.markdown-source-view.mod-cm6 .cm-content {
+.nv-rtl.markdown-preview-view, .nv-rtl.markdown-source-view.mod-cm6 .cm-content,
+body.nv-all-rtl .markdown-preview-view, body.nv-all-rtl .markdown-source-view.mod-cm6 .cm-content {
   direction: rtl;
   text-align: start;
 }
-.nv-rtl.markdown-preview-view blockquote { border-left: 0; border-inline-start: var(--blockquote-border-thickness) solid var(--blockquote-border-color); }
-.nv-rtl.markdown-preview-view pre, .nv-rtl.markdown-preview-view .mermaid,
-.nv-rtl.markdown-source-view.mod-cm6 .HyperMD-codeblock { direction: ltr; text-align: left; }
+.nv-rtl.markdown-preview-view blockquote, body.nv-all-rtl .markdown-rendered blockquote {
+  border-left: 0;
+  border-inline-start: var(--blockquote-border-thickness) solid var(--blockquote-border-color);
+}
+.nv-rtl.markdown-preview-view pre, .nv-rtl.markdown-preview-view .mermaid, .nv-rtl.markdown-source-view.mod-cm6 .HyperMD-codeblock,
+body.nv-all-rtl .markdown-rendered pre, body.nv-all-rtl .markdown-rendered .mermaid, body.nv-all-rtl .markdown-source-view.mod-cm6 .HyperMD-codeblock {
+  direction: ltr;
+  text-align: left;
+}
 .nv-paper.markdown-preview-view .markdown-preview-sizer {
   padding: 32px;
   border: 1px solid var(--background-modifier-border);
@@ -1716,29 +2952,32 @@ input[type="range"] { accent-color: var(--interactive-accent); }
   box-shadow: var(--nv-shadow);
 }
 .nv-wide.markdown-preview-view, .nv-wide.markdown-source-view { --file-line-width: 1200px; }
-.nv-wide-tables .markdown-preview-view.is-readable-line-width .el-table,
-.nv-wide-tables .markdown-source-view.mod-cm6.is-readable-line-width .cm-table-widget {
+body.nv-wide-tables .markdown-preview-view.is-readable-line-width .el-table,
+body.nv-wide-tables .markdown-source-view.mod-cm6.is-readable-line-width .cm-embed-block:has(table),
+body.nv-wide-tables .markdown-source-view.mod-cm6.is-readable-line-width .cm-table-widget {
   width: 100%;
   max-width: 100%;
 }
-body.nv-plain-headings {
-  --h1-color: var(--text-normal); --h2-color: var(--text-normal);
-  --h3-color: var(--text-normal); --h4-color: var(--text-normal);
-  --h5-color: var(--text-normal); --h6-color: var(--text-normal);
-}
-.nv-no-heading-line .markdown-rendered h1,
-.nv-no-heading-line .markdown-source-view.mod-cm6 .HyperMD-header-1 { border-bottom: 0; }
-body.nv-square-tasks { --checkbox-radius: 2px; }
 body.nv-flat .markdown-source-view.mod-cm6,
 body.nv-flat .markdown-preview-view { background-image: none; }
-body.nv-focus .workspace-split.mod-left-split,
-body.nv-focus .workspace-split.mod-right-split { opacity: .65; transition: opacity 150ms ease; }
-body.nv-focus .workspace-split.mod-left-split:is(:hover, :focus-within),
-body.nv-focus .workspace-split.mod-right-split:is(:hover, :focus-within) { opacity: 1; }
+body.nv-no-shadows { --nv-shadow: none; }
+body.nv-no-shadows .callout { box-shadow: none; }
+body.nv-hide-status .status-bar { display: none; }
+body.nv-hide-ribbon:not(.is-mobile) .workspace-ribbon.mod-left { display: none; }
+
+body.nv-custom-fonts {
+  --font-text-theme: var(--nv-font-text, Vazirmatn, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  --font-interface-theme: var(--nv-font-ui, Vazirmatn, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
+  --font-monospace-theme: var(--nv-font-code, "SFMono-Regular", Consolas, "Liberation Mono", monospace);
+}
+body.nv-custom-text-size { --font-text-size: var(--nv-text-size, 16px); }
+
 .theme-dark.nv-high-contrast { --text-normal: #f2f6ff; --text-muted: #c2d0e2; --text-faint: #a7bad0; --background-modifier-border: #51647b; }
 .theme-light.nv-high-contrast { --text-normal: #101b2a; --text-muted: #30455c; --text-faint: #465b72; --background-modifier-border: #879eb4; }
 
-/* 09 · Mobile and accessibility */
+/* ============================================================
+   09 · Mobile and accessibility
+   ============================================================ */
 @media (max-width: 700px) {
   body { --nv-panel-gap: 0px; --metadata-padding: 10px; --callout-padding: 12px 14px; }
   .markdown-rendered th, .markdown-rendered td { padding: 8px 10px; }
@@ -1746,13 +2985,13 @@ body.nv-focus .workspace-split.mod-right-split:is(:hover, :focus-within) { opaci
   .modal:not(.mod-settings) .setting-item { flex-wrap: wrap; gap: 10px; }
   .modal:not(.mod-settings) .setting-item-control { flex-wrap: wrap; max-width: 100%; }
 }
-body.is-mobile { --input-height: 40px; --input-font-size: 16px; }
+body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); --input-font-size: 16px; }
 body.is-mobile .workspace-tab-header.is-active { box-shadow: none; }
 body.is-mobile .modal { border-radius: var(--modal-radius); }
 body.is-mobile .clickable-icon { min-width: 36px; min-height: 36px; }
 body.is-mobile.nv-focus .workspace-split { opacity: 1; }
 body.nv-no-motion { --anim-duration-superfast: 0ms; --anim-duration-fast: 0ms; --anim-duration-moderate: 0ms; --anim-duration-slow: 0ms; }
-body.nv-no-motion .workspace-split { transition: none; }
+body.nv-no-motion *, body.nv-no-motion *::before, body.nv-no-motion *::after { animation-duration: 0ms !important; transition-duration: 0ms !important; }
 @media (prefers-reduced-motion: reduce) {
   body { --anim-duration-superfast: 0ms; --anim-duration-fast: 0ms; --anim-duration-moderate: 0ms; --anim-duration-slow: 0ms; }
   body.nv-focus .workspace-split { transition: none; }
@@ -1762,106 +3001,508 @@ body.nv-no-motion .workspace-split { transition: none; }
   .markdown-rendered mark { background: Highlight; color: HighlightText; }
 }
 
-/* 10 · Extended Style Settings bindings */
-body {
- --font-ui-small: var(--nv-ui-size, 13px);
- --bold-weight: var(--nv-bold-weight, 700);
- --h1-size: var(--nv-h1-size, 2em);
- --h1-weight: var(--nv-h1-weight, 750);
- --h1-line-height: var(--nv-h1-line-height, 1.5);
- --h2-size: var(--nv-h2-size, 1.6em);
- --h2-weight: var(--nv-h2-weight, 700);
- --h2-line-height: var(--nv-h2-line-height, 1.5);
- --h3-size: var(--nv-h3-size, 1.3em);
- --h3-weight: var(--nv-h3-weight, 650);
- --h3-line-height: var(--nv-h3-line-height, 1.6);
- --h4-size: var(--nv-h4-size, 1.14em);
- --h4-weight: var(--nv-h4-weight, 650);
- --h4-line-height: var(--nv-h4-line-height, 1.6);
- --h5-size: var(--nv-h5-size, 1.04em);
- --h5-weight: var(--nv-h5-weight, 650);
- --h5-line-height: var(--nv-h5-line-height, 1.6);
- --h6-size: var(--nv-h6-size, 0.97em);
- --h6-weight: var(--nv-h6-weight, 600);
- --h6-line-height: var(--nv-h6-line-height, 1.6);
- --tag-radius: var(--nv-tag-radius, 6px);
- --tag-size: var(--nv-tag-size, 0.82em);
- --code-size: var(--nv-code-size, 0.87em);
- --table-border-width: var(--nv-table-border-width, 1px);
- --table-line-height: var(--nv-table-line-height, 1.65);
- --callout-radius: var(--nv-callout-radius, var(--radius-l));
- --callout-border-width: var(--nv-callout-border, 1px);
- --callout-border-opacity: var(--nv-callout-opacity, 0.22);
- --blockquote-border-thickness: var(--nv-quote-border, 3px);
- --callout-padding: var(--nv-callout-pad-y, 14px) var(--nv-callout-pad-x, 18px);
- --checkbox-size: var(--nv-task-size, 17px);
- --list-indent: var(--nv-list-indent, 1.8em);
- --list-spacing: var(--nv-list-gap, 0.25em);
- --tab-font-size: var(--nv-tab-size, 12px);
- --nav-item-size: var(--nv-nav-size, 13px);
- --input-height: var(--nv-input-height, 32px);
- --modal-radius: var(--nv-modal-radius, var(--radius-xl));
- --input-radius: var(--nv-input-radius, var(--radius-m));
- --button-radius: var(--nv-button-radius, var(--radius-m));
- --metadata-padding: var(--nv-metadata-padding, 14px);
- --metadata-border-radius: var(--nv-metadata-radius, var(--radius-l));
- --embed-padding: var(--nv-embed-padding, 16px);
-}
-body.nv-custom-accent-enabled {
- --accent-h: var(--nv-custom-accent-h, 190);
- --accent-s: var(--nv-custom-accent-s, 72%);
- --accent-l: var(--nv-custom-accent-l, var(--nv-accent-l));
+/* ============================================================
+   10 · Checkbox styling — Both Reading AND Live Preview Editor
+   ============================================================ */
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox {
+  width: var(--checkbox-size, 17px) !important;
+  height: var(--checkbox-size, 17px) !important;
+  border: 1.5px solid var(--nv-cb-border-unchecked) !important;
+  background: var(--nv-cb-bg-unchecked) !important;
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--nv-cb-border-unchecked) 12%, transparent);
+  vertical-align: middle;
+  transition: transform .25s cubic-bezier(.34, 1.56, .64, 1),
+              background-color .25s ease, border-color .25s ease,
+              box-shadow .25s ease !important;
 }
 
-.markdown-rendered pre { padding: var(--nv-code-padding, 18px); }
+/* Shape variants in both Reading & Editing */
+body.nv-cb-shape-rounded :is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox { border-radius: var(--checkbox-radius, 6px) !important; }
+body.nv-cb-shape-square  :is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox { border-radius: 2px !important; }
+body.nv-cb-shape-circle  :is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox { border-radius: 50% !important; }
+body.nv-cb-shape-diamond :is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox { border-radius: 4px !important; transform: rotate(45deg) !important; }
+body.nv-cb-shape-star    :is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox {
+  border-radius: 0 !important;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  border: 0 !important;
+}
+body.nv-cb-shape-diamond :is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:checked { transform: rotate(45deg) !important; }
+body.nv-cb-shape-diamond :is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox::after { transform: rotate(-45deg); }
 
-.markdown-rendered th, .markdown-rendered td, .markdown-rendered .dataview.table-view-table > tbody > tr > td { padding: var(--nv-table-padding-y, 10px) var(--nv-table-padding-x, 14px); }
-
-.markdown-rendered blockquote { background: var(--nv-quote-bg, var(--background-primary-alt)); }
-
-.callout[data-callout="note"], .callout[data-callout="info"] { --callout-color: var(--nv-callout-note, var(--color-blue-rgb)); }
-
-.callout[data-callout="tip"], .callout[data-callout="hint"], .callout[data-callout="important"], .callout[data-callout="abstract"], .callout[data-callout="summary"], .callout[data-callout="tldr"] { --callout-color: var(--nv-callout-tip, var(--color-cyan-rgb)); }
-
-.callout[data-callout="success"], .callout[data-callout="check"], .callout[data-callout="done"] { --callout-color: var(--nv-callout-success, var(--color-green-rgb)); }
-
-.callout[data-callout="warning"], .callout[data-callout="caution"], .callout[data-callout="attention"] { --callout-color: var(--nv-callout-warning, var(--color-orange-rgb)); }
-
-.callout[data-callout="danger"], .callout[data-callout="error"], .callout[data-callout="failure"], .callout[data-callout="fail"], .callout[data-callout="missing"], .callout[data-callout="bug"] { --callout-color: var(--nv-callout-danger, var(--color-red-rgb)); }
-
-.callout[data-callout="question"], .callout[data-callout="help"], .callout[data-callout="faq"] { --callout-color: var(--nv-callout-question, var(--color-yellow-rgb)); }
-
-.callout[data-callout="example"] { --callout-color: var(--nv-callout-example, var(--color-purple-rgb)); }
-
-body.nv-strike-done { --checklist-done-decoration: line-through; }
-body.nv-strike-done .markdown-rendered .task-list-item.is-checked,
-body.nv-strike-done .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"] { text-decoration: line-through; }
-
-body.nv-hide-status .status-bar { display: none; }
-
-body.nv-hide-ribbon:not(.is-mobile) .workspace-ribbon.mod-left { display: none; }
-
-body.nv-no-shadows { --nv-shadow: none; }
-body.nv-no-shadows .callout { box-shadow: none; }
-
-.markdown-rendered img, .markdown-rendered video { border-radius: var(--nv-media-radius, var(--radius-m)); }
-
-body.nv-all-rtl .markdown-preview-view,
-body.nv-all-rtl .markdown-source-view.mod-cm6 .cm-content { direction: rtl; text-align: start; }
-body.nv-all-rtl .markdown-rendered blockquote { border-left: 0; border-inline-start: var(--blockquote-border-thickness) solid var(--blockquote-border-color); }
-body.nv-all-rtl .markdown-rendered pre,
-body.nv-all-rtl .markdown-rendered .mermaid,
-body.nv-all-rtl .markdown-source-view.mod-cm6 .HyperMD-codeblock { direction: ltr; text-align: left; }
-
-body.nv-custom-fonts {
- --font-text-theme: var(--nv-font-text, Vazirmatn, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
- --font-interface-theme: var(--nv-font-ui, Vazirmatn, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif);
- --font-monospace-theme: var(--nv-font-code, "SFMono-Regular", Consolas, "Liberation Mono", monospace);
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:hover:not(:checked) {
+  border-color: var(--nv-cb-hover-border) !important;
+  background: var(--nv-cb-hover-bg) !important;
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--nv-cb-hover-border) 15%, transparent);
+  transform: scale(1.1);
 }
 
-body.nv-custom-text-size { --font-text-size: var(--nv-text-size, 16px); }
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:checked {
+  --checkbox-marker-color: var(--nv-cb-mark) !important;
+  background: linear-gradient(145deg,
+    var(--nv-cb-bg-checked-2) 0%,
+    var(--nv-cb-bg-checked) 55%,
+    var(--nv-cb-bg-checked) 100%) !important;
+  border-color: var(--nv-cb-border-checked) !important;
+  color: var(--nv-cb-mark) !important;
+  box-shadow: 0 2px 6px color-mix(in srgb, var(--nv-cb-bg-checked) 35%, transparent),
+              inset 0 1px 0 color-mix(in srgb, white 25%, transparent) !important;
+}
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:checked::after {
+  background-color: var(--nv-cb-mark) !important;
+}
 
-body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
+body.nv-cb-glow :is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:checked {
+  animation: makanReadingCheckBounce .45s cubic-bezier(.34, 1.56, .64, 1),
+             makanReadingCheckRipple .7s ease-out .1s;
+}
+body:not(.nv-cb-glow) :is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:checked {
+  animation: none;
+}
+
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:checked:hover {
+  background: linear-gradient(145deg,
+    var(--nv-cb-bg-checked-2) 0%,
+    var(--nv-cb-bg-checked) 100%) !important;
+  border-color: var(--nv-cb-border-checked) !important;
+  box-shadow: 0 3px 10px color-mix(in srgb, var(--nv-cb-bg-checked) 45%, transparent),
+              inset 0 1px 0 color-mix(in srgb, white 30%, transparent) !important;
+}
+
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:focus {
+  outline: none !important;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--nv-cb-focus-ring) 45%, transparent);
+}
+
+/* Strike-through option */
+.markdown-rendered .task-list-item.is-checked,
+.markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"] {
+  text-decoration: none;
+}
+body.nv-strike-done,
+body.nv-task-preset-minimal {
+  --checklist-done-decoration: line-through;
+}
+:is(body.nv-strike-done, body.nv-task-preset-minimal) .markdown-rendered .task-list-item.is-checked,
+:is(body.nv-strike-done, body.nv-task-preset-minimal) .markdown-source-view.mod-cm6 .HyperMD-task-line[data-task="x"] {
+  text-decoration: line-through !important;
+}
+
+/* ============================================================
+   11 · Completed task cards — Unified in Editing & Reading views
+   ============================================================ */
+@keyframes makanTaskEnter {
+  from { opacity: 0; transform: translateX(-10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes makanTaskEnterRTL {
+  from { opacity: 0; transform: translateX(10px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@keyframes makanReadingTaskSlide {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+@keyframes makanReadingTaskGlow {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--nv-cb-bg-checked) 45%, transparent); }
+  100% { box-shadow: 0 0 0 14px color-mix(in srgb, var(--nv-cb-bg-checked) 0%, transparent); }
+}
+@keyframes makanReadingTaskGlowDark {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--nv-cb-bg-checked) 42%, transparent); }
+  100% { box-shadow: 0 0 0 14px color-mix(in srgb, var(--nv-cb-bg-checked) 0%, transparent); }
+}
+@keyframes makanReadingShine {
+  0% { transform: translateX(-140%) skewX(-20deg); }
+  100% { transform: translateX(320%) skewX(-20deg); }
+}
+@keyframes makanReadingCheckBounce {
+  0% { transform: scale(1); }
+  35% { transform: scale(1.3) rotate(8deg); }
+  65% { transform: scale(.88) rotate(-4deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+@keyframes makanReadingCheckRipple {
+  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--nv-cb-bg-checked) 50%, transparent); }
+  100% { box-shadow: 0 0 0 11px color-mix(in srgb, var(--nv-cb-bg-checked) 0%, transparent); }
+}
+/* Editing / Live Preview Task Card (Modern Glass & Gradient Finish) */
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task]:not([data-task=" "]) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  margin-block: 3px;
+  padding-block: 5px;
+  padding-inline-end: var(--nv-task-card-pad-end, 0.85em);
+  border: 1px solid var(--nv-task-card-border, color-mix(in srgb, var(--nv-cb-bg-checked) 35%, transparent)) !important;
+  border-radius: var(--nv-task-card-radius, 12px) !important;
+  background: var(--nv-task-card-bg) !important;
+  color: var(--nv-task-card-fg, var(--text-normal)) !important;
+  box-shadow: 0 2px 10px -2px color-mix(in srgb, var(--nv-cb-bg-checked) 14%, transparent),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  text-decoration: none;
+  transition: transform .2s ease, background .3s ease, border-color .3s ease, box-shadow .3s ease;
+}
+body.theme-dark:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task]:not([data-task=" "]) {
+  background: var(--nv-task-card-bg) !important;
+  color: var(--nv-task-card-fg, var(--text-normal)) !important;
+  border-color: var(--nv-task-card-border, color-mix(in srgb, var(--nv-cb-bg-checked) 45%, transparent)) !important;
+  box-shadow: 0 4px 14px -3px rgba(0, 0, 0, 0.35),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+}
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task]:not([data-task=" "]) *:not(input) {
+  color: var(--nv-task-card-fg, var(--text-normal)) !important;
+}
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task]:not([data-task=" "]):hover {
+  border-color: color-mix(in srgb, var(--nv-cb-bg-checked) 75%, transparent) !important;
+  box-shadow: 0 6px 18px -4px color-mix(in srgb, var(--nv-cb-bg-checked) 28%, transparent),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+}
+
+/* Consecutive completed task cards merge cleanly in Editing view */
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task]:not([data-task=" "]) + .cm-line.HyperMD-task-line[data-task]:not([data-task=" "]) {
+  margin-top: -3px !important;
+  border-top-color: transparent !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  box-shadow: none;
+}
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task]:not([data-task=" "]):has(+ .cm-line.HyperMD-task-line[data-task]:not([data-task=" "])) {
+  margin-bottom: 0 !important;
+  border-bottom-color: transparent !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+/* Reading View Task Card (Modern Glass & Gradient Finish) */
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered ul.contains-task-list {
+  padding-inline-start: 0 !important;
+  margin-inline-start: 0 !important;
+  list-style: none !important;
+}
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered ul.contains-task-list ul.contains-task-list {
+  padding-inline-start: var(--list-indent, 1.8em) !important;
+}
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item {
+  box-sizing: border-box;
+  position: relative;
+  border: 1px solid transparent !important;
+  border-radius: var(--nv-task-card-radius, 12px) !important;
+  margin-top: 3px !important;
+  margin-bottom: 3px !important;
+  margin-inline-start: 0 !important;
+  margin-inline-end: 0 !important;
+  padding-inline-start: var(--nv-task-card-offset, 2.25em) !important;
+  padding-inline-end: var(--nv-task-card-pad-end, 0.85em) !important;
+  padding-block: 5px !important;
+  transition: background .3s ease, border-color .3s ease, box-shadow .3s ease !important;
+}
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item > input.task-list-item-checkbox {
+  position: absolute !important;
+  inset-inline-start: var(--nv-cb-offset-inline, 0.65em) !important;
+  top: calc(5px + 0.15em + (1em * var(--line-height-normal, 1.85) - var(--checkbox-size, 17px)) / 2 + var(--nv-cb-offset-top, 0em)) !important;
+  margin: 0 !important;
+}
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item > p {
+  margin-block: .15em;
+}
+
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked {
+  isolation: isolate;
+  overflow: hidden;
+  text-decoration: none !important;
+  background: var(--nv-task-card-bg) !important;
+  color: var(--nv-task-card-fg, var(--text-normal)) !important;
+  border-color: var(--nv-task-card-border, color-mix(in srgb, var(--nv-cb-bg-checked) 35%, transparent)) !important;
+  box-shadow: 0 2px 10px -2px color-mix(in srgb, var(--nv-cb-bg-checked) 14%, transparent),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.5);
+  animation: makanReadingTaskSlide .5s cubic-bezier(.34, 1.3, .64, 1) backwards,
+             makanReadingTaskGlow 1s ease-out .3s backwards;
+}
+body.theme-dark:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked {
+  background: var(--nv-task-card-bg) !important;
+  color: var(--nv-task-card-fg, var(--text-normal)) !important;
+  border-color: var(--nv-task-card-border, color-mix(in srgb, var(--nv-cb-bg-checked) 45%, transparent)) !important;
+  box-shadow: 0 4px 14px -3px rgba(0, 0, 0, 0.35),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.08);
+  animation: makanReadingTaskSlide .5s cubic-bezier(.34, 1.3, .64, 1) backwards,
+             makanReadingTaskGlowDark 1s ease-out .3s backwards;
+}
+
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked:hover {
+  border-color: color-mix(in srgb, var(--nv-cb-bg-checked) 75%, transparent) !important;
+  box-shadow: 0 6px 18px -4px color-mix(in srgb, var(--nv-cb-bg-checked) 28%, transparent),
+              inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+}
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  width: 55%;
+  height: 100%;
+  background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.35) 50%, transparent 100%);
+  transform: translateX(-140%) skewX(-20deg);
+  pointer-events: none;
+}
+body.theme-dark:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked::after {
+  background: linear-gradient(105deg, transparent 0%, rgba(255, 255, 255, .12) 50%, transparent 100%);
+}
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked:hover::after {
+  animation: makanReadingShine .9s ease forwards;
+}
+
+/* Consecutive completed task cards merge cleanly */
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked + li.task-list-item.is-checked {
+  margin-top: -3px !important;
+  border-top-color: transparent !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  padding-top: 6px !important;
+  box-shadow: none;
+}
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked:has(+ li.task-list-item.is-checked) {
+  margin-bottom: 0 !important;
+  border-bottom-color: transparent !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  padding-bottom: 6px !important;
+}
+
+body.theme-dark:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked {
+  background: var(--nv-task-card-bg, color-mix(in srgb, var(--nv-cb-bg-checked) 19%, var(--background-primary))) !important;
+  color: var(--nv-task-card-fg, var(--text-normal)) !important;
+  border-color: var(--nv-task-card-border, color-mix(in srgb, var(--nv-cb-bg-checked) 48%, var(--background-modifier-border))) !important;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, .5),
+              0 2px 4px -1px rgba(0, 0, 0, .3);
+  animation: makanReadingTaskSlide .5s cubic-bezier(.34, 1.3, .64, 1) backwards,
+             makanReadingTaskGlowDark 1s ease-out .3s backwards;
+}
+body.theme-dark:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked:hover {
+  background: color-mix(in srgb, var(--nv-task-card-bg, color-mix(in srgb, var(--nv-cb-bg-checked) 19%, var(--background-primary))) 88%, var(--nv-cb-bg-checked, #A78BFA)) !important;
+  color: #E5E9F0 !important;
+  border-color: var(--nv-cb-bg-checked, #A78BFA) !important;
+  box-shadow: 0 8px 16px -4px color-mix(in srgb, var(--nv-cb-bg-checked, #A78BFA) 28%, transparent),
+              0 4px 6px -2px rgba(0, 0, 0, .4);
+}
+body.theme-dark:not(.nv-disable-task-card):not(.nv-task-preset-minimal) .markdown-rendered li.task-list-item.is-checked::after {
+  background: linear-gradient(105deg, transparent 0%, rgba(196, 181, 253, .22) 50%, transparent 100%);
+}
+/* ============================================================
+   12 · Folder colors & Presets (100% Fixed for Dark & Light Mode)
+   ============================================================ */
+
+/* ۱. استایل پایه پوشه‌های رنگی */
+body.nv-folder-colors-enabled .nav-folder-children > .nav-folder,
+body.nv-folder-colors-enabled .nav-files-container > div > .nav-folder {
+  background-color: var(--folder-color, var(--nv-folder-color-1, #F38BA8));
+  border-radius: var(--nv-folder-radius, 10px);
+  margin-block: 3px;
+  padding-block: 1px;
+  transition: filter 150ms ease, background-color 150ms ease;
+}
+
+/* ۲. چرخش کامل ۱۱ رنگ روی تمام پوشه‌ها (بدون جا افتادن پوشه اول!) */
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 1)  { --folder-color: var(--nv-folder-color-1, #F38BA8); }
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 2)  { --folder-color: var(--nv-folder-color-2, #EBA0AC); }
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 3)  { --folder-color: var(--nv-folder-color-3, #FAB387); }
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 4)  { --folder-color: var(--nv-folder-color-4, #F9E2AF); }
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 5)  { --folder-color: var(--nv-folder-color-5, #A6E3A1); }
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 6)  { --folder-color: var(--nv-folder-color-6, #94E2D5); }
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 7)  { --folder-color: var(--nv-folder-color-7, #89DCEB); }
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 8)  { --folder-color: var(--nv-folder-color-8, #74C7EC); }
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 9)  { --folder-color: var(--nv-folder-color-9, #89B4FA); }
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 10) { --folder-color: var(--nv-folder-color-10, #B4BEFE); }
+body.nv-folder-colors-enabled:is(.nv-folder-mode-cycle, .nv-folder-mode-pastel, .nv-folder-mode-depth) :is(.nav-files-container > div, .nav-folder-children) > .nav-folder:nth-of-type(11n + 11) { --folder-color: var(--nv-folder-color-11, #CBA6F7); }
+
+/* ۳. حالت تک‌رنگ (Solid) */
+body.nv-folder-colors-enabled.nv-folder-mode-solid .nav-folder {
+  --folder-color: var(--nv-folder-solid-color, #89B4FA) !important;
+}
+
+/* ۴. رنگ متن، آیکون و حل مشکل تاریک شدن موقع Hover در تم دارک */
+body.nv-folder-colors-enabled:not(.nv-folder-mode-pastel) .nav-folder:not(.mod-root) :is(.nav-folder-title, .nav-file-title) {
+  color: #161822 !important;
+  --nav-item-color: #161822 !important;
+  --nav-item-color-hover: #000000 !important;
+  --nav-item-color-active: #000000 !important;
+  --nav-collapse-icon-color: #161822 !important;
+  /* جلوگیری از افتادن کادر سرمه‌ای تیره ابسیدین موقع هاور و انتخاب */
+  --nav-item-background-hover: rgba(0, 0, 0, 0.09) !important;
+  --nav-item-background-active: rgba(255, 255, 255, 0.45) !important;
+}
+
+body.nv-folder-colors-enabled:not(.nv-folder-mode-pastel) .nav-folder:not(.mod-root) :is(.nav-folder-title-content, .nav-file-title-content, .nav-folder-collapse-indicator) {
+  color: #161822 !important;
+}
+
+body.nv-folder-colors-enabled:not(.nv-folder-mode-pastel) .nav-folder:not(.mod-root) :is(.nav-folder-title:hover, .nav-file-title:hover) {
+  background-color: rgba(0, 0, 0, 0.09) !important;
+  color: #000000 !important;
+}
+
+body.nv-folder-colors-enabled:not(.nv-folder-mode-pastel) .nav-folder:not(.mod-root) :is(.nav-folder-title.is-active, .nav-file-title.is-active) {
+  background-color: rgba(255, 255, 255, 0.45) !important;
+  color: #000000 !important;
+  font-weight: 700;
+}
+
+/* تگ پسوند فایل‌ها (مثل MD یا PDF) داخل پوشه‌های رنگی */
+body.nv-folder-colors-enabled:not(.nv-folder-mode-pastel) .nav-folder:not(.mod-root) .nav-file-tag {
+  background-color: rgba(0, 0, 0, 0.12) !important;
+  color: #161822 !important;
+}
+
+/* ۵. فایل‌هایی که بیرون از پوشه‌ها (در ریشه/Root) هستند در تم تاریک باید روشن بمانند */
+.theme-dark .nav-files-container > div > .nav-file > .nav-file-title {
+  color: var(--text-muted) !important;
+}
+.theme-dark .nav-files-container > div > .nav-file > .nav-file-title:hover {
+  color: var(--text-normal) !important;
+  background-color: var(--background-modifier-hover) !important;
+}
+.theme-dark .nav-files-container > div > .nav-file > .nav-file-title.is-active {
+  color: var(--text-normal) !important;
+  background-color: var(--background-modifier-selected) !important;
+}
+
+/* ۶. حالت پاستلی ملایم (Pastel Mode) */
+body.nv-folder-colors-enabled.nv-folder-mode-pastel .nav-folder:not(.mod-root) {
+  background-color: color-mix(in srgb, var(--folder-color, #89B4FA) 28%, var(--background-secondary)) !important;
+}
+body.nv-folder-colors-enabled.nv-folder-mode-pastel .nav-folder:not(.mod-root) :is(.nav-folder-title, .nav-file-title, .nav-folder-title-content, .nav-file-title-content) {
+  color: var(--text-normal) !important;
+}
+body.nv-folder-colors-enabled.nv-folder-mode-pastel .nav-folder:not(.mod-root) :is(.nav-folder-title:hover, .nav-file-title:hover) {
+  background-color: color-mix(in srgb, var(--folder-color, #89B4FA) 42%, var(--background-secondary)) !important;
+}
+
+/* ۷. افکت روشنایی و عمق زیرپوشه‌ها */
+body.nv-folder-colors-enabled .nav-folder-children > .nav-folder:hover,
+body.nv-folder-colors-enabled .nav-files-container > div > .nav-folder:hover {
+  filter: brightness(calc(var(--nv-folder-hover-brightness, 96) / 100));
+}
+body.nv-folder-colors-enabled.nv-folder-mode-depth .nav-folder .nav-folder { filter: brightness(1.06); }
+body.nv-folder-colors-enabled.nv-folder-mode-depth .nav-folder .nav-folder .nav-folder { filter: brightness(1.12); }
+/* ============================================================
+   13 · Print Stylesheet
+   ============================================================ */
+
+
+/* ============================================================
+   10 · Dark mode finish: unified semantic colors across the app
+   All variables are shared by Reading View, Live Preview and the editor.
+   Style Settings values remain user-overridable on body.
+   ============================================================ */
+.theme-dark {
+  --background-modifier-hover: var(--nv-custom-background-modifier-hover, #26364a);
+  --background-modifier-active-hover: var(--nv-custom-background-modifier-active-hover, #30445b);
+  --background-modifier-border: var(--nv-custom-background-modifier-border, #34465b);
+  --background-modifier-border-hover: var(--nv-custom-background-modifier-border-hover, #506781);
+  --text-normal: var(--nv-custom-text-normal, #e4ebf5);
+  --text-muted: var(--nv-custom-text-muted, #adbed2);
+  --text-faint: var(--nv-custom-text-faint, #8fa4bd);
+  --text-highlight-bg: var(--nv-custom-text-highlight-bg, #655426);
+  --text-highlight-fg: var(--nv-custom-text-highlight-fg, #fff1b6);
+  --tag-background: var(--nv-tag-background, #233747);
+  --tag-border-color: var(--nv-tag-border-color, #466176);
+  --tag-color: var(--nv-tag-color, #a9deea);
+  --code-background: var(--nv-code-background, #1b2635);
+  --table-header-background: var(--nv-table-header-background, #202c3b);
+  --table-header-color: var(--nv-table-header-color, #edf3fb);
+  --table-row-even-background: var(--nv-table-row-even-background, #1b2635);
+  --table-row-odd-background: var(--nv-table-row-odd-background, #151d29);
+  --table-border-color: var(--nv-table-border-color, #3a4d63);
+  --blockquote-background-color: var(--nv-quote-bg, #202c3b);
+  --quote-opening-modifier: var(--nv-quote-bg, #202c3b);
+  --checkbox-color: var(--nv-cb-bg-checked, #8b5cf6);
+  --checkbox-color-hover: var(--nv-cb-hover-border, #c4b5fd);
+  --checkbox-marker-color: var(--nv-cb-mark, #111827);
+  --list-marker-color: var(--nv-list-bullet-color, #9adbe5);
+}
+
+/* Keep quote and inline-code surfaces legible in both rendered and CM6 views. */
+.theme-dark .markdown-rendered blockquote,
+.theme-dark .markdown-source-view.mod-cm6 .HyperMD-quote {
+  background: var(--nv-quote-bg, #202c3b);
+  color: var(--text-normal);
+  border-inline-start-color: var(--interactive-accent);
+}
+.theme-dark .markdown-rendered :not(pre) > code,
+.theme-dark .markdown-source-view.mod-cm6 .cm-inline-code {
+  background: var(--nv-inline-code-bg, #202d3d);
+  color: var(--nv-code-normal, #9adbe5);
+  border-color: var(--background-modifier-border);
+}
+
+/* Tables: header, alternating rows, borders and hover use the same dark palette. */
+.theme-dark .markdown-rendered table,
+.theme-dark .markdown-source-view.mod-cm6 .table-wrapper table {
+  background: var(--background-primary);
+  color: var(--text-normal);
+  border-color: var(--nv-table-border-color, #3a4d63);
+}
+.theme-dark .markdown-rendered th,
+.theme-dark .markdown-source-view.mod-cm6 .table-wrapper th {
+  color: var(--nv-table-header-color, #edf3fb);
+  background: var(--nv-table-header-background, #202c3b);
+  border-color: var(--nv-table-border-color, #3a4d63);
+}
+.theme-dark .markdown-rendered td,
+.theme-dark .markdown-source-view.mod-cm6 .table-wrapper td {
+  border-color: var(--nv-table-border-color, #3a4d63);
+}
+.theme-dark .markdown-rendered tr:nth-child(even) td {
+  background: var(--nv-table-row-even-background, #1b2635);
+}
+.theme-dark .markdown-rendered tr:nth-child(odd) td {
+  background: var(--nv-table-row-odd-background, #151d29);
+}
+.theme-dark .markdown-rendered tr:hover td {
+  background: var(--background-modifier-hover);
+}
+
+/* Tags, links and navigation states retain contrast without harsh neon colors. */
+.theme-dark .tag,
+.theme-dark .cm-hashtag {
+  color: var(--nv-tag-color, #a9deea);
+  background: var(--nv-tag-background, #233747);
+  border-color: var(--nv-tag-border-color, #466176);
+}
+.theme-dark a,
+.theme-dark .external-link {
+  color: var(--nv-link-color, #8dd0e0);
+}
+.theme-dark a:hover,
+.theme-dark .external-link:hover {
+  color: var(--nv-link-color-hover, #b5e9f2);
+}
+
+/* Callouts: use RGB triplets as expected by Obsidian's native callout system. */
+.theme-dark .callout {
+  color: var(--text-normal);
+  border-color: color-mix(in srgb, rgb(var(--callout-color)) 48%, var(--background-modifier-border));
+  background-color: color-mix(in srgb, rgb(var(--callout-color)) 8%, var(--background-primary));
+}
+.theme-dark .callout-title,
+.theme-dark .callout-icon {
+  color: rgb(var(--callout-color));
+}
+
+/* Heading palette: preserve the requested six-color identity in both views. */
+.theme-dark {
+  --h1-color: var(--nv-h1-color, #ff80ab);
+  --h2-color: var(--nv-h2-color, #ce93d8);
+  --h3-color: var(--nv-h3-color, #4fc3f7);
+  --h4-color: var(--nv-h4-color, #81c784);
+  --h5-color: var(--nv-h5-color, #ffb74d);
+  --h6-color: var(--nv-h6-color, #bcaaa4);
+}
+.theme-dark .markdown-rendered :is(h1,h2,h3,h4,h5,h6),
+.theme-dark .markdown-source-view.mod-cm6 :is(.HyperMD-header-1,.HyperMD-header-2,.HyperMD-header-3,.HyperMD-header-4,.HyperMD-header-5,.HyperMD-header-6) {
+  text-shadow: none;
+}
+
+
 
 @media print {
   body { --background-primary: white; --background-secondary: white; --text-normal: black; --text-muted: #333; --text-faint: #555; }
@@ -1873,333 +3514,139 @@ body.is-mobile { --input-height: var(--nv-mobile-input-height, 40px); }
   .nv-paper.markdown-preview-view .markdown-preview-sizer { padding: 0; border: 0; box-shadow: none; }
 }
 
-/* ===== Integrated folder and subfolder colors (RFbyixx.css) ===== */
-/* Main Folder and Subfolder Styling */
-.nav-folder-children > .nav-folder,
-.nav-files-container > div > .nav-folder {
-  background-color: var(--folder-color);
-  --nav-item-color: black;
-  --nav-item-color-hover: black;
-  --nav-collapse-icon-color: black;
-  --nav-item-color-active: black;
-  border-radius: 10px;
-}
-
-/* Hover Effect */
-.nav-folder-children > .nav-folder:hover,
-.nav-files-container > div > .nav-folder:hover {
-  filter: brightness(0.9);
-}
-
-/* Color Scheme for Folders and Subfolders */
-.nav-folder:nth-child(11n + 2),
-.nav-folder .nav-folder:nth-child(11n + 2),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 2) {
-  --folder-color: rgb(243, 139, 168); /* Pink */
-}
-
-.nav-folder:nth-child(11n + 3),
-.nav-folder .nav-folder:nth-child(11n + 3),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 3) {
-  --folder-color: rgb(235, 160, 172); /* Light Red */
-}
-
-.nav-folder:nth-child(11n + 4),
-.nav-folder .nav-folder:nth-child(11n + 4),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 4) {
-  --folder-color: rgb(250, 179, 135); /* Peach */
-}
-
-.nav-folder:nth-child(11n + 5),
-.nav-folder .nav-folder:nth-child(11n + 5),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 5) {
-  --folder-color: rgb(249, 226, 175); /* Light Yellow */
-}
-
-.nav-folder:nth-child(11n + 6),
-.nav-folder .nav-folder:nth-child(11n + 6),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 6) {
-  --folder-color: rgb(166, 227, 161); /* Light Green */
-}
-
-.nav-folder:nth-child(11n + 7),
-.nav-folder .nav-folder:nth-child(11n + 7),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 7) {
-  --folder-color: rgb(148, 226, 213); /* Cyan */
-}
-
-.nav-folder:nth-child(11n + 8),
-.nav-folder .nav-folder:nth-child(11n + 8),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 8) {
-  --folder-color: rgb(137, 220, 235); /* Sky Blue */
-}
-
-.nav-folder:nth-child(11n + 9),
-.nav-folder .nav-folder:nth-child(11n + 9),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 9) {
-  --folder-color: rgb(116, 199, 236); /* Light Blue */
-}
-
-.nav-folder:nth-child(11n + 10),
-.nav-folder .nav-folder:nth-child(11n + 10),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 10) {
-  --folder-color: rgb(135, 176, 249); /* Blue */
-}
-
-.nav-folder:nth-child(11n + 11),
-.nav-folder .nav-folder:nth-child(11n + 11),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 11) {
-  --folder-color: rgb(180, 190, 254); /* Lavender */
-}
-
-.nav-folder:nth-child(11n + 12),
-.nav-folder .nav-folder:nth-child(11n + 12),
-.nav-folder .nav-folder .nav-folder:nth-child(11n + 12) {
-  --folder-color: rgb(203, 166, 247); /* Purple */
-}
-
 
 /* ============================================================
-   11 · Completed task cards — Editing + Reading views (Fixed)
+   MAKAN FIX · Task color system (Reading + CM6 Editing)
+   - Automatic presets derive card surfaces from the active checkbox hue.
+   - Custom preset exposes independent color pickers for checkbox and card.
+   - CM6 uses :has() on the task line because data-task is commonly attached
+     to the checkbox rather than the .cm-line itself.
    ============================================================ */
 
+/* Effective task-card palette.
+   Use a separate internal variable so Style Settings' inline variables do
+   not block the automatic color-matching presets. */
+body:is(
+  .nv-task-preset-synced,
+  .nv-task-preset-card,
+  .nv-task-preset-emerald,
+  .nv-task-preset-blue,
+  .nv-task-preset-violet,
+  .nv-task-preset-amber,
+  .nv-task-preset-rose,
+  .nv-task-preset-compact
+) {
+  --makan-task-card-bg-effective:
+    color-mix(in srgb, var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, #7c3aed)) 13%, var(--background-primary));
+  --makan-task-card-fg-effective: var(--text-normal);
+  --makan-task-card-border-effective:
+    color-mix(in srgb, var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, #7c3aed)) 48%, var(--background-modifier-border));
+  --makan-task-card-hover-effective:
+    color-mix(in srgb, var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, #7c3aed)) 21%, var(--background-primary));
+}
+
+body.theme-dark:is(
+  .nv-task-preset-synced,
+  .nv-task-preset-card,
+  .nv-task-preset-emerald,
+  .nv-task-preset-blue,
+  .nv-task-preset-violet,
+  .nv-task-preset-amber,
+  .nv-task-preset-rose,
+  .nv-task-preset-compact
+) {
+  --makan-task-card-bg-effective:
+    color-mix(in srgb, var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, #8b5cf6)) 23%, var(--background-primary));
+  --makan-task-card-border-effective:
+    color-mix(in srgb, var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, #8b5cf6)) 58%, var(--background-modifier-border));
+  --makan-task-card-hover-effective:
+    color-mix(in srgb, var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, #8b5cf6)) 31%, var(--background-primary));
+}
+
+/* Manual/custom mode: all three card colors are independently selectable
+   from Style Settings (Task card background / text / border). */
+body.nv-task-preset-custom {
+  --makan-task-card-bg-effective: var(--nv-task-card-bg, var(--background-secondary));
+  --makan-task-card-fg-effective: var(--nv-task-card-fg, var(--text-normal));
+  --makan-task-card-border-effective: var(--nv-task-card-border, var(--background-modifier-border));
+  --makan-task-card-hover-effective:
+    var(--nv-task-card-hover-bg, color-mix(in srgb, var(--nv-task-card-bg, var(--background-secondary)) 86%, var(--nv-cb-bg-checked, #7c3aed)));
+}
+
+/* Explicitly map the custom color controls to Obsidian's checkbox variables. */
 body {
-  --nv-task-card-offset: 2.25em;
-  --nv-task-card-pad-end: 0.85em;
-  --nv-task-card-radius: 15px;
+  --checkbox-color: var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, var(--interactive-accent)));
+  --checkbox-color-hover: var(--nv-cb-hover-border, var(--nv-checkbox-hover-border, var(--interactive-accent)));
+  --checkbox-marker-color: var(--nv-cb-mark, var(--nv-checkbox-mark-color, var(--text-on-accent)));
 }
 
-@keyframes makanTaskEnter {
-  from { opacity: 0; transform: translateX(-12px); }
-  to { opacity: 1; transform: translateX(0); }
+/* Checkbox colors: same variables in Reading View and CM6 Editing View. */
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox {
+  accent-color: var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, var(--interactive-accent))) !important;
 }
-@keyframes makanTaskEnterRTL {
-  from { opacity: 0; transform: translateX(12px); }
-  to { opacity: 1; transform: translateX(0); }
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:checked {
+  background: linear-gradient(
+    145deg,
+    var(--nv-cb-bg-checked-2, var(--nv-checkbox-bg-checked-2, var(--nv-cb-bg-checked, #7c3aed))) 0%,
+    var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, var(--interactive-accent))) 100%
+  ) !important;
+  border-color: var(--nv-cb-border-checked, var(--nv-checkbox-border-checked, var(--interactive-accent))) !important;
+  color: var(--nv-cb-mark, var(--nv-checkbox-mark-color, var(--text-on-accent))) !important;
 }
-@keyframes makanTaskGlow {
-  0% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--interactive-accent) 38%, transparent); }
-  100% { box-shadow: 0 0 0 10px transparent; }
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:hover:not(:checked) {
+  background: var(--nv-cb-hover-bg, var(--nv-checkbox-hover-bg, var(--background-modifier-hover))) !important;
+  border-color: var(--nv-cb-hover-border, var(--nv-checkbox-hover-border, var(--interactive-accent))) !important;
 }
-@keyframes makanCheckBounce {
-  0%, 100% { transform: scale(1); }
-  35% { transform: scale(1.22) rotate(7deg); }
-  70% { transform: scale(.92) rotate(-4deg); }
-}
-@keyframes makanTaskShine {
-  to { inset-inline-start: 125%; }
-}
-
-body:not(.nv-disable-task-card) .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"] {
-  position: relative;
-  isolation: isolate;
-  overflow: hidden;
-  margin-block: 5px;
-  padding-block: 5px;
-  border: 1px solid color-mix(in srgb, var(--interactive-accent) 48%, var(--background-modifier-border));
-  border-radius: var(--radius-m, 10px);
-  background: color-mix(in srgb, var(--interactive-accent) 11%, var(--background-primary));
-  color: var(--text-normal);
-  text-decoration: none;
-  transition: background-color 220ms ease, border-color 220ms ease,
-              box-shadow 220ms ease, transform 220ms ease;
-  animation: makanTaskEnter 420ms ease-out both,
-             makanTaskGlow 850ms ease-out 180ms both;
-}
-body:not(.nv-disable-task-card) .markdown-source-view.mod-cm6:dir(rtl) .cm-line.HyperMD-task-line[data-task="x"] {
-  animation-name: makanTaskEnterRTL, makanTaskGlow;
-}
-body:not(.nv-disable-task-card) .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"]:hover {
-  border-color: var(--interactive-accent);
-  background: color-mix(in srgb, var(--interactive-accent) 17%, var(--background-primary));
-  box-shadow: 0 5px 14px color-mix(in srgb, var(--interactive-accent) 18%, transparent);
-  transform: translateY(-1px);
-}
-body:not(.nv-disable-task-card) .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"]::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset-block: 0;
-  inset-inline-start: -65%;
-  width: 42%;
-  pointer-events: none;
-  background: linear-gradient(105deg, transparent, color-mix(in srgb, white 30%, transparent), transparent);
-  transform: skewX(-18deg);
-}
-body:not(.nv-disable-task-card) .markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"]:hover::after {
-  animation: makanTaskShine 760ms ease-out;
+:is(.markdown-rendered, .markdown-source-view.mod-cm6) input.task-list-item-checkbox:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--nv-cb-focus-ring, var(--nv-checkbox-focus-ring, var(--interactive-accent))) 70%, transparent) !important;
+  outline-offset: 2px;
 }
 
-/* Reading View */
-@keyframes makanReadingTaskSlide {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+/* Reading View task card. */
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal):not(.nv-task-preset-plain)
+.markdown-rendered li.task-list-item.is-checked {
+  background: var(--makan-task-card-bg-effective, var(--nv-task-card-bg, var(--background-secondary))) !important;
+  color: var(--makan-task-card-fg-effective, var(--nv-task-card-fg, var(--text-normal))) !important;
+  border-color: var(--makan-task-card-border-effective, var(--nv-task-card-border, var(--background-modifier-border))) !important;
 }
-@keyframes makanReadingTaskGlow {
-  0% { box-shadow: 0 0 0 0 rgba(192, 132, 252, .55); }
-  100% { box-shadow: 0 0 0 16px rgba(192, 132, 252, 0); }
-}
-@keyframes makanReadingTaskGlowDark {
-  0% { box-shadow: 0 0 0 0 rgba(202, 169, 238, .45); }
-  100% { box-shadow: 0 0 0 16px rgba(202, 169, 238, 0); }
-}
-@keyframes makanReadingShine {
-  0% { transform: translateX(-140%) skewX(-20deg); }
-  100% { transform: translateX(320%) skewX(-20deg); }
-}
-@keyframes makanReadingCheckBounce {
-  0% { transform: scale(1); }
-  35% { transform: scale(1.35) rotate(10deg); }
-  65% { transform: scale(.85) rotate(-6deg); }
-  100% { transform: scale(1) rotate(0); }
-}
-@keyframes makanReadingCheckRipple {
-  0% { box-shadow: 0 0 0 0 rgba(168, 85, 247, .55); }
-  100% { box-shadow: 0 0 0 12px rgba(168, 85, 247, 0); }
-}
-@keyframes makanReadingCheckRippleDark {
-  0% { box-shadow: 0 0 0 0 rgba(202, 169, 238, .5); }
-  100% { box-shadow: 0 0 0 12px rgba(202, 169, 238, 0); }
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal):not(.nv-task-preset-plain)
+.markdown-rendered li.task-list-item.is-checked:hover {
+  background: var(--makan-task-card-hover-effective, var(--nv-task-card-bg, var(--background-secondary))) !important;
+  border-color: var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, var(--interactive-accent))) !important;
 }
 
-/* Keep Reading View task geometry identical before and after checking. */
-.markdown-rendered li.task-list-item {
-  box-sizing: border-box;
-}
-
-body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked {
-  position: relative;
-  isolation: isolate;
-  overflow: visible;
-  text-decoration: none !important;
-  background: transparent !important;
-  color: var(--nv-task-card-fg, #5B21B6) !important;
-  /* Draw the card edge inside the existing box: no border or text reflow. */
-  border: 0 !important;
-  font-weight: inherit !important;
+/* CM6 / Editing View: match both the checkbox's checked state and Obsidian's
+   data-task marker. This covers the common CM6 DOM variants. */
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal):not(.nv-task-preset-plain)
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line:has(input.task-list-item-checkbox:checked),
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal):not(.nv-task-preset-plain)
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line:has(input.task-list-item-checkbox[data-task="x"]),
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal):not(.nv-task-preset-plain)
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"] {
+  background: var(--makan-task-card-bg-effective, var(--nv-task-card-bg, var(--background-secondary))) !important;
+  background-color: var(--makan-task-card-bg-effective, var(--nv-task-card-bg, var(--background-secondary))) !important;
+  color: var(--makan-task-card-fg-effective, var(--nv-task-card-fg, var(--text-normal))) !important;
+  border: 1px solid var(--makan-task-card-border-effective, var(--nv-task-card-border, var(--background-modifier-border))) !important;
   border-radius: var(--nv-task-card-radius, 15px) !important;
-  box-shadow: inset 0 0 0 1px var(--nv-task-card-border, #C084FC),
-              0 4px 6px -1px rgba(0, 0, 0, .05),
-              0 2px 4px -1px rgba(0, 0, 0, .03);
-  transition: background-color .3s ease, border-color .3s ease, box-shadow .3s ease, transform .3s ease !important;
-  /* The card is painted beyond the list item without changing its layout box.
-   This restores full-width highlighting over the checkbox while text coordinates stay fixed. */
-  animation: makanReadingTaskSlide .55s cubic-bezier(.34, 1.3, .64, 1) backwards,
-             makanReadingTaskGlow 1.1s ease-out .35s backwards;
+  transition: background-color .22s ease, border-color .22s ease, box-shadow .22s ease !important;
 }
-body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked::before {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  inset-block: 0;
-  inset-inline-start: calc(-1 * var(--nv-task-card-offset, 2.25em));
-  width: calc(100% + var(--nv-task-card-offset, 2.25em));
-  border-radius: var(--nv-task-card-radius, 15px);
-  background: var(--nv-task-card-bg, #F3E8FF);
-  box-shadow: inset 0 0 0 1px var(--nv-task-card-border, #C084FC),
-              0 4px 6px -1px rgba(0, 0, 0, .05),
-              0 2px 4px -1px rgba(0, 0, 0, .03);
-  pointer-events: none;
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal):not(.nv-task-preset-plain)
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line:has(input.task-list-item-checkbox:checked):hover,
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal):not(.nv-task-preset-plain)
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line:has(input.task-list-item-checkbox[data-task="x"]):hover,
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal):not(.nv-task-preset-plain)
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line[data-task="x"]:hover {
+  background: var(--makan-task-card-hover-effective, var(--nv-task-card-bg, var(--background-secondary))) !important;
+  border-color: var(--nv-cb-bg-checked, var(--nv-checkbox-bg-checked, var(--interactive-accent))) !important;
 }
-body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked:hover {
-  background: transparent !important;
-  box-shadow: inset 0 0 0 1px #A855F7,
-              0 8px 16px -4px rgba(168, 85, 247, .35),
-              0 4px 6px -2px rgba(0, 0, 0, .05);
-}
-body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked:hover::before {
-  background: color-mix(in srgb, var(--nv-task-card-bg, #EDE1FF) 92%, #A855F7);
-  box-shadow: inset 0 0 0 1px #A855F7,
-              0 8px 16px -4px rgba(168, 85, 247, .35),
-              0 4px 6px -2px rgba(0, 0, 0, .05);
-}
-body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  left: 0;
-  width: 55%;
-  height: 100%;
-  background: linear-gradient(105deg, transparent 0%, rgba(255,255,255,.45) 50%, transparent 100%);
-  transform: translateX(-140%) skewX(-20deg);
-  pointer-events: none;
-}
-body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked:hover::after {
-  animation: makanReadingShine .9s ease forwards;
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal):not(.nv-task-preset-plain)
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line:has(input.task-list-item-checkbox:checked) :is(span, .cm-list-1, .cm-formatting, .cm-hmd-list-indent),
+body:not(.nv-disable-task-card):not(.nv-task-preset-minimal):not(.nv-task-preset-plain)
+.markdown-source-view.mod-cm6 .cm-line.HyperMD-task-line:has(input.task-list-item-checkbox[data-task="x"]) :is(span, .cm-list-1, .cm-formatting, .cm-hmd-list-indent) {
+  color: inherit !important;
 }
 
-/* تثبیت جایگاه چک‌باکس برای جلوگیری از تکان خوردن هنگام کلیک */
-.markdown-rendered input.task-list-item-checkbox {
-  transition: transform .25s cubic-bezier(.34, 1.56, .64, 1), background-color .25s ease, border-color .25s ease !important;
-}
-.markdown-rendered input.task-list-item-checkbox:hover {
-  border-color: #A855F7 !important;
-  background: linear-gradient(145deg, #EDE1FF 0%, #DDD0F0 100%) !important;
-  transform: scale(1.12);
-}
-.markdown-rendered input.task-list-item-checkbox:checked {
-  background: linear-gradient(145deg, #C084FC 0%, #A855F7 100%) !important;
-  border-color: #A855F7 !important;
-  animation: makanReadingCheckBounce .45s cubic-bezier(.34, 1.56, .64, 1),
-             makanReadingCheckRipple .7s ease-out .1s;
-}
-.markdown-rendered input.task-list-item-checkbox:focus {
-  outline: none !important;
-  box-shadow: 0 0 0 3px rgba(168, 85, 247, .4);
-}
-
-/* Dark Reading View */
-.theme-dark body:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked,
-body.theme-dark:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked {
-  background: var(--nv-task-card-bg, #414559) !important;
-  color: var(--nv-task-card-fg, #C6D0F5) !important;
-  box-shadow: inset 0 0 0 1px var(--nv-task-card-border, #737994),
-              0 4px 6px -1px rgba(0, 0, 0, .5),
-              0 2px 4px -1px rgba(0, 0, 0, .3) !important;
-  animation: makanReadingTaskSlide .55s cubic-bezier(.34, 1.3, .64, 1) backwards,
-             makanReadingTaskGlowDark 1.1s ease-out .35s backwards;
-}
-body.theme-dark:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked::before {
-  background: var(--nv-task-card-bg, #414559);
-  box-shadow: inset 0 0 0 1px var(--nv-task-card-border, #737994),
-              0 4px 6px -1px rgba(0, 0, 0, .5),
-              0 2px 4px -1px rgba(0, 0, 0, .3);
-}
-body.theme-dark:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked:hover {
-  background: transparent !important;
-  color: #E5E9F0 !important;
-  box-shadow: inset 0 0 0 1px #CAA9EE,
-              0 8px 16px -4px rgba(202, 169, 238, .28),
-              0 4px 6px -2px rgba(0, 0, 0, .4);
-}
-body.theme-dark:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked:hover::before {
-  background: color-mix(in srgb, var(--nv-task-card-bg, #51576D) 88%, #CAA9EE);
-  box-shadow: inset 0 0 0 1px #CAA9EE,
-              0 8px 16px -4px rgba(202, 169, 238, .28),
-              0 4px 6px -2px rgba(0, 0, 0, .4);
-}
+/* Avoid the old hard-coded purple shine on dark completed task cards. */
 body.theme-dark:not(.nv-disable-task-card) .markdown-rendered li.task-list-item.is-checked::after {
-  background: linear-gradient(105deg, transparent 0%, rgba(202,169,238,.22) 50%, transparent 100%);
+  background: linear-gradient(105deg, transparent 0%, color-mix(in srgb, var(--nv-cb-bg-checked, #8b5cf6) 24%, transparent) 50%, transparent 100%) !important;
 }
-.theme-dark .markdown-rendered input.task-list-item-checkbox:hover {
-  border-color: #BABBF1 !important;
-  background: linear-gradient(145deg, #51576D 0%, #414559 100%) !important;
-  transform: scale(1.12);
-}
-.theme-dark .markdown-rendered input.task-list-item-checkbox:checked {
-  background: linear-gradient(145deg, #CAA9EE 0%, #A78BFA 100%) !important;
-  border-color: #CAA9EE !important;
-  animation: makanReadingCheckBounce .45s cubic-bezier(.34, 1.56, .64, 1),
-             makanReadingCheckRippleDark .7s ease-out .1s;
-}
-.theme-dark .markdown-rendered input.task-list-item-checkbox:checked:hover {
-  background: linear-gradient(145deg, #CAA9EE 0%, #A78BFA 100%) !important;
-  border-color: #BABBF1 !important;
-}
-.theme-dark .markdown-rendered input.task-list-item-checkbox:focus {
-  box-shadow: 0 0 0 3px rgba(202, 169, 238, .5);
-}
-
-/* Connected edges for consecutive completed tasks in Reading View */
-/* Consecutive completed tasks keep independent, layout-neutral cards. */
